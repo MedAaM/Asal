@@ -1,0 +1,9 @@
+PORT=5000
+MONGO_URI=mongodb+srv://ahmedazlouk9:thug80@cluster0.ccibwmy.mongodb.net/?retryWrites=true&w=majority&appName=HoneyCluster
+JWT_SECRET=somehardstringstoguess
+CLIENT_ID=650924336414-b5sdpdsld8fs3ankebve51q4eqo6gmrj.apps.googleusercontent.com
+CLIENT_SECRET=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
+CALLBACK_URL=http://localhost:5000/auth/google/redirect
+REACT_APP_CORS_ORIGIN=http://localhost:3000
+SESSION_SECRET=someVerySecureRandomString
+NODE_ENV=development
