@@ -37,7 +37,7 @@ app.use('/uploads', express.static(__dirname + '/uploads'));
 app.use('/auth', authRouter);
 app.use('/api/user', userRoutes);
 app.use('/api/orders', orderRoutes);
-app.use('/api/coupons', couponRoutes);
+app.use('/api/coupon', couponRoutes);
 app.use('/api/address', addressRoutes);
 app.use('/api/refund', refundRoutes);
 app.use('/api/address', addressRoutes);

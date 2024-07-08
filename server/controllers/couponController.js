@@ -1,32 +1,57 @@
 const couponModel = require("../models/couponModel");
-const dateFormat = require("../utils/dateFormat");
 
 
-const applyCoupon = async (req, res) => {
-
+const addCoupon = async (req, res) => {
   try {
-    const coupon = await couponModel.findOne({ code: req.body.code });
-    if (coupon) {
-      const active = dateFormat(coupon.active);
-      const expired = dateFormat(coupon.expired);
-      const today = dateFormat(new Date());
-      if (active <= today && today <= expired) {
-        res.status(200).json({
-          success: true,
-          message: `Coupon Applied ${coupon.code}`,
-          discount: coupon.amount,
-          code: coupon.code,
-        });
-      } else {
-        res.status(200).json({ success: false, message: "Coupon Code Expired" });
-      }
-    } else {
-      res.status(200).json({ success: false, message: "Invalid Coupon" });
-    }
+    const newCoupon = new couponModel(req.body);
+    await newCoupon.save();
+    res.status(201).json({ success: true, message: "Coupon Added Successfully", coupon: newCoupon });
   } catch (err) {
     console.log(err);
-    res.status(500).json({ success: false });
+    res.status(500).json({ success: false, message: "Failed to Add Coupon" });
   }
 };
 
-module.exports = { applyCoupon };
+// Edit coupon
+const editCoupon = async (req, res) => {
+  try {
+    const { code } = req.params;
+    const updatedCoupon = await couponModel.findOneAndUpdate({ code }, req.body, { new: true });
+    if (updatedCoupon) {
+      res.status(200).json({ success: true, message: "Coupon Updated Successfully", coupon: updatedCoupon });
+    } else {
+      res.status(404).json({ success: false, message: "Coupon Not Found" });
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ success: false, message: "Failed to Update Coupon" });
+  }
+};
+
+// Delete coupon
+const deleteCoupon = async (req, res) => {
+  try {
+    const { code } = req.params;
+    const deletedCoupon = await couponModel.findOneAndDelete({ code });
+    if (deletedCoupon) {
+      res.status(200).json({ success: true, message: "Coupon Deleted Successfully" });
+    } else {
+      res.status(404).json({ success: false, message: "Coupon Not Found" });
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ success: false, message: "Failed to Delete Coupon" });
+  }
+};
+
+const getAllCoupons = async (req, res) => {
+  try {
+    const coupons = await couponModel.find({});
+    res.status(200).json({ success: true, coupons });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ success: false, message: "Failed to retrieve coupons" });
+  }
+};
+
+module.exports = { deleteCoupon, editCoupon, addCoupon, getAllCoupons };

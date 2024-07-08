@@ -1,9 +1,22 @@
 const express = require("express");
-const { applyCoupon } = require("../controllers/couponController");
-
 const router = express.Router();
 
-// Route to apply coupon
-router.post("/apply-coupon", applyCoupon);
+const {
+  addCoupon,
+  editCoupon,
+  deleteCoupon,
+  getAllCoupons
+} = require("../controllers/couponController");
+
+
+
+router.post("/add", addCoupon);
+router.get("/", getAllCoupons);
+
+
+router.put("/edit/:code", editCoupon);
+
+
+router.delete("/delete/:code", deleteCoupon);
 
 module.exports = router;

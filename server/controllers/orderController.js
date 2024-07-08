@@ -1,6 +1,9 @@
 const orderModel = require("../models/orderModel");
 const productModel = require("../models/productModel");
 const userModel = require("../models/userModel");
+const couponModel = require("../models/couponModel");
+const dateFormat = require("../utils/dateFormat");
+const shippingChargeModel = require("../models/shippingChargeModel");
 
 const getOrders = async (req, res) => {
   try {
@@ -48,37 +51,68 @@ const deleteOrder = async (req, res) => {
 const createOrder = async (req, res) => {
   try {
     const userId = req.user._id;
-    const { products, billingAddress, shippingAddress, paymentMethod, discount = 0, shippingCost = 0 } = req.body;
+    const { products, billingAddress, shippingAddress, paymentMethod, couponCode } = req.body;
 
-    // Populate product details and calculate subtotal and tax
+    // Validate the coupon
+    let couponDiscount = 0;
+    let couponPercentage = 0;
+    if (couponCode) {
+      const coupon = await couponModel.findOne({ code: couponCode });
+      if (coupon) {
+        const active = dateFormat(coupon.active);
+        const expired = dateFormat(coupon.expired);
+        const today = dateFormat(new Date());
+        if (active <= today && today <= expired) {
+          couponPercentage = coupon.amount; // amount is treated as percentage
+        } else {
+          return res.status(400).json({ message: "Coupon Code Expired" });
+        }
+      } else {
+        return res.status(400).json({ message: "Invalid Coupon" });
+      }
+    }
+
+    // Calculate shipping cost
+    const shippingCost = await calculateShippingCost(shippingAddress);
+
+    // Populate product details and calculate subtotal, discount, and tax
     const populatedProducts = await Promise.all(
       products.map(async (product) => {
         const foundProduct = await productModel.findById(product.productId);
         if (!foundProduct) {
           throw new Error(`Product with ID '${product.productId}' not found`);
         }
-        const subtotal = foundProduct.price * product.quantity;
-        const tax = (subtotal * foundProduct.vat) / 100; // Assuming 'vat' is the tax rate for the product
+        const originalPrice = foundProduct.price * product.quantity;
+        const discount = (foundProduct.discount || 0) * product.quantity;
+        const discountedPrice = originalPrice - discount;
+        const tax = (discountedPrice * foundProduct.vat) / 100; // Assuming 'vat' is the tax rate for the product
         return {
           productId: foundProduct._id,
           quantity: product.quantity,
           price: foundProduct.price,
+          discount,
           taxRate: foundProduct.vat,
-          subtotal,
+          originalPrice,
+          discountedPrice,
           tax,
         };
       })
     );
 
-    const subtotal = populatedProducts.reduce((acc, product) => acc + product.subtotal, 0);
+    const subtotal = populatedProducts.reduce((acc, product) => acc + product.discountedPrice, 0);
+    const totalDiscount = populatedProducts.reduce((acc, product) => acc + product.discount, 0);
     const totalTax = populatedProducts.reduce((acc, product) => acc + product.tax, 0);
-    const total = calculateTotal(subtotal, discount, totalTax, shippingCost);
+    
+    // Apply coupon discount as a percentage
+    couponDiscount = (subtotal * couponPercentage) / 100;
+
+    const total = calculateTotal(subtotal, totalTax, shippingCost, couponDiscount);
 
     const newOrder = new orderModel({
       user: userId,
       products: populatedProducts,
       subtotal,
-      discount,
+      discount: totalDiscount + couponDiscount,
       shippingCost,
       tax: totalTax,
       total,
@@ -89,7 +123,6 @@ const createOrder = async (req, res) => {
 
     const savedOrder = await newOrder.save();
 
-    // Decrease product quantities
     await Promise.all(
       products.map(async (product) => {
         await productModel.findByIdAndUpdate(
@@ -106,8 +139,23 @@ const createOrder = async (req, res) => {
   }
 };
 
-function calculateTotal(subtotal, discount = 0, tax = 0, shippingCost = 0) {
-  return subtotal - discount + tax + shippingCost;
+function calculateTotal(subtotal, tax = 0, shippingCost = 0, couponDiscount = 0) {
+  return subtotal + tax + shippingCost - couponDiscount;
+}
+
+async function calculateShippingCost(addressId) {
+  const shippingCharges = await shippingChargeModel.findOne();
+
+  if (!shippingCharges) {
+    throw new Error('Shipping charges configuration not found');
+  }
+
+  const areaCharge = shippingCharges.area.find(area => area._id.equals(addressId));
+  if (areaCharge) {
+    return areaCharge.price;
+  }
+
+  return shippingCharges.internationalCost;
 }
 
 module.exports = { getOrders, deleteOrder, createOrder };
