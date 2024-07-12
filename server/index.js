@@ -8,11 +8,18 @@ const couponRoutes = require('./routes/couponRoutes');
 const shippingRoutes = require('./routes/shippingChargeRoutes');
 const addressRoutes = require('./routes/AddressRoutes');
 const refundRoutes = require('./routes/refundRoutes');
+const webpageRoutes = require('./routes/webPageRoutes');
 const productRoutes = require('./routes/productRoutes');
+const brandRoutes = require('./routes/brandRoutes');
+const settingsRoutes = require('./routes/settingsRoutes');
+const categoryRoutes = require('./routes/categoryRoutes');
+const attributesRoutes = require('./routes/attributeRoutesl');
+const notificationRoutes = require('./routes/notificationRoutes');
 const session = require('express-session');
 const passportSetup = require("./config/passport-setup");
 const passport = require('passport');
 const authRouter = require("./routes/auth");
+
 
 const app = express();
 
@@ -43,6 +50,12 @@ app.use('/api/refund', refundRoutes);
 app.use('/api/address', addressRoutes);
 app.use('/api/product', productRoutes);
 app.use('/api/shipping', shippingRoutes);
+app.use('/api/brands', brandRoutes);
+app.use('/api/categories', categoryRoutes);
+app.use('/api/attributes', attributesRoutes);
+app.use('/api/notifications', notificationRoutes);
+app.use('/api/settings', settingsRoutes);
+app.use('/api/webpage', webpageRoutes);
 
 mongoose.connect(config.DB_URI)
     .then(() => {

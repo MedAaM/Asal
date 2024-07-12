@@ -1,82 +1,57 @@
-const pageModel = require("../models/webPageModel");
+const Webpage = require('../models/webPageModel');
 
-
-const handlePostRequest = async (req, res) => {
-
+// Create or Update Webpage Content
+const createOrUpdateWebpage = async (req, res) => {
   try {
-    const { query, body } = req;
-    let pageData = await pageModel.findOne({});
-    if (pageData === null) {
-      pageData = new pageModel({ aboutPage: { content: "" } });
-    }
+    const { section } = req.params;
+    const data = req.body;
 
-    switch (query.scope) {
-      case "carousel":
-        const { title, subTitle, description, url, image } = body;
-        const carouselData = {
-          title,
-          subTitle,
-          description,
-          url,
-          image,
-        };
-        pageData.homePage.carousel.carouselData.push(carouselData);
-        await pageData.save();
-        break;
+    let updateData = {};
+    updateData[section] = data;
 
-      case "background":
-        const { background } = body;
-        const arg =
-          pageData.homePage.carousel.background[0].name !==
-          background[0].name;
-        if (arg) {
-          const fileName = [
-            { Key: pageData.homePage.carousel.background[0].name },
-          ];
-        }
-        pageData.homePage.carousel.background = background;
-        await pageData.save();
-        break;
-
-      case "banner":
-        const arg2 =
-          pageData.homePage.banner.image[0].name !== body.image[0].name;
-        const bannerData = {
-          title: body.title,
-          subTitle: body.subTitle,
-          description: body.description,
-          url: body.url,
-          image: body.image,
-        };
-        pageData.homePage.banner = bannerData;
-        await pageData.save();
-        break;
-
-      case "collection":
-        const collectionItem =
-          pageData.homePage.collection[query.dataScope];
-        const arg3 =
-          collectionItem.image[0] &&
-          collectionItem.image[0].name !== body.image[0].name;
-        const collectionData = {
-          title: body.title,
-          url: body.url,
-          image: body.image,
-        };
-        pageData.homePage.collection[query.dataScope] = collectionData;
-        await pageData.save();
-        break;
-
-      default:
-        return res.status(400).json({ success: false });
-        break;
-    }
-
-    res.status(200).json({ success: true });
+    const webpage = await Webpage.findOneAndUpdate({}, updateData, { new: true, upsert: true });
+    res.status(200).json(webpage);
   } catch (err) {
     console.log(err);
-    res.status(400).json({ success: false, err: err.message });
+    res.status(500).json({ error: err.message });
   }
 };
 
-module.exports = { handlePostRequest };
+// Get Webpage Content by Section
+const getWebpageContent = async (req, res) => {
+  try {
+    const { section } = req.params;
+    const webpage = await Webpage.findOne({}, `${section}`);
+
+    if (!webpage || !webpage[section]) {
+      return res.status(404).json({ error: 'Section not found' });
+    }
+
+    res.status(200).json(webpage[section]);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: err.message });
+  }
+};
+
+// Delete Webpage Section Content
+const deleteWebpageContent = async (req, res) => {
+  try {
+    const { section } = req.params;
+
+    const updateData = {};
+    updateData[section] = null;
+
+    const webpage = await Webpage.findOneAndUpdate({}, { $unset: updateData }, { new: true });
+    res.status(200).json({ message: 'Section content deleted successfully' });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: err.message });
+  }
+};
+
+module.exports = {
+  createOrUpdateWebpage,
+  getWebpageContent,
+  deleteWebpageContent,
+};

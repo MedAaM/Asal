@@ -5,6 +5,7 @@ const {
   deleteShippingArea,
   updateShippingArea
 } = require("../controllers/shippingChargeController");
+const requireAdminAuth = require("../middlewares/requireAdminAuth");
 
 const router = express.Router();
 
@@ -12,11 +13,11 @@ const router = express.Router();
 router.get("/", getShippingCharge);
 
 
-router.post("/", createOrUpdateShippingCharge);
+router.post("/",requireAdminAuth, createOrUpdateShippingCharge);
 
 
-router.delete("/", deleteShippingArea);
+router.delete("/",requireAdminAuth, deleteShippingArea);
 
-router.put("/", updateShippingArea);
+router.put("/",requireAdminAuth, updateShippingArea);
 
 module.exports = router;

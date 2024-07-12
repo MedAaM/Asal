@@ -23,6 +23,7 @@ passport.use(
                         name: profile._json.given_name+" "+profile._json.family_name,
                         email: profile._json.email,
                         img: profile._json.picture,
+                        isVerified: true
                     }).save();
                     done(null, newUser);
                     console.log(profile);

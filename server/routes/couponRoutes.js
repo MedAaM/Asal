@@ -7,16 +7,17 @@ const {
   deleteCoupon,
   getAllCoupons
 } = require("../controllers/couponController");
+const requireAdminAuth = require("../middlewares/requireAdminAuth");
 
 
 
-router.post("/add", addCoupon);
-router.get("/", getAllCoupons);
+router.post("/add",requireAdminAuth, addCoupon);
+router.get("/",requireAdminAuth, getAllCoupons);
 
 
-router.put("/edit/:code", editCoupon);
+router.put("/edit/:code",requireAdminAuth, editCoupon);
 
 
-router.delete("/delete/:code", deleteCoupon);
+router.delete("/delete/:code",requireAdminAuth, deleteCoupon);
 
 module.exports = router;
