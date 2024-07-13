@@ -132,6 +132,11 @@ const createOrder = async (req, res) => {
       })
     );
 
+    await userModel.updateOne(
+      { _id: req.user._id },
+      { $push: { orders: savedOrder._id } }
+    );
+
     res.status(201).json({ message: 'Order created successfully!', order: savedOrder });
   } catch (err) {
     console.error(err);
@@ -158,4 +163,45 @@ async function calculateShippingCost(addressId) {
   return shippingCharges.internationalCost;
 }
 
-module.exports = { getOrders, deleteOrder, createOrder };
+async function updateOrder(req, res) {
+  try {
+    const { orderId, status } = req.body;
+
+    const order = await orderModel.findOne({ _id: orderId });
+
+    if (!order) {
+      return res.status(404).json({ success: false, message: 'Order not found' });
+    }
+
+    switch (status) {
+      case 'success':
+        if (order.orderStatus === 'Draft') {
+          order.paymentStatus = 'Paid';
+          order.orderStatus = 'Pending';
+          await order.save();
+        }
+        res.status(200).json({ success: true, order });
+        break;
+
+      case 'fail':
+        order.paymentStatus = 'Failed';
+        order.orderStatus = 'Cancelled';
+        await order.save();
+        res.status(200).json({ success: true, message: 'Order updated to failed', order });
+        break;
+      case 'cancel':
+        await orderModel.findOneAndRemove({ _id: orderId });
+        res.status(200).json({ success: true, message: 'Order removed' });
+        break;
+
+      default:
+        res.status(400).json({ success: false, message: 'Invalid status' });
+        break;
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false, error: error.message });
+  }
+}
+
+module.exports = { getOrders, deleteOrder, createOrder, updateOrder, updateOrder };

@@ -1,5 +1,6 @@
 const upload = require("../config/multerConfig");
 const Product = require("../models/productModel");
+const Attribute = require("../models/attributeModel");
 
 const createProduct = async (req, res) => {
   try {
@@ -36,6 +37,16 @@ const createProduct = async (req, res) => {
       vat,
       tax,
     } = req.body;
+
+    // Validate attribute references
+    if (attributes && attributes.length > 0) {
+      for (const attributeId of attributes) {
+        const attributeExists = await Attribute.findById(attributeId);
+        if (!attributeExists) {
+          return res.status(400).json({ error: `Attribute with ID ${attributeId} does not exist` });
+        }
+      }
+    }
 
     const newProduct = new Product({
       name,
@@ -79,6 +90,7 @@ const createProduct = async (req, res) => {
     res.status(500).json({ error: 'Failed to create product' });
   }
 };
+
 const getProductById = async (req, res) => {
   try {
     const product = await Product.findById(req.params.productId);

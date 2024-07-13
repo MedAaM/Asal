@@ -29,7 +29,7 @@ const user = {
     default: false,
   },
   orders: [{ type: mongoose.Schema.Types.ObjectId, ref: "Order" }],
-  favorite: [{ type: mongoose.Schema.Types.ObjectId, ref: "product" }],
+  favorite: [{ type: mongoose.Schema.Types.ObjectId, ref: "Product" }],
   refundRequest: [
     { type: mongoose.Schema.Types.ObjectId, ref: "refundRequest" },
   ],
@@ -43,7 +43,8 @@ const order = {
   user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }, 
   products: [{
     productId: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true }, 
-    quantity: { type: Number, required: true, min: 1 }, 
+    quantity: { type: Number, required: true, min: 1 },
+    refundRequest : {type: Boolean, default: false} 
   }],
   subtotal: { type: Number, required: true }, 
   discount: { type: Number, default: 0 }, 
@@ -97,9 +98,9 @@ const order = {
   };
 
   const refundRequest = {
-    userId: { type: mongoose.Schema.Types.ObjectId, ref: "user" },
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
     product: {
-      id: { type: mongoose.Schema.Types.ObjectId, ref: "product" },
+      id: { type: mongoose.Schema.Types.ObjectId, ref: "Product" },
       name: String,
       color: String,
       attribute: String,
@@ -194,8 +195,8 @@ const product = {
   bestSelling: { type: Boolean, default: false },
   quantity: { type: Number, default: 0 },
   sku: { type: String },
-  colors: { type: [String] },
-  attributes: { type: [{ name: String, value: String }] },
+  colors: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Color' }],
+  attributes: { type: mongoose.Schema.Types.ObjectId, ref: 'Attribute' },
   variants: { type: [{ name: String, price: Number }] },
   attributeIndex: { type: String },
   seo: {

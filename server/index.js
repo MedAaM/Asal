@@ -12,6 +12,7 @@ const webpageRoutes = require('./routes/webPageRoutes');
 const productRoutes = require('./routes/productRoutes');
 const brandRoutes = require('./routes/brandRoutes');
 const settingsRoutes = require('./routes/settingsRoutes');
+const colorRoutes = require('./routes/colorRoutes');
 const categoryRoutes = require('./routes/categoryRoutes');
 const attributesRoutes = require('./routes/attributeRoutesl');
 const notificationRoutes = require('./routes/notificationRoutes');
@@ -46,7 +47,7 @@ app.use('/api/user', userRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/coupon', couponRoutes);
 app.use('/api/address', addressRoutes);
-app.use('/api/refund', refundRoutes);
+app.use('/api/refunds', refundRoutes);
 app.use('/api/address', addressRoutes);
 app.use('/api/product', productRoutes);
 app.use('/api/shipping', shippingRoutes);
@@ -56,6 +57,7 @@ app.use('/api/attributes', attributesRoutes);
 app.use('/api/notifications', notificationRoutes);
 app.use('/api/settings', settingsRoutes);
 app.use('/api/webpage', webpageRoutes);
+app.use('/api/colors', colorRoutes);
 
 mongoose.connect(config.DB_URI)
     .then(() => {
