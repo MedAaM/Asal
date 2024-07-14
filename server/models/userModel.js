@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const validator = require("validator");
+const bcrypt = require("bcrypt");
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
@@ -30,11 +32,35 @@ const userSchema = new Schema({
     default: false,
   },
   orders: [{ type: mongoose.Schema.Types.ObjectId, ref: "Order" }],
-  favorite: [{ type: mongoose.Schema.Types.ObjectId, ref: "product" }],
+  favorite: [{ type: mongoose.Schema.Types.ObjectId, ref: "Product" }],
   refundRequest: [
-    { type: mongoose.Schema.Types.ObjectId, ref: "refundRequest" },
+    { type: mongoose.Schema.Types.ObjectId, ref: "Refund" },
   ],
   address: [{ type: mongoose.Schema.Types.ObjectId, ref: "Address" }],
 });
+
+
+userSchema.statics.logIn = async function(email, password) {
+  if(!email || !password) {
+    throw Error("email or password cannot be empty !")
+  }
+  if(!validator.isEmail(email)){
+    throw Error("cannot accept unvalid emails")
+  }
+  const user = await this.findOne({email});
+  if(!user) {
+    throw Error("email not found ! ")
+  }
+  if(user.hash) {
+    const match = await bcrypt.compare(password, user.hash);
+    if(!match){
+      throw Error("incorrect password")
+    }
+  }else {
+    throw Error("this is a google account , try to log in using your google account")
+  }
+  
+  return user;
+}
 
 module.exports = mongoose.model('User', userSchema);

@@ -5,12 +5,13 @@ const userModel = require("../models/userModel");
 const getAddress = async (req, res) => {
   try {
     const user = await userModel.findById(req.user._id)
-      .populate({
-        path: "address",
-        select: '-__v -user -orders',
-        options: { sort: { _id: -1 } }
-      })
-      .select('address');
+    .populate({
+      path: "address",
+      select: '-orders',
+      options: { sort: { _id: -1 } }
+    })
+    .select('address');
+    console.log(user);
     res.status(200).json({ success: true, user });
   } catch (err) {
     console.log(err);
