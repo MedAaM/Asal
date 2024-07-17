@@ -11,15 +11,16 @@ const requireAdminAuth = async (req, res, next) => {
     try {   
         const id = jwt.verify(token, process.env.SECRET);
         const user = await User.findById(id);
-
+        
         if (!user) {
             return res.status(500).json({"mssg": "No user found with this token"});
         }
-
-
+        
+        
         if (!user.isAdmin) {
             return res.status(500).json({"mssg": "This user is not an admin"});
         }
+        req.user = {_id : user._id};
         next();
     } catch (error) {
         return res.status(500).json({"mssg": "Error verifying token or finding user", "error": error});

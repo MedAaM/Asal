@@ -6,7 +6,6 @@ const NotificationSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId, ref: "User"
   },
   receiverId : {
-    required : true,
     type: mongoose.Schema.Types.ObjectId, ref: "User"
   },
   title: {
@@ -29,6 +28,14 @@ const NotificationSchema = new mongoose.Schema({
     type: String,
     required: true,
     enum: ['hire', 'fire'],
+  },
+  forGroup: {
+    type: String,
+    enum: ['admins', 'staffTeam'],
+  },
+  fromGroup: {
+    type: String,
+    enum: ['admins', 'staffTeam'],
   },
   link: {
     type: String, 

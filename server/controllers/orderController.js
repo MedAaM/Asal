@@ -4,6 +4,7 @@ const userModel = require("../models/userModel");
 const couponModel = require("../models/couponModel");
 const dateFormat = require("../utils/dateFormat");
 const shippingChargeModel = require("../models/shippingChargeModel");
+const Staff = require("../models/staffModel");
 
 const getOrders = async (req, res) => {
   try {
@@ -71,8 +72,18 @@ const createOrder = async (req, res) => {
         return res.status(400).json({ message: "Invalid Coupon" });
       }
     }
-
+    
     // Calculate shipping cost
+
+    const shipping = await shippingChargeModel.findOne();
+    const shippingAddressObj = shipping.area.find(area => area._id.equals(shippingAddress))
+
+    if(!shippingAddressObj) {
+      return res.status(400).json({ message: "shipping adress not found" });
+
+    }
+
+
     const shippingCost = await calculateShippingCost(shippingAddress);
 
     // Populate product details and calculate subtotal, discount, and tax
@@ -117,7 +128,7 @@ const createOrder = async (req, res) => {
       tax: totalTax,
       total,
       billingAddress,
-      shippingAddress,
+      shippingAddress: shippingAddressObj,
       paymentMethod,
     });
 
@@ -204,4 +215,21 @@ async function updateOrder(req, res) {
   }
 }
 
-module.exports = { getOrders, deleteOrder, createOrder, updateOrder, updateOrder };
+const getStaffOrders = async (req, res) => {
+  try {
+    const staff = await Staff.findOne({ userId: req.user._id }); 
+
+    if (!staff || !staff.area) {
+      return res.status(404).json({ success: false, message: 'Staff member or area not found' });
+    }
+
+    const orders = await orderModel.find({ 'shippingAddress.name': staff.area });
+
+    res.status(200).json({ success: true, orders });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+
+module.exports = { getOrders, deleteOrder, createOrder, updateOrder, updateOrder, getStaffOrders };

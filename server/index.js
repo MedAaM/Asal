@@ -15,6 +15,7 @@ const settingsRoutes = require('./routes/settingsRoutes');
 const colorRoutes = require('./routes/colorRoutes');
 const categoryRoutes = require('./routes/categoryRoutes');
 const attributesRoutes = require('./routes/attributeRoutesl');
+const staffRoutes = require('./routes/staffRoutes');
 const notificationRoutes = require('./routes/notificationRoutes');
 const session = require('express-session');
 const passportSetup = require("./config/passport-setup");
@@ -58,6 +59,7 @@ app.use('/api/notifications', notificationRoutes);
 app.use('/api/settings', settingsRoutes);
 app.use('/api/webpage', webpageRoutes);
 app.use('/api/colors', colorRoutes);
+app.use('/api/staff', staffRoutes);
 
 mongoose.connect(config.DB_URI)
     .then(() => {
