@@ -21,6 +21,7 @@ const giftSchema = new mongoose.Schema({
   level: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Level',
+    unique: true
   },
   createdAt: {
     type: Date,

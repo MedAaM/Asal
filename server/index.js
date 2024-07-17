@@ -17,6 +17,9 @@ const categoryRoutes = require('./routes/categoryRoutes');
 const attributesRoutes = require('./routes/attributeRoutesl');
 const staffRoutes = require('./routes/staffRoutes');
 const notificationRoutes = require('./routes/notificationRoutes');
+const ratingRoutes = require('./routes/ratingRoutes');
+const honeyRoutes = require('./routes/honeyTypesRoutes');
+const giftRoutes = require('./routes/giftRoutes');
 const session = require('express-session');
 const passportSetup = require("./config/passport-setup");
 const passport = require('passport');
@@ -60,6 +63,9 @@ app.use('/api/settings', settingsRoutes);
 app.use('/api/webpage', webpageRoutes);
 app.use('/api/colors', colorRoutes);
 app.use('/api/staff', staffRoutes);
+app.use('/api/ratings', ratingRoutes);
+app.use('/api/honey', honeyRoutes);
+app.use('/api/gifts', giftRoutes);
 
 mongoose.connect(config.DB_URI)
     .then(() => {

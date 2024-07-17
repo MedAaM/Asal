@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const user = {
   name: String,
-  email: { type: String, unique: true },
+  email: { type: String, unique: true, required: true },
   googleId: String,
   phone: String,
   house: String,

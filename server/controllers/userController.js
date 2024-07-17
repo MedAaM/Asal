@@ -3,14 +3,21 @@ const bcrypt = require('bcrypt');
 const Token = require('../models/TokenModel');
 const createVerificationToken = require('./tokencontroller');
 const generateToken = require('../utils/JWT');
+const validator = require("validator");
+
 
 
 const signup = async (req, res) => {
   try {
       const { name, email, password } = req.body;
-
-      let user = await User.findOne({ email });
-      if (user) {
+      if (!email || !password) {
+        return res.status(400).send('email or password connot be empty');
+    }
+    else if (!validator.isEmail(email)){
+        return res.status(400).send('cannot accept invalid Emails');
+    }
+    let user = await User.findOne({ email });
+    if (user) {
           return res.status(400).send('User already exists');
       }
 

@@ -9,19 +9,19 @@ const {
 } = require('../controllers/attributeController');
 const requireAdminAuth = require('../middlewares/requireAdminAuth');
 
-// POST /api/attributes
-router.post('/',requireAdminAuth, createAttribute);
 
-// GET /api/attributes
+router.post('/', createAttribute);
+
+
 router.get('/', getAttributes);
 
-// GET /api/attributes/:id
+
 router.get('/:id', getAttributeById);
 
-// PUT /api/attributes/:id
-router.put('/:id',requireAdminAuth, updateAttribute);
 
-// DELETE /api/attributes/:id
+router.put('/:id', updateAttribute);
+
+
 router.delete('/:id', deleteAttribute);
 
 module.exports = router;
