@@ -1,11 +1,12 @@
 const Staff = require('../models/staffModel');
 const User = require('../models/userModel');
+const Level = require('../models/levelModel');
 
 
 const addStaff = async (req, res) => {
   try {
     const userId = req.user._id; 
-    const { area } = req.body;
+    const { area, isVIP } = req.body;
 
     
     const user = await User.findById(userId);
@@ -14,15 +15,22 @@ const addStaff = async (req, res) => {
     }
 
     
+
+    
     const existingStaff = await Staff.findOne({ userId });
     if (existingStaff) {
       return res.status(400).json({ success: false, message: 'Staff member already exists' });
     }
 
+    const level = await Level.findOne({ level : 0 });
+
+
     
     const newStaff = new Staff({
       userId,
       area,
+      isVIP,
+      level: level._id
     });
 
     

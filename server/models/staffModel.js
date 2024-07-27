@@ -1,3 +1,4 @@
+const { type } = require('@testing-library/user-event/dist/type');
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
@@ -15,6 +16,10 @@ const staffSchema = new mongoose.Schema({
   level: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Level',
+  },
+  isVIP : {
+    type: Boolean,
+    default : false
   },
   honeyTransactions: [{
     honey: {

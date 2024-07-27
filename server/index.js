@@ -65,7 +65,6 @@ app.use('/api/colors', colorRoutes);
 app.use('/api/staff', staffRoutes);
 app.use('/api/ratings', ratingRoutes);
 app.use('/api/honey', honeyRoutes);
-app.use('/api/gifts', giftRoutes);
 
 mongoose.connect(config.DB_URI)
     .then(() => {

@@ -1,3 +1,4 @@
+const { type } = require("@testing-library/user-event/dist/type");
 const mongoose = require("mongoose");
 
 const user = {
@@ -159,6 +160,27 @@ const order = {
           title: String,
           url: String,
           image: Array,
+        },
+        gift: {
+          title: String,
+          description: String,
+          image: String,
+          target: String,
+          isFinished: {
+            type : Boolean,
+            default: false
+          },
+        },
+        VIPgift: {
+          title: String,
+          description: String,
+          image: Array,
+          target: String,
+          target: String,
+          isFinished: {
+            type : Boolean,
+            default: false
+          },
         },
       },
     },
