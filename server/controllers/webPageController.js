@@ -16,7 +16,7 @@ const createOrUpdateWebpage = async (req, res) => {
   }
 };
 
-// Get Webpage Content by Section
+
 const getWebpageContent = async (req, res) => {
   try {
     const { section } = req.params;
@@ -33,7 +33,7 @@ const getWebpageContent = async (req, res) => {
   }
 };
 
-// Delete Webpage Section Content
+
 const deleteWebpageContent = async (req, res) => {
   try {
     const { section } = req.params;
@@ -51,30 +51,52 @@ const deleteWebpageContent = async (req, res) => {
 
 const createOrUpdateGift = async (req, res) => {
   try {
-    const { type } = req.params; // 'gift' or 'VIPgift'
+    const { type } = req.params; 
     const data = req.body;
 
-    let updateData = {};
-    updateData[`homePage.collection.${type}`] = data;
+    
+    if (type !== 'VIPgift' && type !== 'gift') {
+      return res.status(400).json({ error: 'Invalid type parameter' });
+    }
 
-    const webpage = await Webpage.findOneAndUpdate({}, updateData, { new: true, upsert: true });
-    res.status(200).json(webpage.homePage.collection[type]);
+    
+    const requiredFields = ['title', 'description', 'image', 'target'];
+    const missingFields = requiredFields.filter(field => !data[field]);
+
+    if (missingFields.length > 0) {
+      return res.status(400).json({ error: `Missing required fields: ${missingFields.join(', ')}` });
+    }
+
+    
+    let updateData = {};
+    updateData[`staffPage.${type}`] = data;
+
+    
+    const webpage = await Webpage.findOneAndUpdate(
+      {},
+      { $set: updateData },
+      { new: true, upsert: true }
+    );
+
+    res.status(200).json(webpage.staffPage[type]);
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: err.message });
   }
 };
 
+
+
 const getGiftContent = async (req, res) => {
   try {
-    const { type } = req.params; // 'gift' or 'VIPgift'
-    const webpage = await Webpage.findOne({}, `homePage.collection.${type}`);
-
-    if (!webpage || !webpage.homePage.collection[type]) {
-      return res.status(404).json({ error: 'Gift not found' });
+    const { type } = req.params; 
+    const webpage = await Webpage.findOne({}, `staffPage.${type}`);
+    
+    if (!webpage || !webpage.staffPage || !webpage.staffPage[type] || !webpage.staffPage[type].title) {
+      return res.status(404).json({ error: 'No gift found' });
     }
 
-    res.status(200).json(webpage.homePage.collection[type]);
+    res.status(200).json(webpage.staffPage[type]);
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: err.message });
@@ -83,7 +105,7 @@ const getGiftContent = async (req, res) => {
 
 const deleteGiftContent = async (req, res) => {
   try {
-    const { type } = req.params; // 'gift' or 'VIPgift'
+    const { type } = req.params;
 
     const updateData = {};
     updateData[`homePage.collection.${type}`] = null;

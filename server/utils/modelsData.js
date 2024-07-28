@@ -128,6 +128,31 @@ const order = {
   };
 
   const webpage = {
+    staffPage: {
+      VIPgift: {
+        title: String,
+        description: String,
+        image: Array,
+        target: String,
+        target: Number,
+        isFinished: {
+          type : Boolean,
+          default: false
+        },
+      },
+
+      gift: {
+        title: String,
+        description: String,
+        image: String,
+        target: Number,
+        isFinished: {
+          type : Boolean,
+          default: false
+        },
+      },
+
+    },
     homePage: {
       carousel: {
         background: Array,
@@ -161,27 +186,7 @@ const order = {
           url: String,
           image: Array,
         },
-        gift: {
-          title: String,
-          description: String,
-          image: String,
-          target: String,
-          isFinished: {
-            type : Boolean,
-            default: false
-          },
-        },
-        VIPgift: {
-          title: String,
-          description: String,
-          image: Array,
-          target: String,
-          target: String,
-          isFinished: {
-            type : Boolean,
-            default: false
-          },
-        },
+        
       },
     },
     aboutPage: {

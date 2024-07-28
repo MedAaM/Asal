@@ -1,4 +1,3 @@
-const { type } = require('@testing-library/user-event/dist/type');
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
@@ -21,6 +20,20 @@ const staffSchema = new mongoose.Schema({
     type: Boolean,
     default : false
   },
+  activated : {
+    type: Boolean,
+    default : false
+  },
+  totalSellings : [{
+    honey: {
+      type: Schema.Types.ObjectId,
+      ref: 'Honey'
+    },
+    quantitySold: {
+      type: Number,
+      default: 0
+    }
+  }],
   honeyTransactions: [{
     honey: {
       type: Schema.Types.ObjectId,
@@ -35,6 +48,7 @@ const staffSchema = new mongoose.Schema({
       default: 0
     }
   }]
+  
 });
 
 module.exports = mongoose.model('Staff', staffSchema);

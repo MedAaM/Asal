@@ -19,7 +19,6 @@ const staffRoutes = require('./routes/staffRoutes');
 const notificationRoutes = require('./routes/notificationRoutes');
 const ratingRoutes = require('./routes/ratingRoutes');
 const honeyRoutes = require('./routes/honeyTypesRoutes');
-const giftRoutes = require('./routes/giftRoutes');
 const session = require('express-session');
 const passportSetup = require("./config/passport-setup");
 const passport = require('passport');

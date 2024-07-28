@@ -4,6 +4,9 @@ const {
   createOrUpdateWebpage,
   getWebpageContent,
   deleteWebpageContent,
+  createOrUpdateGift,
+  getGiftContent,
+  deleteGiftContent,
 } = require('../controllers/webPageController'); 
 const requireAdminAuth = require('../middlewares/requireAdminAuth');
 
@@ -15,8 +18,8 @@ router.get('/:section', getWebpageContent);
 
 
 router.delete('/:section',requireAdminAuth, deleteWebpageContent);
-router.put('/webpage/gift/:type',requireAdminAuth, createOrUpdateGift); 
-router.get('/webpage/gift/:type',requireAdminAuth, getGiftContent); 
+router.put('/webpage/gift/:type', createOrUpdateGift); 
+router.get('/webpage/gift/:type', getGiftContent); 
 router.delete('/webpage/gift/:type',requireAdminAuth, deleteGiftContent);
 
 module.exports = router;
