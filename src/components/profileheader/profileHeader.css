@@ -13,12 +13,13 @@
     color: white;
     clip-path: var(--honey-shape);
     bottom: 0;
-    background-color: var(--color-primary);
+    background-color: var(--primary);
 }
 
 .header {
     background-color: var(--light-bg);
     padding: 1rem;
+    border-radius: 1rem;
     box-shadow: var(--shadow);
 }
 

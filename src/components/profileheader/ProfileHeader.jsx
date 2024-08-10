@@ -35,7 +35,7 @@ function ProfileHeader() {
             <div className="total">+ 157</div>
             العناصر المُسَلَّمَة
         </div>
-        <div className="df">
+        <div className="df-c">
             <AiOutlineInstagram />
             <AiOutlineFacebook />
             <AiFillTwitterSquare />

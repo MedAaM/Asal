@@ -1,0 +1,22 @@
+.profile--page {
+    height: 86vh;
+    overflow: hidden;
+}
+
+.profile--content {
+    padding: 0 1rem 1rem 1rem;
+    width: 95%;
+}
+
+.expended {
+    width: 80% !important;
+}
+
+.profile--content  {
+    height: 100%;
+    overflow: scroll;
+}
+
+.profile--content::-webkit-scrollbar {
+    display: none;
+}

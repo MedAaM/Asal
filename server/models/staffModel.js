@@ -15,16 +15,13 @@ const staffSchema = new mongoose.Schema({
   level: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Level',
-  },
-  isVIP : {
-    type: Boolean,
-    default : false
+    required : true
   },
   activated : {
     type: Boolean,
     default : false
   },
-  totalSellings : [{
+  totalSelling : [{
     honey: {
       type: Schema.Types.ObjectId,
       ref: 'Honey'
@@ -34,14 +31,22 @@ const staffSchema = new mongoose.Schema({
       default: 0
     }
   }],
-  honeyTransactions: [{
+  honeyTaken: [{
     honey: {
       type: Schema.Types.ObjectId,
       ref: 'Honey'
     },
-    quantityTaken: {
+    unit: {
+      type: Schema.Types.ObjectId,
+      ref: 'Unit'
+    },
+    qte : {
       type: Number,
-      default: 0
+      default : 0,
+    },
+    totalInKg: {
+      type: Number,
+      default : 0
     },
     quantitySold: {
       type: Number,
@@ -49,6 +54,6 @@ const staffSchema = new mongoose.Schema({
     }
   }]
   
-});
+}, { timestamps: true });
 
 module.exports = mongoose.model('Staff', staffSchema);

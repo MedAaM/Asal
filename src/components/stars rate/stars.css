@@ -1,5 +1,5 @@
 .stars-range {
     display: flex;
-    color: var(--color-primary);
+    color: var(--primary);
     gap: 4px;
 }

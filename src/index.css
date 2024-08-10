@@ -2,7 +2,7 @@
 
 
 :root {
-  --color-primary: #ffb500;
+  --primary: #ffb500;
   --light-primary: #ffecd5;
   --purple: #926bfa;
   --purple-light: #e9e1fe;
@@ -36,6 +36,18 @@ body {
 
 .pr {
   position: relative;
+}
+
+.jc-sa {
+  justify-content: space-around;
+}
+
+.mt-3 {
+  margin-top: 3rem;
+}
+
+.g0 {
+  gap: 0 !important;
 }
 .df {
   display: flex;
@@ -76,6 +88,14 @@ body {
 }
 
 .title-2 {
-  color: var(--color-primary);
+  color: var(--primary);
   font-size: 2rem;
+}
+
+.ai-fs {
+  align-items: flex-start !important;
+}
+
+.ai-c {
+  align-items: center;
 }

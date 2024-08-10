@@ -1,6 +1,8 @@
 const Staff = require('../models/staffModel');
 const User = require('../models/userModel');
 const Level = require('../models/levelModel');
+const Honey = require('../models/honeyModel');
+const Unit = require('../models/unitModel');
 
 const addStaff = async (req, res) => {
   try {
@@ -68,7 +70,7 @@ const getallstaff = async (req, res) => {
       select: '-orders -favorite -refundRequest'
     })
     .populate('level')
-    .populate('honeyTransactions.honey');
+    .populate('honeyTaken.honey');
     if (!staff) return res.status(404).json({ error: 'Staff not found' });
     res.status(200).json(staff);
   } catch (err) {
@@ -135,34 +137,51 @@ const activateOrDeactivateStaff = async (req, res) => {
 const addHoneyTransaction = async (req, res) => {
   try {
     const { id } = req.params;
-    const { honey, quantityTaken, quantitySold } = req.body;
+    const { honey: honeyId, unit: unitId, qte, quantitySold } = req.body;
 
+    
     const staff = await Staff.findById(id);
     if (!staff) return res.status(404).json({ error: 'Staff not found' });
 
-    // Find the existing transaction for the given honey type
-    const existingTransaction = staff.honeyTransactions.find(transaction => transaction.honey.toString() === honey);
+    
+    const honey = await Honey.findById(honeyId);
+    if (!honey) return res.status(404).json({ error: 'Honey not found' });
+
+    const unit = await Unit.findById(unitId);
+    if (!unit) return res.status(404).json({ error: 'Unit not found' });
+
+    
+    const totalInKg = unit.weightPerUnitKg * unit.units * qte;
+
+    
+    const existingTransaction = staff.honeyTaken.find(transaction => transaction.honey.toString() === honeyId);
 
     if (existingTransaction) {
-      // Update the quantities if the transaction exists
-      existingTransaction.quantityTaken = quantityTaken;
-      existingTransaction.quantitySold = quantitySold;
+      
+      existingTransaction.unit = unitId;
+      existingTransaction.qte = qte;
+      existingTransaction.totalInKg = existingTransaction.totalInKg + totalInKg;
+      if(quantitySold ) {
+        existingTransaction.quantitySold += quantitySold;
+      }
     } else {
-      // Add a new transaction if it doesn't exist
-      staff.honeyTransactions.push({ honey, quantityTaken, quantitySold });
+      
+      staff.honeyTaken.push({ honey: honeyId, unit: unitId, qte, totalInKg, quantitySold });
     }
 
-    // Update the totalSellings array
-    const totalSelling = staff.totalSellings.find(selling => selling.honey.toString() === honey);
+    
+    const totalSelling = staff.totalSelling.find(selling => selling.honey.toString() === honeyId);
+    
 
-    if (totalSelling) {
-      // Update the quantitySold if the selling entry exists
+    if (totalSelling && quantitySold) {
+      
       totalSelling.quantitySold += quantitySold;
-    } else {
-      // Add a new selling entry if it doesn't exist
-      staff.totalSellings.push({ honey, quantitySold });
+    } else if(!totalSelling && quantitySold) {
+      
+      staff.totalSelling.push({ honey: honeyId, quantitySold });
     }
 
+    
     await staff.save();
 
     res.status(200).json({ success: true, message: 'Honey transaction added/updated successfully', staff });
@@ -174,6 +193,9 @@ const addHoneyTransaction = async (req, res) => {
 
 
 
+
+
+
 const modifyQuantitySold = async (req, res) => {
   try {
     const { transactionId, quantitySold } = req.body;
@@ -182,19 +204,17 @@ const modifyQuantitySold = async (req, res) => {
     if (!staff) return res.status(404).json({ error: 'Staff not found' });
     if (!staff.activated) return res.status(403).json({ error: 'This account is not activated' });
 
-    const transaction = staff.honeyTransactions.id(transactionId);
+    const transaction = staff.honeyTaken.id(transactionId);
     if (!transaction) return res.status(404).json({ error: 'Transaction not found' });
 
-    const quantityDifference = quantitySold - transaction.quantitySold;
+    transaction.quantitySold += quantitySold;
 
-    transaction.quantitySold = quantitySold;
-
-    const totalSelling = staff.totalSellings.find(selling => selling.honey.toString() === transaction.honey.toString());
+    const totalSelling = staff.totalSelling.find(selling => selling.honey.toString() === transaction.honey.toString());
 
     if (totalSelling) {
-      totalSelling.quantitySold += quantityDifference;
+      totalSelling.quantitySold += quantitySold;
     } else {
-      staff.totalSellings.push({ honey: transaction.honey, quantitySold });
+      staff.totalSelling.push({ honey: transaction.honey, quantitySold });
     }
 
     await staff.save();
@@ -207,25 +227,7 @@ const modifyQuantitySold = async (req, res) => {
 };
 
 
-const modifyQuantityTaken = async (req, res) => {
-  try {
-    const { transactionId, quantityTaken } = req.body;
 
-    const staff = await Staff.findById(req.params.id);
-    if (!staff) return res.status(404).json({ error: 'Staff not found' });
-
-    const transaction = staff.honeyTransactions.id(transactionId);
-    if (!transaction) return res.status(404).json({ error: 'Transaction not found' });
-
-    transaction.quantityTaken = quantityTaken;
-    await staff.save();
-
-    res.status(200).json({ success: true, message: 'Quantity taken updated successfully', staff });
-  } catch (err) {
-    console.error('Error updating quantity taken:', err);
-    res.status(500).json({ error: err.message });
-  }
-};
 
 module.exports = {
   addStaff,
@@ -235,6 +237,5 @@ module.exports = {
   activateOrDeactivateStaff,
   addHoneyTransaction,
   modifyQuantitySold,
-  modifyQuantityTaken,
   getallstaff
 };
