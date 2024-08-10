@@ -129,7 +129,7 @@ const order = {
 
   const webpage = {
     staffPage: {
-      VIPgift: {
+      gift: {
         title: String,
         description: String,
         image: Array,
@@ -139,18 +139,7 @@ const order = {
           type : Boolean,
           default: false
         },
-      },
-
-      gift: {
-        title: String,
-        description: String,
-        image: String,
-        target: Number,
-        isFinished: {
-          type : Boolean,
-          default: false
-        },
-      },
+      }
 
     },
     homePage: {

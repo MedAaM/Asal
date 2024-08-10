@@ -42,6 +42,17 @@ const levelSchema = new mongoose.Schema({
     enum: ['weekly', 'monthly', 'yearly'],
     required: true,
   },
+  gift: {
+    title: String,
+    description: String,
+    image: Array,
+    target: String,
+    target: Number,
+    isFinished: {
+      type : Boolean,
+      default: false
+    },
+  }
 }, {
   timestamps: true,
 });

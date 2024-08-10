@@ -18,8 +18,10 @@ router.get('/:section', getWebpageContent);
 
 
 router.delete('/:section',requireAdminAuth, deleteWebpageContent);
-router.put('/webpage/gift/:type', createOrUpdateGift); 
-router.get('/webpage/gift/:type', getGiftContent); 
-router.delete('/webpage/gift/:type',requireAdminAuth, deleteGiftContent);
+router.put('/webpage/gift', createOrUpdateGift);
+
+router.get('/webpage/gift', getGiftContent);
+
+router.delete('/webpage/gift', requireAdminAuth, deleteGiftContent);
 
 module.exports = router;

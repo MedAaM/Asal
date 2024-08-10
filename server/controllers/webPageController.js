@@ -51,52 +51,48 @@ const deleteWebpageContent = async (req, res) => {
 
 const createOrUpdateGift = async (req, res) => {
   try {
-    const { type } = req.params; 
     const data = req.body;
 
-    
-    if (type !== 'VIPgift' && type !== 'gift') {
-      return res.status(400).json({ error: 'Invalid type parameter' });
-    }
-
-    
-    const requiredFields = ['title', 'description', 'image', 'target'];
+    const requiredFields = ['title', 'description', 'image', 'target', 'targetNumber'];
     const missingFields = requiredFields.filter(field => !data[field]);
 
     if (missingFields.length > 0) {
       return res.status(400).json({ error: `Missing required fields: ${missingFields.join(', ')}` });
     }
 
-    
-    let updateData = {};
-    updateData[`staffPage.${type}`] = data;
+    const updateData = {
+      'staffPage.gift': {
+        title: data.title,
+        description: data.description,
+        image: data.image,
+        target: data.target,
+        targetNumber: data.targetNumber,
+        isFinished: data.isFinished || false
+      }
+    };
 
-    
     const webpage = await Webpage.findOneAndUpdate(
       {},
       { $set: updateData },
       { new: true, upsert: true }
     );
 
-    res.status(200).json(webpage.staffPage[type]);
+    res.status(200).json(webpage.staffPage.gift);
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: err.message });
   }
 };
 
-
-
 const getGiftContent = async (req, res) => {
   try {
-    const { type } = req.params; 
-    const webpage = await Webpage.findOne({}, `staffPage.${type}`);
-    
-    if (!webpage || !webpage.staffPage || !webpage.staffPage[type] || !webpage.staffPage[type].title) {
+    const webpage = await Webpage.findOne({}, 'staffPage.gift');
+
+    if (!webpage || !webpage.staffPage || !webpage.staffPage.gift) {
       return res.status(404).json({ error: 'No gift found' });
     }
 
-    res.status(200).json(webpage.staffPage[type]);
+    res.status(200).json(webpage.staffPage.gift);
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: err.message });
@@ -105,12 +101,9 @@ const getGiftContent = async (req, res) => {
 
 const deleteGiftContent = async (req, res) => {
   try {
-    const { type } = req.params;
+    const updateData = { 'staffPage.gift': {} };
 
-    const updateData = {};
-    updateData[`homePage.collection.${type}`] = null;
-
-    const webpage = await Webpage.findOneAndUpdate({}, { $unset: updateData }, { new: true });
+    const webpage = await Webpage.findOneAndUpdate({}, { $set: updateData }, { new: true });
     res.status(200).json({ message: 'Gift content deleted successfully' });
   } catch (err) {
     console.log(err);
