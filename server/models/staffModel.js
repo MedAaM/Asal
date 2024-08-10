@@ -8,6 +8,10 @@ const staffSchema = new mongoose.Schema({
     ref: "User",
     unique: true,
   },
+  weeklyContribution: {
+    type: Number,
+    default : 0
+  },
   area: {
     type: String,
     required: true,

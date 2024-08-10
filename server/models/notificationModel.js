@@ -1,12 +1,22 @@
 const mongoose = require('mongoose');
 
 const NotificationSchema = new mongoose.Schema({
-  senderId : {
-    required : true,
-    type: mongoose.Schema.Types.ObjectId, ref: "User"
+  senderId: {
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: "User",
+    required: true
   },
-  receiverId : {
-    type: mongoose.Schema.Types.ObjectId, ref: "User"
+  receiverId: {
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: "User"
+  },
+  levelId: {
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: "Level"
+  },
+  group: {
+    type: String,
+    enum: ['vip', 'normal', 'other'], // Extend as needed
   },
   title: {
     type: String,
@@ -18,7 +28,8 @@ const NotificationSchema = new mongoose.Schema({
   },
   timestamp: {
     type: Date,
-    default: Date.now
+    default: Date.now,
+    index: true
   },
   isRead: {
     type: Boolean,
@@ -27,19 +38,15 @@ const NotificationSchema = new mongoose.Schema({
   notificationType: {
     type: String,
     required: true,
-    enum: ['hire', 'fire'],
-  },
-  forGroup: {
-    type: String,
-    enum: ['admins', 'staffTeam'],
-  },
-  fromGroup: {
-    type: String,
-    enum: ['admins', 'staffTeam'],
+    enum: ['hire', 'fire', 'order', 'review','others'], 
   },
   link: {
-    type: String, 
+    type: String,
+    default: null
   }
 });
+
+NotificationSchema.index({ receiverId: 1 });
+NotificationSchema.index({ levelId: 1 });
 
 module.exports = mongoose.model('Notification', NotificationSchema);

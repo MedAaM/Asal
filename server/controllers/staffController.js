@@ -203,7 +203,7 @@ const modifyQuantitySold = async (req, res) => {
 
     if (!staff) return res.status(404).json({ error: 'Staff not found' });
     if (!staff.activated) return res.status(403).json({ error: 'This account is not activated' });
-
+    staff.weeklyContribution += quantitySold;
     const transaction = staff.honeyTaken.id(transactionId);
     if (!transaction) return res.status(404).json({ error: 'Transaction not found' });
 

@@ -41,7 +41,7 @@ const levelSchema = new mongoose.Schema({
     type: String,
     enum: ['weekly', 'monthly', 'yearly'],
     required: true,
-  }
+  },
 }, {
   timestamps: true,
 });

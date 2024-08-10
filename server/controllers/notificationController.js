@@ -1,11 +1,12 @@
 const Notification = require('../models/notificationModel');
+const User = require('../models/userModel');
 
 async function createNotification(req, res) {
     const { receiverId, title, body, notificationType, link } = req.body;
-    
+
     try {
         const newNotification = new Notification({
-            senderId: req.user._id,
+            senderId: req.user._id, 
             receiverId,
             title,
             body,
@@ -21,11 +22,24 @@ async function createNotification(req, res) {
 }
 
 async function getNotificationsByUser(req, res) {
-    const userId = req.user._id;
+    const userId = req.user._id; 
 
     try {
-        const notifications = await Notification.find({ receiverId: userId })
-                                               .sort({ timestamp: -1 });
+        
+        const user = await User.findById(userId).populate('levelId'); 
+        if (!user || !user.levelId) {
+            return res.status(404).json({ error: 'User or level information not found' });
+        }
+
+        
+        const notifications = await Notification.find({
+            $or: [
+                { receiverId: userId },
+                { levelId: user.levelId._id } 
+            ]
+        })
+        .sort({ timestamp: -1 });
+
         res.json(notifications);
     } catch (err) {
         res.status(500).json({ error: err.message });
@@ -34,7 +48,7 @@ async function getNotificationsByUser(req, res) {
 
 async function markNotificationAsRead(req, res) {
     const notificationId = req.params.id;
-    const userId = req.user._id;
+    const userId = req.user._id; 
 
     try {
         const notification = await Notification.findOneAndUpdate(
@@ -53,21 +67,8 @@ async function markNotificationAsRead(req, res) {
     }
 }
 
-async function deleteNotification(req, res) {
-    const notificationId = req.params.id;
-    const userId = req.user._id;
-
-    try {
-        const deletedNotification = await Notification.findOneAndDelete({ _id: notificationId, receiverId: userId });
-
-        if (!deletedNotification) {
-            return res.status(404).json({ error: 'Notification not found or you do not have permission to delete it' });
-        }
-
-        res.json({ message: 'Notification deleted successfully' });
-    } catch (err) {
-        res.status(500).json({ error: err.message });
-    }
-}
-
-module.exports = {deleteNotification, markNotificationAsRead, getNotificationsByUser, createNotification}
+module.exports = {
+    createNotification,
+    getNotificationsByUser,
+    markNotificationAsRead,
+};

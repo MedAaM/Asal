@@ -20,12 +20,14 @@ const UnitRoutes = require('./routes/unitRoutes');
 const notificationRoutes = require('./routes/notificationRoutes');
 const ratingRoutes = require('./routes/ratingRoutes');
 const levelRoutes = require('./routes/levelRoutes');
+const reportRoutes = require('./routes/reportRoutes');
 const honeyRoutes = require('./routes/honeyTypesRoutes');
 const session = require('express-session');
 const passportSetup = require("./config/passport-setup");
 const passport = require('passport');
 const authRouter = require("./routes/auth");
 require('./jobs/resetQuantitySold');
+require('./jobs/resetWeeklyContribution');
 
 
 const app = express();
@@ -69,6 +71,7 @@ app.use('/api/ratings', ratingRoutes);
 app.use('/api/honey', honeyRoutes);
 app.use('/api/units', UnitRoutes);
 app.use('/api/levels', levelRoutes);
+app.use('/api/reports', reportRoutes);
 
 mongoose.connect(config.DB_URI)
     .then(() => {

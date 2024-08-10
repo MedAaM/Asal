@@ -3,8 +3,7 @@ const router = express.Router();
 const {
     createNotification,
     getNotificationsByUser,
-    markNotificationAsRead,
-    deleteNotification
+    markNotificationAsRead
 } = require('../controllers/notificationController'); 
 
 
@@ -17,6 +16,5 @@ router.get('/', getNotificationsByUser);
 router.put('/:id/read', markNotificationAsRead);
 
 
-router.delete('/:id', deleteNotification);
 
 module.exports = router;
