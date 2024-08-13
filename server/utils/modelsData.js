@@ -139,7 +139,20 @@ const order = {
           type : Boolean,
           default: false
         },
-      }
+      },
+      news: [
+        {
+          title: String,
+          paragraph: String,
+          date: {
+            type: Date,
+            default: Date.now,
+          },
+          forGroup: {
+            type: String,
+          },
+        },
+      ],
 
     },
     homePage: {

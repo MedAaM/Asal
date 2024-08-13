@@ -38,6 +38,16 @@
     cursor: pointer;
     background-color: var(--cyan);
   }
+
+.CompactCard:nth-child(4) {
+    display: flex;
+    flex: 1;
+    border-radius: 0.7rem;
+    color: white;
+    position: relative;
+    cursor: pointer;
+    background-color: var(--primary);
+  }
   .CompactCard:hover {
     box-shadow: none !important;
   }
@@ -57,6 +67,13 @@
     stroke: white !important;
     stroke-width: 12px !important;
     filter: drop-shadow(2px 4px 6px white);
+  }
+
+ 
+  
+  .reached .CircularProgressbar-path {
+    stroke: var(--success) !important;
+    filter: drop-shadow(2px 4px 6px var(--success));
   }
   .CircularProgressbar-trail {
     display: none;
@@ -85,5 +102,9 @@
   }
   .detail > span:nth-child(3) {
     font-size: 12px;
+  }
+
+  .reached .CircularProgressbar-text{
+    fill: var(--success) !important;
   }
   

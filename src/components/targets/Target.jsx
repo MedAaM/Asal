@@ -8,11 +8,11 @@ import "react-circular-progressbar/dist/styles.css";
 import { GiHoneyJar } from "react-icons/gi";
 
 function Target() {
-  // Random values for the progress bars and text
   const targets = [
     { name: "سمر", total: 120, delivered: 85 },
     { name: "طلح", total: 100, delivered: 65 },
-    { name: "عسل أبيض", total: 150, delivered: 120 },
+    { name: "عسل أبيض", total: 120, delivered: 120 },
+    { name: "gift", total: 150, delivered: 60 },
   ];
 
   return (
@@ -25,7 +25,7 @@ function Target() {
           const remaining = target.total - target.delivered;
           return (
             <div key={index} className="CompactCard">
-              <div className="radialBar">
+              <div className={`radialBar ${(percentage === 100) ? "reached" : ""}`}>
                 <CircularProgressbar value={percentage} text={`${Math.round(percentage)}%`} />
                 <span>{remaining} كغ متبقية</span>
               </div>

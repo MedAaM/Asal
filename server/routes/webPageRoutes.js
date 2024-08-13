@@ -7,6 +7,8 @@ const {
   createOrUpdateGift,
   getGiftContent,
   deleteGiftContent,
+  createOrUpdateNewsItem,
+  getNewsByGroup,
 } = require('../controllers/webPageController'); 
 const requireAdminAuth = require('../middlewares/requireAdminAuth');
 
@@ -23,5 +25,7 @@ router.put('/webpage/gift', createOrUpdateGift);
 router.get('/webpage/gift', getGiftContent);
 
 router.delete('/webpage/gift', requireAdminAuth, deleteGiftContent);
+router.post('/webpage/news', createOrUpdateNewsItem);
+router.get('/webpage/news/:levelName', getNewsByGroup);
 
 module.exports = router;
