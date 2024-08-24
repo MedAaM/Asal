@@ -1,0 +1,9 @@
+.top--weekly {
+    background-color: var(--light-bg);
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.contributors--container {
+    justify-content: space-around;
+}

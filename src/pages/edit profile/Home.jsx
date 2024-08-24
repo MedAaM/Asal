@@ -3,6 +3,7 @@ import ProfileHeader from "../../components/profileheader/ProfileHeader"
 import GiftTarget from '../../components/gift/GiftTarget'
 import Target from '../../components/targets/Target'
 import News from '../../components/news/News'
+import TopContributor from '../../components/top-contributor/TopContributor'
 
 function Home() {
   return (
@@ -12,6 +13,8 @@ function Home() {
       <News />
       <GiftTarget />
       <Target />
+      <TopContributor />
+
     </div>
   )
 }

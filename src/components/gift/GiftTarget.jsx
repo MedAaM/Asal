@@ -4,9 +4,11 @@ import ImgShapeContainer from "../img shape/ImgShapeContainer";
 
 function GiftTarget() {
   return (
-    <div className="df main--container">
-      <div className="df-c gift--container jc-sb">
-        <div className="gift--target mt-3 df">
+    <div className="df-c main--container">
+      <h1>big gift</h1>
+      <div className="df">
+      <div className="df-c gift--container">
+        <div className="gift--target df">
           <ImgShapeContainer path={"/img/about.png"} width={5} height={5} />
           <div className="target">
             <div className="top">
@@ -125,6 +127,9 @@ function GiftTarget() {
           </tbody>
         </table>
       </div>
+      </div>
+      
+      
     </div>
   );
 }

@@ -5,6 +5,7 @@ import Edit from '../../edit profile/Home';
 import Orders from '../../order page/Orders';
 import { Routes, Route } from 'react-router-dom';
 import Home from '../../edit profile/Home';
+import EditProfilePage from '../edit-profile/EditProfilePage';
 
 function ProfilePage() {
   const [expended, setExpended] = useState(true)
@@ -15,6 +16,7 @@ function ProfilePage() {
         <Routes>
           <Route path="home" element={<Home />} />
           <Route path="orders" element={<Orders />} />
+          <Route path="edit" element={<EditProfilePage />} />
         </Routes>
       </div>
     </div>

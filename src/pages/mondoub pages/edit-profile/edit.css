@@ -1,0 +1,56 @@
+.edit {
+    min-height: 85vh;
+}
+
+.edit--img--profile {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    background-color: var(--primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.edit--img--profile img{
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+}
+
+.edit--img--profile .edit--svg {
+    position: absolute;
+    bottom: 3px;
+    color: white;
+    background-color: var(--pending);
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 1rem;
+}
+
+.edit .media label {
+    background-color: var(--cyan-light);
+    border-radius: 7px;
+    font-weight: bold;
+    color: var(--cyan) ;
+    padding: 7px 1rem;
+    cursor: pointer;
+}
+
+.edit .media label.selected {
+    background-color: var(--cyan);
+    color: white;
+}
+
+.edit .media input[type=radio] {
+    display: none;
+}
+
+.password {
+    width: 30%;
+}

@@ -3,6 +3,8 @@ const User = require('../models/userModel');
 const Level = require('../models/levelModel');
 const Honey = require('../models/honeyModel');
 const Unit = require('../models/unitModel');
+const Transaction = require('../models/TransactionModel'); 
+
 
 const addStaff = async (req, res) => {
   try {
@@ -198,13 +200,17 @@ const addHoneyTransaction = async (req, res) => {
 
 const modifyQuantitySold = async (req, res) => {
   try {
-    const { transactionId, quantitySold } = req.body;
+    const { clientName, clientFamilyName, clientAddress, transactionId, quantitySold  } = req.body;
+    if (!clientName || !clientFamilyName || !clientAddress || !quantitySold || !transactionId) {
+      return res.status(400).json({ error: 'All fields are required to add a transaction.' });
+    }
     const staff = await Staff.findOne({ userId: req.user._id });
 
     if (!staff) return res.status(404).json({ error: 'Staff not found' });
     if (!staff.activated) return res.status(403).json({ error: 'This account is not activated' });
     staff.weeklyContribution += quantitySold;
     const transaction = staff.honeyTaken.id(transactionId);
+    const honey = transaction.honey;
     if (!transaction) return res.status(404).json({ error: 'Transaction not found' });
 
     transaction.quantitySold += quantitySold;
@@ -219,7 +225,18 @@ const modifyQuantitySold = async (req, res) => {
 
     await staff.save();
 
-    res.status(200).json({ success: true, message: 'Quantity sold updated successfully', staff });
+    const newTransaction = new Transaction({
+      staffId: req.user._id, 
+      clientName,
+      clientFamilyName,
+      clientAddress,
+      honey,
+      qte : quantitySold
+    });
+    const savedTransaction = await newTransaction.save();
+
+
+    res.status(200).json({ success: true, message: 'Quantity sold updated successfully', staff, savedTransaction });
   } catch (err) {
     console.error('Error updating quantity sold:', err);
     res.status(500).json({ error: err.message });

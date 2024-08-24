@@ -2,4 +2,5 @@
     display: flex;
     color: var(--primary);
     gap: 4px;
+    width: fit-content;
 }

@@ -22,6 +22,7 @@ const ratingRoutes = require('./routes/ratingRoutes');
 const levelRoutes = require('./routes/levelRoutes');
 const reportRoutes = require('./routes/reportRoutes');
 const honeyRoutes = require('./routes/honeyTypesRoutes');
+const honeyTransactionsRoutes = require('./routes/transactionRoutes');
 const session = require('express-session');
 const passportSetup = require("./config/passport-setup");
 const passport = require('passport');
@@ -72,6 +73,7 @@ app.use('/api/honey', honeyRoutes);
 app.use('/api/units', UnitRoutes);
 app.use('/api/levels', levelRoutes);
 app.use('/api/reports', reportRoutes);
+app.use('/api/transactions', honeyTransactionsRoutes);
 
 mongoose.connect(config.DB_URI)
     .then(() => {

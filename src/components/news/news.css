@@ -1,7 +1,15 @@
 .news {
-    padding: 1rem 1rem 3rem;
+    padding: 1rem 1rem 6rem;
     background-color: var(--light-bg);
     color: var(--text);
     border-radius: 1rem;
     text-align: justify;
+    position: relative;
+}
+
+.announcedat {
+    font-size: 13px;
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
 }

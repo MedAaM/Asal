@@ -48,7 +48,7 @@ function SideBar({setExpended, expended}) {
           <MdPendingActions className="fas"/>
           <span>الإجراءات</span>
         </Link>
-        <Link class="nav-button">
+        <Link to="edit" class="nav-button">
           <MdEdit className="fas"/>
           <span>تعديل الملف الشخصي</span>
         </Link>
