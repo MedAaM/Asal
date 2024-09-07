@@ -5,6 +5,8 @@ const couponModel = require("../models/couponModel");
 const dateFormat = require("../utils/dateFormat");
 const shippingChargeModel = require("../models/shippingChargeModel");
 const Staff = require("../models/staffModel");
+const customId = require("custom-id-new") ;
+
 
 const getOrders = async (req, res) => {
   try {
@@ -52,6 +54,7 @@ const deleteOrder = async (req, res) => {
 const createOrder = async (req, res) => {
   try {
     const userId = req.user._id;
+    const orderId = `R${customId({ randomLength: 4, upperCase: true })}`;
     const { products, billingAddress, shippingAddress, paymentMethod, couponCode } = req.body;
 
     // Validate the coupon
@@ -120,6 +123,7 @@ const createOrder = async (req, res) => {
     const total = calculateTotal(subtotal, totalTax, shippingCost, couponDiscount);
 
     const newOrder = new orderModel({
+      orderId,
       user: userId,
       products: populatedProducts,
       subtotal,
@@ -232,4 +236,25 @@ const getStaffOrders = async (req, res) => {
   }
 };
 
-module.exports = { getOrders, deleteOrder, createOrder, updateOrder, updateOrder, getStaffOrders };
+const getOrderById = async (req, res) => {
+  try {
+    const { id } = req.params; // Extract the order ID from the URL parameters
+
+    // Find the order by its ID
+    const order = await orderModel.findById(id)
+      .populate('user', 'name email') // Populate user details if necessary
+      .populate('products.productId', 'name price'); // Populate product details if necessary
+
+    if (!order) {
+      return res.status(404).json({ success: false, message: 'Order not found' });
+    }
+
+    res.status(200).json({ success: true, order });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+
+
+module.exports = { getOrders, deleteOrder, createOrder,getOrderById ,updateOrder, updateOrder, getStaffOrders };

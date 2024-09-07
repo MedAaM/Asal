@@ -1,5 +1,5 @@
 .orders-table {
-    padding: 1rem;
+    padding: 1rem 0;
     background-color: var(--light-bg);
     direction: ltr;
     border-radius: 1rem;
@@ -9,14 +9,55 @@
 
 .pending {
     color: var(--pending);
-    font-weight: bold;
     background-color: var(--pending-light);
     padding: 5px 10px;
     border-radius: 5rem;
     line-height: normal;
     height: fit-content;
-    margin: auto;
   }
+.paid {
+    color: var(--success);
+    font-weight: bold;
+    background-color: var(--shipped-light);
+    padding: 5px 10px;
+    border-radius: 5rem;
+    line-height: normal;
+    height: fit-content;
+  }
+
+.main-details {
+  margin-right: auto;
+}
+.placed {
+    color: var(--cyan);
+    font-weight: bold;
+    background-color: var(--cyan-light);
+    padding: 5px 10px;
+    border-radius: 5rem;
+    line-height: normal;
+    height: fit-content;
+  }
+
+  .css-60ds9y-MuiDataGrid-root .MuiDataGrid-container--top [role=row], .css-60ds9y-MuiDataGrid-root .MuiDataGrid-container--bottom [role=row] {
+    background-color: #f5f5f7 !important;
+    transition: 0.5s;
+  }
+.pending.payment {
+    color: var(--pending);
+    font-weight: bold;
+    background-color: transparent;
+  }
+
+  .css-60ds9y-MuiDataGrid-root .MuiDataGrid-cell--textLeft {
+    text-align: left;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    -webkit-justify-content: flex-start;
+    display: flex;
+    justify-content: flex-start;
+    justify-content: center;
+    align-items: center;
+}
   
   .shipped {
     line-height: normal;
@@ -78,9 +119,46 @@
     font-family: inherit !important;
 }
 
+.css-1793420-MuiDataGrid-virtualScroller {
+    position: relative;
+    height: 100%;
+    overflow: scroll;
+    scrollbar-width: none;
+    z-index: 0;
+    margin-top: 3rem;
+}
+
+.css-128fb87-MuiDataGrid-toolbarContainer {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 4px 4px 0px;
+    flex-direction: row-reverse;
+}
+
+.css-60ds9y-MuiDataGrid-root .MuiDataGrid-row {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: var(--DataGrid-rowWidth);
+    break-inside: avoid;
+    --rowBorderColor: var(--DataGrid-rowBorderColor);
+    border-bottom: 1px solid #b8b8b894;
+}
+
 .css-60ds9y-MuiDataGrid-root .MuiDataGrid-cell {
     border: none;
-    box-shadow: 0 0px 1px rgba(0, 0, 0, 0.2);/* Adjust vertical offset and blur radius as needed */
 }
 
 [aria-selected="true"] {
@@ -102,7 +180,7 @@
 }
 
 .css-60ds9y-MuiDataGrid-root .MuiDataGrid-columnHeaderTitleContainer {
-    color: var(--primary) !important;
+    color: var(--text) !important;
     text-align: center !important;
     display: flex;
     justify-content: center;
@@ -145,6 +223,10 @@
 .box-info li:nth-child(3) .bx {
 	background: var(--purple-light);
 	color: var(--purple);
+}
+.box-info li:nth-child(4) .bx {
+	background: var(--shipped-light);
+	color: var(--shipped);
 }
 .box-info li .text h3 {
 	font-size: 24px;
@@ -227,3 +309,17 @@
   .css-60ds9y-MuiDataGrid-root .MuiDataGrid-cell:has(.products-cell) {
     overflow:unset !important;
   }
+
+  .css-1qb993p-MuiDataGrid-columnHeaderTitle {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    font-weight: var(--unstable_DataGrid-headWeight);
+    line-height: normal;
+    color: #5b5f71 !important;
+}
+
+.ord--actions svg{
+  font-size: 20px;
+  cursor: pointer;
+}

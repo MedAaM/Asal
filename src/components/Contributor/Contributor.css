@@ -113,6 +113,17 @@
     width: 30%;
 }
 
+.section-card {
+    padding: 1rem;
+    box-shadow: var(--shadow);
+    display: flex;
+    background-color: var(--light-bg);
+    flex-direction: column;
+    gap: 33px;
+    border-radius: 1rem;
+
+}
+
 .progress-container {
     margin-right: auto;
     width: 70%;

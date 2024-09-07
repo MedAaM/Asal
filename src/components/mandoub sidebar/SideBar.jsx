@@ -6,11 +6,20 @@ import { MdOutlineCircleNotifications  } from "react-icons/md";
 import { GoHistory } from "react-icons/go";
 
 import { MdCardGiftcard, MdEdit, MdHistoryEdu, MdNewspaper, MdNotificationAdd, MdOutlineCardMembership, MdPendingActions, MdWorkOutline } from "react-icons/md";
+import { useAuthContext } from '../../hooks/useAuthContext';
 
 function SideBar({setExpended, expended}) {
     const handleToggle = () => {
         setExpended(!expended);
       };
+
+  const { dispatch } = useAuthContext();
+
+  const handleLogout = () => {
+    localStorage.removeItem('auth');
+
+    dispatch({ type: 'LOGOUT' });
+  };
   return (
     <div id="nav-bar">
       <input id="nav-toggle" onClick={handleToggle} type="checkbox" />
@@ -61,6 +70,9 @@ function SideBar({setExpended, expended}) {
           <MdCardGiftcard className="fas"/>
           <span>الهدايا</span>
         </Link>
+        {/* <div class="btn" onClick={handleLogout} >
+          logout
+        </div> */}
         <div id="nav-content-highlight"></div>
       </div>
       <input id="nav-footer-toggle" type="checkbox" />
