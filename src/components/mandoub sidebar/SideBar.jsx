@@ -4,9 +4,14 @@ import { Link } from 'react-router-dom';
 import { CiUser,  CiDeliveryTruck } from "react-icons/ci";
 import { MdOutlineCircleNotifications  } from "react-icons/md";
 import { GoHistory } from "react-icons/go";
+import ModalContainer from "../Modal/ModalContainer";
+import useModal from "./../../hooks/useModal";
+import { motion } from "framer-motion";
+
 
 import { MdCardGiftcard, MdEdit, MdHistoryEdu, MdNewspaper, MdNotificationAdd, MdOutlineCardMembership, MdPendingActions, MdWorkOutline } from "react-icons/md";
 import { useAuthContext } from '../../hooks/useAuthContext';
+import NotificationsModal from '../Modal/NotificationsModal';
 
 function SideBar({setExpended, expended}) {
     const handleToggle = () => {
@@ -20,8 +25,17 @@ function SideBar({setExpended, expended}) {
 
     dispatch({ type: 'LOGOUT' });
   };
+  const { modalOpen, close, open } = useModal();
   return (
     <div id="nav-bar">
+      <ModalContainer>
+        {modalOpen && (
+          <NotificationsModal
+            modalOpen={modalOpen}
+            handleClose={close}
+          />
+        )}
+      </ModalContainer>
       <input id="nav-toggle" onClick={handleToggle} type="checkbox" />
       <div id="nav-header">
         <a id="nav-title" href="#" target="_blank">
@@ -37,7 +51,7 @@ function SideBar({setExpended, expended}) {
           <CiUser className='fas' />
           <span>الملف الشخصي</span> 
         </Link>
-        <Link class="nav-button">
+        <Link class="nav-button notif-btn" onClick={open}>
           <MdOutlineCircleNotifications className="fas"/>
           <span>الإشعارات</span> 
           <div className="indicator">
@@ -49,13 +63,13 @@ function SideBar({setExpended, expended}) {
           <span>طلبات جديدة</span> 
         </Link>
         <hr />
-        <Link class="nav-button">
+        <Link to="transactions" class="nav-button">
           <GoHistory className="fas"/>
           <span>التاريخ</span> 
         </Link>
-        <Link class="nav-button">
+        <Link to="reviews" class="nav-button">
           <MdPendingActions className="fas"/>
-          <span>الإجراءات</span>
+          <span>المراجعات</span>
         </Link>
         <Link to="edit" class="nav-button">
           <MdEdit className="fas"/>

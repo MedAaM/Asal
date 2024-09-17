@@ -1,0 +1,93 @@
+.timeline ul, li {
+    list-style: none;
+    padding: 0;
+  }
+
+  .timeline {
+    direction: ltr;
+  }
+
+  .timeline .wrapper {
+    /* background: #eaf6ff; */
+    padding: 2rem;
+    border-radius: 15px;
+    width: 51rem;
+}
+
+  .timeline h1 {
+    font-size: 1.1rem;
+  }
+
+  .timeline .sessions {
+    margin-top: 2rem;
+    border-radius: 12px;
+    position: relative;
+  }
+
+  .timeline li {
+    padding-bottom: 1.5rem;
+    border-left: 1px solid #abaaed;
+    position: relative;
+    padding-left: 20px;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+  }
+  .timeline  li:last-child {
+    border: 0px;
+    padding-bottom: 0;
+  }
+  .timeline  li:before {
+    content: "";
+    width: 15px;
+    height: 15px;
+    background: white;
+    border: 1px solid #4e5ed3;
+    box-shadow: 3px 3px 0px #bab5f8;
+    box-shadow: 3px 3px 0px #bab5f8;
+    border-radius: 50%;
+    position: absolute;
+    left: -10px;
+    top: 0px;
+  }
+
+  .timeline  .reached:before {
+    border: 1px solid var(--success);
+    box-shadow: 3px 3px 0px #a3ffc7;
+    box-shadow: 3px 3px 0px #79ffac;
+  }
+
+  .timeline  .reached {
+    border-left: 1px solid var(--success);
+  }
+
+  .timeline .time {
+    color: #2a2839;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+  }
+  @media screen and (min-width: 601px) {
+    .time {
+      font-size: 0.9rem;
+    }
+  }
+  @media screen and (max-width: 600px) {
+    .time {
+      margin-bottom: 0.3rem;
+      font-size: 0.85rem;
+    }
+  }
+
+  .timeline p {
+    color: #4f4f4f;
+    font-family: sans-serif;
+    line-height: 1.5;
+    margin-top: 0.4rem;
+  }
+  @media screen and (max-width: 600px) {
+    .timeline p {
+      font-size: 0.9rem;
+    }
+  }

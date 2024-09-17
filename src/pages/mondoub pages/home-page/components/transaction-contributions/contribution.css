@@ -1,0 +1,16 @@
+.apexcharts-heatmap-rect {
+    border-radius: 5px;
+    border-radius: 5px;
+    stroke: white;
+    stroke-width: 9px;
+
+}
+
+#chart {
+    direction: ltr;
+    font-family: inherit;
+}
+
+.slick-slider {
+    direction: rtl;
+}

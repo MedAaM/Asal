@@ -1,15 +1,37 @@
 import React from 'react'
 import "./topcontributor.css"
 import Contributor from '../Contributor/Contributor'
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import { Pagination, Navigation } from 'swiper/modules';
 
 function TopContributor() {
   return (
     <div className='top--weekly'>
         <h1>أكثر الموظفين إسهامًا هذا الأسبوع</h1>
-        <div className="df contributors--container">
-            <Contributor />
-            <Contributor />
-            <Contributor />
+        <div className={`carousel-container`}>
+        <Swiper
+        spaceBetween={30}
+        loop={true}
+        pagination={{
+          clickable: true,
+        }}
+        navigation={true}
+        slidesPerView={3}
+        centeredSlides={true}
+        modules={[Pagination, Navigation]}
+        className="mySwiper"
+      >
+        <SwiperSlide><Contributor /></SwiperSlide>
+        <SwiperSlide><Contributor /></SwiperSlide>
+        <SwiperSlide><Contributor /></SwiperSlide>
+        <SwiperSlide><Contributor /></SwiperSlide>
+        
+      </Swiper>
         </div>
     </div>
   )

@@ -7,3 +7,59 @@
 .contributors--container {
     justify-content: space-around;
 }
+
+
+
+.swiper {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+  
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+    border-radius: 2rem;
+  }
+  
+  
+  .swiper {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .swiper-slide.swiper-slide-active {
+    z-index: 1;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
+  }
+  
+  .swiper-slide-prev {
+    transform: rotate(8deg) scale(0.8) translateX(-35%) translateY(0%) !important;
+    transform-origin: left;
+}
+.swiper-slide-next {
+    transform: rotate(-8deg) scale(0.8) translateX(35%) translateY(-0%) !important;
+    z-index: 0 !important;
+    transform-origin: right;
+  }
+
+  .swiper-pagination-bullet {
+    width: 7px !important;
+    aspect-ratio: 1;
+    height: 7px !important;
+  }
+
+  .swiper-pagination-bullet-active {
+    background-color: var(--primary) !important;
+  }
+
+  .swiper-wrapper {
+    padding-bottom: 6rem;
+  }
+  

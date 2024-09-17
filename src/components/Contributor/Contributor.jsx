@@ -2,14 +2,34 @@ import React from "react";
 import "./Contributor.css";
 import ImgShapeContainer from "../img shape/ImgShapeContainer";
 import Stars from "../stars rate/Stars";
+import { MdReport } from "react-icons/md";
+import { FcVip } from "react-icons/fc";
+import { GoReport } from "react-icons/go";
+import { FaFacebook } from "react-icons/fa6";
+import { LiaWhatsapp } from "react-icons/lia";
+import { BsTelegram } from "react-icons/bs";
+import { CiInstagram } from "react-icons/ci";
 
 function Contributor() {
   return (
     <div className="card">
-      <ImgShapeContainer path={"/img/about.png"} />
-      <div>
-        <h2 className="name">مورغان سويني</h2>
-        <Stars number={4} />
+      <div className="df jc-sb pt-5 text-3xl w-full">
+        <GoReport /> <FcVip />
+      </div>
+      <div className="df-c g0">
+        <div className="card-img-cont">
+          <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6K_0tuPMdpV7xHVEqo4TvfpWIk-GkEE5Tr34yZoOjo6mT42LIxUf0QCu2IH2xjfvOtt4&usqp=CAU"} className="card-img" />
+        </div>
+        <div>
+          <h2 className="name">مورغان سويني</h2>
+          <div className="!text-sm text df mt-1" >
+            <Stars number={4} /> <span className="text-xs">(873)</span>
+          </div>
+        </div>
+
+      </div>
+      <div className="desc ">
+        لقد حقق مراد سديري 100 كغ هذا الأسبوع! ببيع 20 كغ من صمرة، 50 كغ من العسل الأبيض، و30 كغ من سدر.
       </div>
       <div className="actions">
         <div className="df">
@@ -45,9 +65,45 @@ function Contributor() {
           </div>
         </div>
       </div>
-      <div className="desc">
-        لقد حقق مراد سديري 100 كغ هذا الأسبوع! ببيع 20 كغ من صمرة، 50 كغ من العسل الأبيض، و30 كغ من سدر.
+      <div className="df jc-sa w-full media-list">
+        <div className="df-c g0 ai-center">
+          <div className="bor">
+            <div className="media-cont">
+              <FaFacebook />
+            </div>
+
+          </div>
+          <span className="text-xs">facebook</span>
+        </div>
+        <div className="df-c g0 ai-center">
+          <div className="bor">
+            <div className="media-cont whatsapp">
+              <LiaWhatsapp />
+            </div>
+
+          </div>
+          <span className="text-xs">whatsapp</span>
+        </div>
+        <div className="df-c g0 ai-center">
+          <div className="bor">
+            <div className="media-cont telegram">
+              <BsTelegram />
+            </div>
+
+          </div>
+          <span className="text-xs">telegram</span>
+        </div>
+        <div className="df-c g0 ai-center">
+          <div className="bor">
+            <div className="media-cont instagram">
+              <CiInstagram />
+            </div>
+
+          </div>
+          <span className="text-xs">instagram</span>
+        </div>
       </div>
+      
     </div>
   );
 }

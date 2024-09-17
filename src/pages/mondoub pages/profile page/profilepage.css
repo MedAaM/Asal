@@ -1,6 +1,7 @@
 .profile--page {
     height: 86vh;
     overflow: hidden;
+    padding-left: 2rem;
 }
 
 .profile--content {
@@ -15,6 +16,7 @@
 .profile--content  {
     height: 100%;
     overflow: scroll;
+    flex: 1;
 }
 
 .profile--content::-webkit-scrollbar {

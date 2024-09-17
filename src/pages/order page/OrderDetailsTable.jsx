@@ -29,7 +29,7 @@ function OrderDetailsTable() {
     <div className="df ai-fs">
     <div className="section-card g0">
       <Typography variant='h6' className="mb-4">Order Details</Typography>
-      <div style={{ height: 400, width: '100%', marginTop:"1rem" }}>
+      <div style={{ height: 460, width: '100%', marginTop:"1rem" }}>
         <DataGrid
           rows={rows}   
           columns={columns}
@@ -38,28 +38,16 @@ function OrderDetailsTable() {
           components={{
             Toolbar: GridToolbar,
           }}
+          hideFooterPagination={true}
           localeText={arabicLocaleText} // Optional: use Arabic locale settings if needed
         />
       </div>
       <div className="main-details">
-      <div className="border-t border-gray-200 pt-4">
-        <div className="flex py-2">
-          <Typography>Subtotal:</Typography>
-          <Typography>$2,093</Typography>
-        </div>
-        <div className="flex py-2">
-          <Typography>Shipping Fee:</Typography>
-          <Typography>$2</Typography>
-        </div>
-        <div className="flex py-2">
-          <Typography>Tax:</Typography>
-          <Typography>$28</Typography>
-        </div>
-        <div className="flex py-2 font-bold">
-          <Typography>Total:</Typography>
-          <Typography>$2,123</Typography>
-        </div>
-      </div>
+          <div className="df jc-sb g4"><div className='text'>Subtotal:</div><div className="bold-1">$2,093</div></div>
+          <div className="df jc-sb g4"><div className='text'>Shipping Fee:</div><div className="bold-1">$2,093</div></div>
+          <div className="df jc-sb g4"><div className='text'>Tax:</div><div className="bold-1">$2,093</div></div>
+          <div className="df jc-sb g4"><div className='text'>Total:</div><div className="bold-1">$2,093</div></div>
+        
       </div>
       
     </div>
