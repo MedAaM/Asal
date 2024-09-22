@@ -3,10 +3,8 @@ import "./sidebar.css"
 import { Link } from 'react-router-dom';
 import { CiUser, CiDeliveryTruck } from "react-icons/ci";
 import { MdOutlineCircleNotifications } from "react-icons/md";
-import { GoHistory } from "react-icons/go";
 import ModalContainer from "../../Modal/ModalContainer";
 import useModal from "../../../hooks/useModal";
-import { motion } from "framer-motion";
 
 import { MdCardGiftcard, MdEdit, MdHistoryEdu, MdNewspaper, MdNotificationAdd, MdOutlineCardMembership, MdPendingActions, MdWorkOutline } from "react-icons/md";
 import { useAuthContext } from '../../../hooks/useAuthContext';

@@ -127,7 +127,7 @@ function OrderListTable() {
         width: 150,
         renderCell: (params) => (
           <div className="x-center df ord--actions">
-            <Link to={`/details/order/${params.value}`}><FaRegEye /></Link>
+            <Link to={`details/order/${params.value}`}><FaRegEye /></Link>
             <MdDeleteOutline />
           </div>
         ),
