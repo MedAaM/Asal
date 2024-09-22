@@ -24,7 +24,7 @@ kbd {
     align-items: center;
     justify-content: center;
     overflow-y: hidden;
-    z-index: 5;
+    z-index: 1000;
 }
 
 .modal {
@@ -87,6 +87,10 @@ kbd {
     font-weight: 600;
     letter-spacing: 0.25px;
     font-family: "Montserrat", sans-serif;
+}
+
+.notif-backdrop {
+    background-color: #f0f8ff00;
 }
 
 .add-button {
@@ -167,9 +171,43 @@ kbd {
 }
 
 .notifications-modal {
-    color: var(--text) !important;
-    padding: 0rem !important;
-    width: 55vh !important;
+        color: var(--text) !important;
+        padding: 0rem !important;
+        width: 55vh !important;
+        margin: 0 !important;
+        position: absolute;
+        top: right;
+        right: 10%;
+        top: 15%;
+    }
+
+.withdraw-modal {
+    width: 90% !important;
+    background: var(--light-bg);
+    border-radius: 1rem;
+    padding: 1rem 3rem ;
+}
+
+.selected {
+    border: 2px solid var(--purple) !important;
+}
+
+.payment-label {
+    border: 2px solid #e4e4e4;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+.payment-label span{
+    color: var(--text);
+}
+.selected span{
+    color: var(--purple) !important;
+}
+
+.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.MuiSelect-select {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 /* Scrollbar with a transparent background initially */
@@ -219,3 +257,51 @@ kbd {
 .notification .text {
     font-size: 12px;
 }
+
+.total-salary {
+    padding: 2rem 1rem;
+    border-radius: 1rem;
+    background-color: var(--purple-light);
+}
+
+.border-b {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.title {
+    color: #262b43e6;
+    font-weight: 500;
+    font-size: 1.5rem;
+    line-height: 1.58334;
+}
+
+/* ============================== */
+
+input[type="radio"] {
+    --s: 1em; /* Size of the radio button */
+  
+    aspect-ratio: 1; /* Ensures the height and width are equal */
+    border: calc(var(--s) / 8) solid #939393; /* Border size */
+    padding: calc(var(--s) / 8); /* Padding */
+    width: 20px;
+    height: 20px;
+    margin: 0 auto;
+    background: radial-gradient(farthest-side, var(--purple) 94%, transparent) 50%/0 0 no-repeat content-box;
+    border-radius: 50%; /* Circular shape */
+    outline-offset: calc(var(--s) / 10);
+    appearance: none; /* Removes default appearance */
+    cursor: pointer;
+    font-size: inherit;
+    transition: 0.3s ease; /* Smooth transition */
+  }
+  
+  input[type="radio"]:checked {
+    border-color: var(--purple); /* Border changes to active color */
+    background-size: 100% 100%; /* Expands the background */
+  }
+  
+  input[type="radio"]:disabled {
+    background: linear-gradient(#939393 0 0) 50%/100% 20% no-repeat content-box;
+    opacity: 0.5; /* Makes it semi-transparent */
+    cursor: not-allowed; /* Changes cursor when disabled */
+  }

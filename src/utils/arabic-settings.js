@@ -61,6 +61,7 @@ export const arabicLocaleText = {
   toolbarExportPrint: "طباعة",
   footerPaginationRowsPerPage: "عدد الصفوف لكل صفحة:",
   RowsPerPage: "عدد الصفوف لكل صفحة:",
+
   footerPaginationLabelDisplayedRows: ({ from, to, count }) =>
     `من ${from} إلى ${to} من ${count !== -1 ? count : `أكثر من ${to}`}`,
 };

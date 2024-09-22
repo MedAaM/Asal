@@ -26,6 +26,15 @@
   --pending: #fdb528;
   --pending-light: #fff3dc;
 }
+.MuiOutlinedInput-root fieldset {
+  border-radius: 18px !important;
+}
+
+
+
+.flex1{
+  flex: 1;
+}
 
 
 body {
@@ -92,6 +101,18 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.css-tnn6tv-MuiInputBase-root-MuiOutlinedInput-root.Mui-disabled {
+  background-color: #d5edff;
+  width: 100%;
+  height: 100%;
+  border-radius: 18px !important;
+}
+
+.labeled {
+  background-color: var(--light-bg) !important;
+  padding: 0 4px !important;
 }
 
 .css-bg4ocv-MuiDataGrid-root .MuiDataGrid-columnHeader, .css-bg4ocv-MuiDataGrid-root .MuiDataGrid-cell {

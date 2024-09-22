@@ -1,6 +1,6 @@
 import React from 'react';
 import './reviews.css';
-import Stars from '../../../components/stars rate/Stars';
+import Stars from '../../stars rate/Stars';
 
 function ReviewsPage() {
   const comments = [

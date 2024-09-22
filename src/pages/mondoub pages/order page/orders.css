@@ -122,15 +122,15 @@
 }
 
 .status-dot,
-.ord-Failed,
-.ord-Cancelled {
+.ord-فشل,
+.ord-ملغى {
   position: relative;
 }
 
 .status-dot::before,
-.ord-Failed::before,
-.ord-Cancelled::before,
-.ord-Paid::before {
+.ord-فشل::before,
+.ord-ملغى::before,
+.ord-مدفوع::before {
   content: "";
   position: absolute;
   width: 7px;
@@ -142,29 +142,29 @@
   right: -1rem;
 }
 
-.ord-Failed::before {
+.ord-فشل::before {
   background-color: var(--error) !important;
 }
 
-.ord-Paid::before {
+.ord-مدفوع::before {
   background-color: var(--success) !important;
 }
 
-.ord-Cancelled::before {
+.ord-ملغى::before {
   background-color: #6d788d !important;
 }
 
-.ord-Failed {
+.ord-فشل {
   color: var(--error);
   font-weight: bold;
 }
 
-.ord-Paid {
+.ord-مدفوع {
   color: var(--success);
   font-weight: bold;
 }
 
-.ord-Cancelled {
+.ord-ملغى {
   color: #6d788d;
   font-weight: bold;
 }
@@ -179,7 +179,7 @@
   align-items: center;
   background-color: var(--shipped-light);
   color: var(--success);
-  font-size: 2rem;
+  font-size: 1rem;
 }
 
 .wish {

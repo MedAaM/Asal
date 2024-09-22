@@ -1,5 +1,5 @@
 import React from 'react'
-import { arabicLocaleText } from '../../utils/arabic-settings';
+import { arabicLocaleText } from '../../../utils/arabic-settings';
 import { TbClock12, TbEyeDollar, TbLayoutAlignCenter } from 'react-icons/tb';
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { MdKeyboardArrowUp } from "react-icons/md";
@@ -10,29 +10,29 @@ function OrderCard() {
         <li>
           <TbLayoutAlignCenter className="bx bxs-calendar-check" />
           <span className="text">
-            <h3>1020</h3>
-            <p>New Order</p>
+            <h3>35</h3>
+            <p>الطلبات المعلقة</p>
           </span>
         </li>
         <li>
           <TbLayoutAlignCenter className="bx bxs-calendar-check" />
           <span className="text">
             <h3>1020</h3>
-            <p>New Order</p>
+            <p>إجمالي الطلبات</p>
           </span>
         </li>
         <li>
           <TbClock12 className="bx bxs-group" />
           <span className="text">
-            <h3>2834</h3>
-            <p>Visitors</p>
+            <h3>140</h3>
+            <p>المعاملات</p>
           </span>
         </li>
         <li>
           <TbEyeDollar className="bx bxs-dollar-circle" />
           <span className="text">
             <h3>$2543</h3>
-            <p>Total Sales</p>
+            <p>إجمالي المبيعات</p>
           </span>
         </li>
       </ul>

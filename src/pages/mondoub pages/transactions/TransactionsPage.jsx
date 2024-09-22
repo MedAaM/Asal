@@ -1,172 +1,248 @@
-import React, { Suspense, useState } from 'react';
-import CardHeader from '@mui/material/CardHeader';
-import Typography from '@mui/material/Typography';
-import CardContent from '@mui/material/CardContent';
-import Avatar from '@mui/material/Avatar';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import { DataGrid } from '@mui/x-data-grid';
-import { CgDollar } from 'react-icons/cg';
-import { BiMoneyWithdraw } from 'react-icons/bi';
-import { BsThreeDots } from 'react-icons/bs';
-
-// Lazy load the chart component
-const AppReactApexCharts = React.lazy(() => import('react-apexcharts'));
-
-// Dummy series data
-const series = [
-  {
-    type: 'column',
-    name: 'Income',
-    data: [120, 90, 70, 100, 80, 85, 95]
-  },
-  {
-    type: 'column',
-    name: 'Expenses',
-    data: [-40, -60, -30, -70, -50, -65, -60]
-  },
-  {
-    type: 'line',
-    name: 'Net',
-    data: [80, 30, 40, 30, 30, 20, 35]
-  }
-];
-
-// Chart options without external variables or themes
-const options = {
-  chart: {
-    stacked: true,
-    parentHeightOffset: 0,
-    toolbar: { show: false }
-  },
-  markers: {
-    size: 4,
-    strokeWidth: 3,
-    fillOpacity: 1,
-    strokeOpacity: 1,
-    colors: '#fff',
-    strokeColors: '#ffcc00'
-  },
-  stroke: {
-    curve: 'smooth',
-    width: [0, 0, 3],
-    colors: ['#ffcc00']
-  },
-  colors: ['#007bff', '#99dfff'],
-  dataLabels: { enabled: false },
-  grid: {
-    yaxis: {
-      lines: { show: false }
-    },
-    padding: {
-      top: -26,
-      left: -14,
-      right: -16,
-      bottom: -8
-    }
-  },
-  plotOptions: {
-    bar: {
-      borderRadius: 8,
-      columnWidth: '50%',
-      borderRadiusApplication: 'end',
-      borderRadiusWhenStacked: 'all'
-    }
-  },
-  xaxis: {
-    axisTicks: { show: false },
-    axisBorder: { show: false },
-    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-    labels: {
-      style: { colors: '#aaa', fontSize: '13px' }
-    }
-  },
-  yaxis: {
-    max: 150,
-    min: -100,
-    show: false
-  }
-};
+import React, { useState } from 'react';
+import ReactApexChart from 'react-apexcharts';
+import "./transaction.css";
+import { DataGrid, GridToolbar } from '@mui/x-data-grid';
+import { arabicLocaleText } from '../../../utils/arabic-settings';
+import ModalContainer from '../../../components/Modal/ModalContainer';
+import WithDrawModal from '../../../components/Modal/WithDrawModal';
+import useModal from '../../../hooks/useModal';
 
 function TransactionsPage() {
-  // Option menu state
-  const [anchorEl, setAnchorEl] = useState(null);
-  const handleClick = (event) => setAnchorEl(event.currentTarget);
-  const handleClose = () => setAnchorEl(null);
+  const [chartOptions] = useState({
+    series: [{
+      name: 'الراتب',
+      data: [1000, 1200, 2300, 3000, 4000, 1000, 0, 0, 1500, 2000, 3000, 6200]
+    }, {
+      name: 'المكافأة',
+      data: [500, 400, 300, 450, 600, 700, 800, 600, 500, 400, 300, 550]
+    }],
+    chart: {
+      height: 350,
+      type: 'area',
+      zoom: {
+        enabled: false // تعطيل التكبير
+      }
+    },
+    colors: ['#000000', '#FF6347'],
+    dataLabels: {
+      enabled: false
+    },
+    stroke: {
+      curve: 'smooth'
+    },
+    xaxis: {
+      type: 'datetime',
+      categories: [
+        "2023-01-01T00:00:00.000Z", 
+        "2023-02-01T00:00:00.000Z", 
+        "2023-03-01T00:00:00.000Z", 
+        "2023-04-01T00:00:00.000Z", 
+        "2023-05-01T00:00:00.000Z", 
+        "2023-06-01T00:00:00.000Z", 
+        "2023-07-01T00:00:00.000Z", 
+        "2023-08-01T00:00:00.000Z", 
+        "2023-09-01T00:00:00.000Z", 
+        "2023-10-01T00:00:00.000Z", 
+        "2023-11-01T00:00:00.000Z", 
+        "2023-12-01T00:00:00.000Z"
+      ]
+    },
+    tooltip: {
+      x: {
+        format: 'MMM yyyy'
+      }
+    }
+  });
 
-  const months = ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو'];
-
-  // Data for the DataGrid
-  const rows = months.map((month, index) => ({
-    id: index,
-    month,
-    income: series[0].data[index],
-    expenses: series[1].data[index],
-    net: series[2].data[index]
-  }));
-
-  // Columns for the DataGrid
-  const columns = [
-    { field: 'month', headerName: 'الشهر', flex: 1, resizable: false },
-    { field: 'income', headerName: 'الدخل', flex: 1, resizable: false },
-    { field: 'expenses', headerName: 'المصروفات', flex: 1, resizable: false, type: 'number' },
-    { field: 'net', headerName: 'الصافي', flex: 1, resizable: false, type: 'number' }
+  const rows = [
+    { 
+      id: 1, 
+      salary: 3200, 
+      bonus: 200, 
+      transactiondate: "2023-01-15", 
+      method: {
+        cardname: "ماستركارد",
+        imageUrl: '/img/mastercard.png'
+      },
+      total: 3400,
+    },
+    { 
+      id: 2, 
+      salary: 4500, 
+      bonus: 500, 
+      transactiondate: "2023-02-10", 
+      method: {
+        cardname: "فيزا",
+        imageUrl: '/img/visa.png'
+      },
+      total: 5000,
+    },
+    { 
+      id: 3, 
+      salary: 3900, 
+      bonus: 300, 
+      transactiondate: "2023-03-20", 
+      method: {
+        cardname: "أمريكان إكسبريس",
+        imageUrl: 'https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/open/category/cardarts/blue-business-plus.png'
+      },
+      total: 4200, 
+    },
+    { 
+      id: 4, 
+      salary: 3500, 
+      bonus: 150, 
+      transactiondate: "2023-04-05", 
+      method: {
+        cardname: "بايبال",
+        imageUrl: 'https://th.bing.com/th/id/OIF.By9yTPY4OSL7fjGXPoxXfg?rs=1&pid=ImgDetMain'
+      },
+      total: 3650, 
+    }
   ];
 
+  // Define columns with method column (image + text)
+  const columns = [
+    { field: 'id', headerName: 'المعرف', width: 70, resizable: false },
+    { field: 'salary', headerName: 'الراتب', width: 70, type: 'number', resizable: false },
+    { field: 'bonus', headerName: 'المكافأة', width: 70, type: 'number', resizable: false },
+    { field: 'total', headerName: 'الإجمالي', width: 70, resizable: false },
+    { field: 'transactiondate', headerName: 'تاريخ المعاملة', Width: 200, resizable: false },
+    {
+      field: 'method',
+      headerName: 'طريقة الدفع',
+      minWidth: 150,
+      flex: 1,
+      resizable: false,
+      renderCell: (params) => (
+        <div className='df text-xs font-bold'>
+          <img 
+            src={params.value.imageUrl} 
+            alt={params.value.cardname} 
+            style={{ width: '2rem', height: '1rem', objectFit: 'contain', marginRight: '1rem' }} 
+          />
+          <div>
+            <div>{params.value.cardname}</div>
+          </div>
+        </div>
+      )
+    }
+  ];
+  const { modalOpen, close, open } = useModal();
+
   return (
-    <div className="df-c">
-      <div className='section-card'>
-        <CardHeader
-          title="المعاملات الشهرية"
-          subheader="إجمالي 120 ألف معاملة"
-          action={
-            <>
-              <Typography aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} className="cursor-pointer">
-                <BsThreeDots />
-              </Typography>
-              <Menu
-                id="simple-menu"
-                anchorEl={anchorEl}
-                keepMounted
-                open={Boolean(anchorEl)}
-                onClose={handleClose}
-              >
-                <MenuItem onClick={handleClose}>تحديث</MenuItem>
-                <MenuItem onClick={handleClose}>تحديث</MenuItem>
-                <MenuItem onClick={handleClose}>مشاركة</MenuItem>
-              </Menu>
-            </>
-          }
-        />
-        <CardContent className="flex flex-col space-y-4">
-          <div className="flex space-x-6">
-            <div className="flex items-center space-x-4">
-              <Avatar className="bg-blue-600">
-                <CgDollar className="text-white" />
-              </Avatar>
-              <div className="flex flex-col">
-                <Typography>صافي الدخل</Typography>
-                <Typography className="font-medium text-black">$500k</Typography>
+    <div className='df-c'>
+      <ModalContainer>
+        {modalOpen && (
+          <WithDrawModal
+            modalOpen={modalOpen}
+            handleClose={close}
+          />
+        )}
+      </ModalContainer>
+      <div className="df ai-stretch">
+        <div className="section-card w-fit !p-6">
+          <div className="df ai-stretch !gap-8">
+            <div className="df-c">
+              <h1>بطاقاتك</h1>
+              <div className="payment-card">
+                <img src="/img/mastercard.png" alt="ماستركارد" />
               </div>
             </div>
-            <div className="flex items-center space-x-4">
-              <Avatar className="bg-yellow-500">
-                <BiMoneyWithdraw className="text-white" />
-              </Avatar>
-              <div className="flex flex-col">
-                <Typography>المصروفات</Typography>
-                <Typography className="font-medium text-black">$60k</Typography>
+            <div className="df-c jc-sb">
+              <div className="btn">إضافة بطاقة</div>
+              <div>
+                <div className="text">إجمالي الدخل</div>
+                <div className="bold-1 text-4xl">$15470.64</div>
+              </div>
+              <div>
+                <div className="df jc-sb text"><span>$1200</span><span>إجمالي المكافآت</span></div>
+                <div className="df jc-sb text"><span>$14270.64</span><span>إجمالي الرواتب</span></div>
               </div>
             </div>
           </div>
-          <Suspense fallback={<div>جارٍ تحميل الرسم البياني...</div>}>
-            <AppReactApexCharts type="line" height={263} width="100%" series={series} options={options} />
-          </Suspense>
-        </CardContent>
+        </div>
+        <div className='section-card flex1'>
+          <ReactApexChart
+            options={chartOptions}
+            series={chartOptions.series}
+            type="area"
+            height={350}
+          />
+        </div>
       </div>
+      <div className="df ai-stretch">
+        <div className='section-card ' style={{ height: 460, width:"90vh" }}>
+          معاملاتك الأخيرة
+          <DataGrid
+            rows={rows}
+            columns={columns}
+            pageSize={5}
+            rowsPerPageOptions={[5]}
+            components={{
+              Toolbar: GridToolbar,
+            }}
+            hideFooterPagination={true}
+            localeText={arabicLocaleText}
+            disableColumnResize={true} 
+            
+          />
+        </div>
+        <div className="section-card df-c jc-sb flex-1">
+  <h2>أهداف راتبك التالي</h2>
+  <div className="actions df-c">
+    <div className="df">
+      <span>صمرة</span>
+      <div className="progress-container">
+        <div className="progress-bar" style={{ width: `30.23%` }}>
+          <div className="progress-label">30.23%</div>
+        </div>
+      </div>
+      <div className="honey-img">
+        <img src="https://purepng.com/public/uploads/large/purepng.com-honey-jarbottle-food-glass-object-pot-honey-jar-941524620818s80mx.png" alt="صمرة" />
+      </div>
+    </div>
 
-      <div className="section-card" style={{ height: 400, width: '100%' }}>
-        <DataGrid rows={rows} columns={columns} pageSize={5} />
+    <div className="df">
+      <span>سدر</span>
+      <div className="progress-container cyan">
+        <div className="progress-bar cyan" style={{ width: `58.23%` }}>
+          <div className="progress-label">58.23%</div>
+        </div>
+      </div>
+      <div className="honey-img">
+        <img src="/img/honey.png" alt="سدر" />
+      </div>
+    </div>
+
+    <div className="df">
+      <span>عسل أبيض</span>
+      <div className="progress-container pink">
+        <div className="progress-bar pink" style={{ width: `60.73%` }}>
+          <div className="progress-label">60.73%</div>
+        </div>
+      </div>
+      <div className="honey-img">
+        <img src="https://tryaladdin.com/cdn/shop/articles/rare-black-seed-honey-a-burst-of-natures-potency-585564_1200x800.jpg?v=1715162871" alt="مكافأة" />
+      </div>
+    </div>
+
+    <div className="df">
+      <span>مكافأة</span>
+      <div className="progress-container purple">
+        <div className="progress-bar purple" style={{ width: `20.23%` }}>
+          <div className="progress-label">20.23%</div>
+        </div>
+      </div>
+      <div className="honey-img">
+        <img src="https://cdn-icons-png.flaticon.com/512/9908/9908288.png" alt="مكافأة" />
+      </div>
+      
+    </div>
+  </div>
+  <button onClick={open} className="btn bg-2">سحب</button>
+</div>
+
       </div>
     </div>
   );

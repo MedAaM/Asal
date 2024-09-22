@@ -17,6 +17,7 @@
     color: var(--navbar-light-primary);
     overflow: hidden;
     user-select: none;
+    box-shadow: var(--shadow);
   }
 
   #nav-bar hr {
@@ -257,12 +258,27 @@
     position: relative;
     width: var(--navbar-width);
     height: 54px;
-    background: var(--navbar-dark-secondary);
+    background: var(--purple-light);
     border-radius: 16px;
     display: flex;
     flex-direction: column;
     z-index: 2;
     transition: width 0.2s, height 0.2s;
+  }
+
+  #nav-footer-title {
+    width: 8rem;
+    /* background: red; */
+    color: var(--purple);
+    font-weight: bold;
+    font-size: 10px;
+  }
+  
+  #nav-footer-subtitle{
+    width: 8rem;
+    color: var(--purple);
+    font-size: 10px;
+
   }
   
   #nav-footer-heading {

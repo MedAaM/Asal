@@ -16,7 +16,7 @@ function Target() {
   ];
 
   return (
-    <div className="targets df-c">
+    <div className="targets section-card df-c">
       <div className="title">الأهداف الشهرية</div>
 
       <div className="df jc-sa pr">

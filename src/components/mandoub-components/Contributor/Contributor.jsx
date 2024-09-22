@@ -1,7 +1,7 @@
 import React from "react";
 import "./Contributor.css";
-import ImgShapeContainer from "../img shape/ImgShapeContainer";
-import Stars from "../stars rate/Stars";
+import ImgShapeContainer from "../../img shape/ImgShapeContainer";
+import Stars from "../../stars rate/Stars";
 import { MdReport } from "react-icons/md";
 import { FcVip } from "react-icons/fc";
 import { GoReport } from "react-icons/go";
@@ -13,6 +13,7 @@ import { CiInstagram } from "react-icons/ci";
 function Contributor() {
   return (
     <div className="card">
+      <img src="/img/banner.avif" className="banner" alt="إيما سميث" />
       <div className="df jc-sb pt-5 text-3xl w-full">
         <GoReport /> <FcVip />
       </div>

@@ -3,6 +3,11 @@ import './profileHeader.css';
 import { RiTeamLine } from 'react-icons/ri';
 import { CiLocationOn } from 'react-icons/ci';
 import { TfiEmail } from 'react-icons/tfi';
+import { FaFacebook } from "react-icons/fa6";
+import { LiaWhatsapp } from "react-icons/lia";
+import { BsTelegram } from "react-icons/bs";
+import { CiInstagram } from "react-icons/ci";
+import Stars from '../../stars rate/Stars';
 
 const ProfileHeader = () => {
   return (
@@ -17,16 +22,16 @@ const ProfileHeader = () => {
             <div className="df-c g0">
               <div className="profile-name bold-1">إيما سميث</div>
               <div className="text df"><TfiEmail /> emma@gmail.com</div>
-              <div className="text df"><CiLocationOn /> المهدية</div>
+              <Stars number={4} />
             </div>
           </div>
           <div className="profile-stats df">
             <div className="total-deliv ta-c">
-              <div className="total bold-1">+ 157</div>
+              <div className="total bold-1">+157</div>
               إجمالي المبيعات
             </div>
             <div className="total-deliv bordered ta-c">
-              <div className="total bold-1">#5 </div>
+              <div className="total bold-1">5# </div>
               الترتيب هذا الأسبوع
             </div>
             <div className="total-deliv ta-c">
@@ -43,12 +48,40 @@ const ProfileHeader = () => {
       <div className="df-c profile-details">
         <div className="df jc-sb">
           <div className="btn">تعديل المعلومات</div>
-          <div className='df'>
-            <div className="contact">جيميل</div>
-            <div className="contact">واتس</div>
-            <div className="contact">فيسبوك</div>
-            <div className="contact">تويتر</div>
+          <div className="df jc-sa gap-8 !border-none media-list">
+        <div className="df-c g0 ai-center">
+          <div className="bor">
+            <div className="media-cont">
+              <FaFacebook />
+            </div>
+
           </div>
+        </div>
+        <div className="df-c g0 ai-center">
+          <div className="bor">
+            <div className="media-cont whatsapp">
+              <LiaWhatsapp />
+            </div>
+
+          </div>
+        </div>
+        <div className="df-c g0 ai-center">
+          <div className="bor">
+            <div className="media-cont telegram">
+              <BsTelegram />
+            </div>
+
+          </div>
+        </div>
+        <div className="df-c g0 ai-center">
+          <div className="bor">
+            <div className="media-cont instagram">
+              <CiInstagram />
+            </div>
+
+          </div>
+        </div>
+      </div>
         </div>
         <div className="df mt-8 jc-sa">
           <div className="card-stock-details">

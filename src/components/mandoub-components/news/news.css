@@ -1,5 +1,5 @@
 .news {
-    padding: 1rem 1rem 6rem;
+    padding: 1rem 1rem 4rem;
     background-color: var(--light-bg);
     color: var(--text);
     border-radius: 1rem;
@@ -12,4 +12,10 @@
     position: absolute;
     bottom: 1rem;
     left: 1rem;
+}
+
+.file {
+    font-style: italic;
+    font-size: 14px;
+    cursor: pointer;
 }

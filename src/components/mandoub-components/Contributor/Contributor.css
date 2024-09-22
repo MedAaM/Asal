@@ -17,6 +17,7 @@
     overflow: hidden;
     padding: 3px;
     border: 3px solid var(--primary);
+    background-color: var(--light-bg);
 }
 .card-img {
     width: 100%;
@@ -132,7 +133,18 @@
     flex-direction: column;
     gap: 20px;
     align-items: center;
-    border-radius: 1rem;
+    border-radius: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.card > .banner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+    height: 9rem;
 }
 
 .media-list {
@@ -149,6 +161,10 @@
     gap: 33px;
     border-radius: 1rem;
 
+}
+
+.current-stock {
+    background-color: var(--purple-light);
 }
 
 .progress-container {
@@ -243,6 +259,15 @@
 }
 
 .swiper-button-prev, .swiper-button-next {
-    
+    color: white !important;
+    font-size: 16px !important;
+    background-color: var(--primary);
+    border-radius: 50%;
+    width: 3rem !important;
+    height: 3rem !important;
+}
+
+.swiper-button-next:after, .swiper-button-prev:after {
+    font-size: 15px !important;
 }
 

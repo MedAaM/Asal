@@ -40,17 +40,16 @@ function App() {
         <Routes>
           <Route
             path="/signup"
-            element={auth ? <Navigate to="/profile/home" /> : <SignUp />}
+            element={<SignUp />}
           />
           <Route
             path="/login"
-            element={auth ? <Navigate to="/profile/home" /> : <Login />}
+            element={<Login />}
           />
           <Route
             path="/profile/*"
-            element={auth ? <ProfilePage /> : <Navigate to="/login" />}
+            element={<ProfilePage />}
           />
-          <Route path="/" element={<Navigate to="/login" />} />
         </Routes>
       </div>
     </Router>

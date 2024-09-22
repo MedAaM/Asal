@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { useFetchData } from "../../hooks/useFetchData";
+import { useFetchData } from "../../../hooks/useFetchData";
 import { Typography } from "@mui/material";
 import { motion } from "framer-motion";
-import useModal from "./../../hooks/useModal";
-import Modal from "../../components/Modal/index";
-import ModalContainer from "../Modal/ModalContainer";
-import Notification from "../notifications/index";
-import { add } from "../../utils/arr-utils";
-import NotificationContainer from "../notifications/NotificationContainer";
+import useModal from "../../../hooks/useModal";
+import Modal from "../../Modal/index";
+import ModalContainer from "../../Modal/ModalContainer";
+import Notification from "../../notifications/index";
+import { add } from "../../../utils/arr-utils";
+import NotificationContainer from "../../notifications/NotificationContainer";
 
 function OrderHeader() {
   const [notifications, setNotifications] = useState([]);
@@ -21,7 +21,6 @@ function OrderHeader() {
   console.log(data);
 
   const handleConfirm = () => {
-    console.log("confirmed =====");
     close(); 
     setNotifications(add(notifications, text, style))
   };
@@ -66,7 +65,7 @@ function OrderHeader() {
           whileTap={{ scale: 0.9 }}
           onClick={open}
         >
-          launch modal
+          mark delivared
         </motion.div>
       </div>
     </div>

@@ -1,8 +1,9 @@
 import React from "react";
-import OrderHeader from "../../components/order-header/OrderHeader";
+import OrderHeader from "../../../components/mandoub-components/order-header/OrderHeader";
 import OrderDetailsTable from "./OrderDetailsTable";
 import OrderTimeLine from "./OrderTimeLine";
 import { BiCartAdd, BiHeartCircle } from "react-icons/bi";
+
 
 function OrderDetails() {
   return (
@@ -33,12 +34,13 @@ function OrderDetails() {
               <div className="text">Mobile: 27154280</div>
             </div>
           </div>
-          <div className="section-card flex-1">
-            <div className="bold-2">Customer details</div>
+          <div className="section-card jc-sb flex-1">
+            <div className="bold-2">shipping adress</div>
             <div className="df-c g0">
-              <div className="bold-1">contact info</div>
-              <div className="text">Email: ahmedejlzef@fmgf</div>
-              <div className="text">Mobile: 27154280</div>
+              <div className="text">45 Roker Terrace</div>
+              <div className="text">Latheronwheel</div>
+              <div className="text">KW5 8NW, London</div>
+              <div className="text">UK</div>
             </div>
           </div>
         </div>
@@ -50,9 +52,10 @@ function OrderDetails() {
       <div className="section-card flex-1 df-c">
             <div className="bold-2">Billing Address</div>
             <div className="df-c g0">
-              <div className="text">contact info</div>
-              <div className="text">Email: ahmedejlzef@fmgf</div>
-              <div className="text">Mobile: 27154280</div>
+              <div className="text">45 Roker Terrace</div>
+              <div className="text">Latheronwheel</div>
+              <div className="text">KW5 8NW, London</div>
+              <div className="text">UK</div>
             </div>
             <div className="div">
                 <div className="bold2">Mastercard</div>

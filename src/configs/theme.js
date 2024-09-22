@@ -3,7 +3,7 @@ import { createTheme } from '@mui/material/styles';
 export const theme = createTheme({
   palette: {
     primary: {
-      main: '#ffb500',   
+      main: '#5b61e5',   
       border: '#c4c4c4'  
     },
     secondary: {
@@ -22,7 +22,8 @@ export const theme = createTheme({
           },
           '& .MuiOutlinedInput-root': {
             '& fieldset': {
-              borderColor: theme.palette.secondary.main, 
+              borderColor: '#c4c4c4', 
+              borderRadius: '8px', // Set the border radius here
             },
             '&:hover fieldset': {
               borderColor: theme.palette.primary.main, 
@@ -30,6 +31,7 @@ export const theme = createTheme({
             '&.Mui-focused fieldset': {
               borderColor: theme.palette.primary.main, 
             },
+            borderRadius: '50px', 
           },
         }),
       },
