@@ -118,7 +118,7 @@ function Contact() {
       <div className="df mx-auto w-4/6">
         <div className="df-c flex1 pr g0">
           <label className="label-trans" htmlFor="">
-            media link
+          الرابط
           </label>
           <input
             type="text"

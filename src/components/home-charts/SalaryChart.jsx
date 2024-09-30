@@ -90,37 +90,37 @@ function SalaryChart() {
   });
 
   return (
-    <div className='section-card' style={{ width: "55vh", borderRadius: "1rem", boxShadow: "none" }} dir='rtl'>
-      <div id='chart' className='w-full df-c'>
+    <div className='section-card flex1' style={{ width: "-webkit-fill-available !important", borderRadius: "1rem"}} dir='rtl'>
+      <div id='chart' className='w-full df-c g0'>
         <div dir='rtl' className='df-c'>
-            <div className="title">salary</div>
-            <div className="df jc-sb">
+            <div className="title">الراتب</div> {/* "salary" in Arabic */}
+            <div className="df-c">
 
             <div className="df !gap-2">
-                <div className="rounded-icon !w-7 !h-7 !rounded-md">
+                <div className="rounded-icon !w-10 !h-10 !rounded-md">
                     <BiDollar />
                 </div>
-                <div className="df-c g0 text-xs">
-                <div className='text-black font-bold'>1250$</div>
-                <div className='text'>total salary</div>
+                <div className="df-c g0">
+                <div className='text-black font-bold'>1250 ﷼</div>
+                <div className='text'>إجمالي الراتب</div> {/* "total salary" in Arabic */}
                 </div>
                 <div className="graphup df !gap-1">10% <BsGraphUpArrow /></div>
 
             </div>
             <div className="df">
-            <div className="rounded-icon purpled !w-7 !h-7 !rounded-md">
+            <div className="rounded-icon purpled !w-10 !h-10 !rounded-md">
                     <GoGift />
                 </div>
-                <div className="df-c g0 text-xs">
-                <div className='text-black font-bold'>250$</div>
-                <div className='text'>total bonus</div>
+                <div className="df-c g0">
+                <div className='text-black font-bold'>250 ﷼</div>
+                <div className='text'>إجمالي المكافأة</div> {/* "total bonus" in Arabic */}
                 </div>
                 <div className="graphdown df !gap-1">10% <BsGraphDownArrow /></div> 
 
             </div>
             </div>
         </div>
-        <ReactApexChart type='bar' height={200} style={{ width: "50vh" }} series={state.series} options={state.options} />
+        <ReactApexChart className="m-auto" type='bar' height={200} style={{ width: "50vh" }} series={state.series} options={state.options} />
       </div>
     </div>
   );

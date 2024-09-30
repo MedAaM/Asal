@@ -55,10 +55,10 @@ function ReviewsPage() {
     <div className=" reviews">
       <div className="df-c ai-c ">
 
-      <div className="df-c w-full section-card comments-upper !gap-6">
+      <div className="df-c section-card comments-upper !gap-6">
       <div className="bold-1">التقييمات</div>
-      <div className="df w-full !gap-28 jc-c ai-stretch">
-        <div className="df-c">
+      <div className="df w-full jc-c ai-stretch">
+      <div className="df-c">
           <div className="bold-1">إجمالي التقييمات</div>
           <div>
             <div className="df">

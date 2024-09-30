@@ -75,25 +75,25 @@ const state = {
 
 function OrdersChart() {
   return (
-    <div className='section-card' style={{ width: "55vh", borderRadius: "1rem", boxShadow: "none" }} dir='rtl'>
+    <div className='section-card flex1' style={{ width: "-webkit-fill-available !important", borderRadius: "1rem" }} dir='rtl'>
       <div dir='rtl' className='df-c'>
         <div className="title">الطلبات</div>
         <div className="df-c !g2">
           <div className="df w-full">
             <div className="df !gap-2 w-1/2">
-              <div className="rounded-icon !w-7 !h-7 !rounded-md">
+              <div className="rounded-icon !w-10 !h-10 !rounded-md">
                 <BsTruck />
               </div>
-              <div className="df-c g0 text-xs">
+              <div className="df-c g0 ">
                 <div className='text-black font-bold'>125</div>
                 <div className='text'>إجمالي التوصيل</div>
               </div>
             </div>
             <div className="df">
-              <div className="rounded-icon yellowed !w-7 !h-7 !rounded-md">
+              <div className="rounded-icon yellowed !w-10 !h-10 !rounded-md">
                 <BsClock />
               </div>
-              <div className="df-c g0 text-xs">
+              <div className="df-c g0 ">
                 <div className='text-black font-bold'>250</div>
                 <div className='text'>إجمالي معلق</div>
               </div>
@@ -101,19 +101,19 @@ function OrdersChart() {
           </div>
           <div className="df w-full">
             <div className="df !gap-2 w-1/2">
-              <div className="rounded-icon pinked !w-7 !h-7 !rounded-md">
+              <div className="rounded-icon pinked !w-10 !h-10 !rounded-md">
                 <TiTick />
               </div>
-              <div className="df-c g0 text-xs">
+              <div className="df-c g0 ">
                 <div className='text-black font-bold'>124</div>
                 <div className='text'>إجمالي الشحن</div>
               </div>
             </div>
             <div className="df">
-              <div className="rounded-icon errored !w-7 !h-7 !rounded-md">
+              <div className="rounded-icon errored !w-10 !h-10 !rounded-md">
                 <BiError />
               </div>
-              <div className="df-c g0 text-xs">
+              <div className="df-c g0 ">
                 <div className='text-black font-bold'>50</div>
                 <div className='text'>إجمالي الفشل</div>
               </div>
@@ -121,7 +121,7 @@ function OrdersChart() {
           </div>
         </div>
       </div>
-      <div id='chart' className='w-full df-c'>
+      <div id='chart2' className='w-full df-c ai-center'>
         <ReactApexChart type='bar' height={200} style={{ width: "50vh" }} series={state.series} options={state.options} />
       </div>
     </div>

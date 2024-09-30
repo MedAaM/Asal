@@ -67,43 +67,40 @@ function Contributor() {
         </div>
       </div>
       <div className="df jc-sa w-full media-list">
-        <div className="df-c g0 ai-center">
-          <div className="bor">
-            <div className="media-cont">
-              <FaFacebook />
-            </div>
-
-          </div>
-          <span className="text-xs">facebook</span>
-        </div>
-        <div className="df-c g0 ai-center">
-          <div className="bor">
-            <div className="media-cont whatsapp">
-              <LiaWhatsapp />
-            </div>
-
-          </div>
-          <span className="text-xs">whatsapp</span>
-        </div>
-        <div className="df-c g0 ai-center">
-          <div className="bor">
-            <div className="media-cont telegram">
-              <BsTelegram />
-            </div>
-
-          </div>
-          <span className="text-xs">telegram</span>
-        </div>
-        <div className="df-c g0 ai-center">
-          <div className="bor">
-            <div className="media-cont instagram">
-              <CiInstagram />
-            </div>
-
-          </div>
-          <span className="text-xs">instagram</span>
-        </div>
+  <div className="df-c g0 ai-center">
+    <div className="bor">
+      <div className="media-cont">
+        <FaFacebook />
       </div>
+    </div>
+    <span className="text-xs">فيسبوك</span>
+  </div>
+  <div className="df-c g0 ai-center">
+    <div className="bor">
+      <div className="media-cont whatsapp">
+        <LiaWhatsapp />
+      </div>
+    </div>
+    <span className="text-xs">واتساب</span>
+  </div>
+  <div className="df-c g0 ai-center">
+    <div className="bor">
+      <div className="media-cont telegram">
+        <BsTelegram />
+      </div>
+    </div>
+    <span className="text-xs">تليجرام</span>
+  </div>
+  <div className="df-c g0 ai-center">
+    <div className="bor">
+      <div className="media-cont instagram">
+        <CiInstagram />
+      </div>
+    </div>
+    <span className="text-xs">انستغرام</span>
+  </div>
+</div>
+
       
     </div>
   );

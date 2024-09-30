@@ -27,10 +27,10 @@ function Orders() {
       ),
     },
     { field: 'productName', headerName: 'اسم المنتج', width: 200 },
-    { field: 'quantity', headerName: 'الكمية', width: 150 },
-    { field: 'price', headerName: 'السعر', width: 150, type: 'number' },
-    { field: 'discount', headerName: 'الخصم', width: 150, type: 'number' },
-    { field: 'total', headerName: 'الإجمالي', width: 150, type: 'number' }
+    { field: 'quantity', headerName: 'الكمية', width: 100 },
+    { field: 'price', headerName: 'السعر', width: 100, type: 'number' },
+    { field: 'discount', headerName: 'الخصم', width: 100, type: 'number' },
+    { field: 'total', headerName: 'الإجمالي', width: 100, type: 'number' }
   ];
 
   return (
@@ -38,7 +38,7 @@ function Orders() {
       <OrderCard />
       <OrderListTable />
       <Transaction />
-      <div className='section-card' style={{ height: 460, width: '100%', marginTop:"1rem" }}>
+      <div className='section-card' style={{ height: 460, width: '60%', marginTop:"1rem" }}>
         معاملاتك الأخيرة
         <DataGrid
           rows={rows}   

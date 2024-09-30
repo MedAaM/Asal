@@ -8,7 +8,25 @@ import { GoGoal } from "react-icons/go";
 function GiftTarget({isHidden}) {
   return (
     <div className={`df-c main--container section-card ${isHidden ? "bluried" : ""}`}>
-      <div className="df">
+      {
+       isHidden === true && (
+        <section class="coming-soon">
+          <div class="coming-soon-inner">
+            <h1 class="heading">مسابقة جديدة </h1>
+            <h2 class="small-heading">استعدوا للمسابقة القادمة</h2>
+            <div class="counter-timer">
+              <ul>
+                <li><span id="days">10</span>أيام</li>
+                <li><span id="hours">05</span>ساعات</li>
+                <li><span id="minutes">10</span>دقائق</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      )
+      
+      }
+      <div className={`df ${isHidden ? "blur" : ""}`}>
       <div className="df-c gift--container">
           <div className="gift--target df">
             <div className="uss w-20 h-20">

@@ -25,7 +25,7 @@ function Target() {
           const remaining = target.total - target.delivered;
           return (
             <div key={index} className="CompactCard">
-              <div className={`radialBar ${(percentage === 100) ? "reached" : ""}`}>
+              <div className={`radialBar`}>
                 <CircularProgressbar value={percentage} text={`${Math.round(percentage)}%`} />
                 <span>{remaining} كغ متبقية</span>
               </div>

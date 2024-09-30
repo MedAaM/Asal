@@ -21,13 +21,14 @@ const iconStyles = {
 // Notification data to map through
 const notifications = [
   { id: 1, name: "أزلوك أحمد", message: "لقد تلقيت طلبًا جديدًا من أحمد أزلوك", icon: BiCartAdd, time: "منذ 6 ساعات" },
-  { id: 2, name: "admins", message: "تم استلام راتبك بنجاح", icon: BiDollar, time: "منذ 6 ساعات" },
-  { id: 3, name: "admins", message: "لقد حصلت على المرتبة الأولى في المسابقة, يمكنك الحصول على جائزتك في أي وقت", icon: GiPresent, time: "منذ 6 ساعات" },
-  { id: 4, name: "imen cherif", message: "تلقيت مراجعة جديدة من إيمان الشريف", icon: MdReviews, time: "منذ 6 ساعات" },
-  { id: 5, name: "event manager", message: "هناك مسابقة جديدة قادمة قريبًا بين مجموعتك والمجموعة الخاصة", icon: GrGroup, time: "منذ 6 ساعات" },
+  { id: 2, name: "المسؤولين", message: "تم استلام راتبك بنجاح", icon: BiDollar, time: "منذ 6 ساعات" },
+  { id: 3, name: "المسؤولين", message: "لقد حصلت على المرتبة الأولى في المسابقة، يمكنك الحصول على جائزتك في أي وقت", icon: GiPresent, time: "منذ 6 ساعات" },
+  { id: 4, name: "إيمان الشريف", message: "تلقيت مراجعة جديدة من إيمان الشريف", icon: MdReviews, time: "منذ 6 ساعات" },
+  { id: 5, name: "مدير الفعالية", message: "هناك مسابقة جديدة قادمة قريبًا بين مجموعتك والمجموعة الخاصة", icon: GrGroup, time: "منذ 6 ساعات" },
   { id: 6, name: "أزلوك أحمد", message: "تم إلغاء الطلب", icon: ImCancelCircle, time: "منذ 6 ساعات" },
   { id: 7, name: "أزلوك أحمد", message: "لقد تلقيت طلبًا جديدًا من أحمد أزلوك", icon: BiCartAdd, time: "منذ 6 ساعات" },
 ];
+
 
 const dropIn = {
   hidden: { y: "-100vh", opacity: 0 },

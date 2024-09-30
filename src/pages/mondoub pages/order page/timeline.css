@@ -25,10 +25,10 @@
 
   .timeline li {
     padding-bottom: 1.5rem;
-    border-left: 1px solid #abaaed;
+    border-right: 1px solid #abaaed;
     position: relative;
-    padding-left: 20px;
-    margin-left: 10px;
+    padding-right: 20px;
+    margin-right: 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -47,7 +47,7 @@
     box-shadow: 3px 3px 0px #bab5f8;
     border-radius: 50%;
     position: absolute;
-    left: -10px;
+    right: -10px;
     top: 0px;
   }
 
@@ -58,7 +58,7 @@
   }
 
   .timeline  .reached {
-    border-left: 1px solid var(--success);
+    border-right: 1px solid var(--success);
   }
 
   .timeline .time {

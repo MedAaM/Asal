@@ -1,4 +1,4 @@
-import React, { useState } from 'react'; 
+import React from 'react'; 
 import ReactApexChart from 'react-apexcharts';
 import "../../../../mondoub pages/home-page/components/transaction-contributions/contribution.css";
 import { BsGraphDownArrow, BsGraphUpArrow } from 'react-icons/bs';
@@ -8,14 +8,14 @@ import { FaWeight } from 'react-icons/fa';
 
 const series = [
   {
-    name: 'العسل المباع (كجم)',  // Column chart for honey sold
+    name: 'العسل المباع (كجم)',  // رسم بياني للعمود عن العسل المباع
     type: 'column',
-    data: [25, 42, 31, 50, 28, 35, 40]  // Honey sold in kg
+    data: [25, 42, 31, 50, 28, 35, 40]  // كمية العسل المباعة بالكيلوغرام
   },
   {
     type: 'line',
-    name: 'الدخل ($)',  // Line chart for income
-    data: [25 * 2, 42 * 2, 31 * 2, 50 * 2, 28 * 2, 35 * 2, 40 * 2]  // Income calculated as kg_sold * 5
+    name: 'الدخل ($)',  // رسم بياني للخط للدخل
+    data: [25 * 2, 42 * 2, 31 * 2, 50 * 2, 28 * 2, 35 * 2, 40 * 2]  // الدخل المحسوب بالكيلوغرامات المباعة * 5
   }
 ];
 
@@ -42,7 +42,7 @@ function TransactionContributions() {
       }
     },
     tools: {
-      download: true  // Disabling export/download option
+      download: true  // تعطيل خيار التصدير/التنزيل
     },
     markers: {
       size: 3.5,
@@ -76,7 +76,7 @@ function TransactionContributions() {
       }
     },
     xaxis: {
-      categories: ['الأحد', 'الإثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'],  // Days in Arabic
+      categories: ['الأحد', 'الإثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'],  // الأيام بالعربية
       tickPlacement: 'on',
       labels: { show: false },
       axisTicks: { show: false },
@@ -99,38 +99,38 @@ function TransactionContributions() {
   }
 
   return (
-    <div className='section-card' style={{width: "55vh", borderRadius:"1rem", boxShadow: "none"}} dir='rtl'>
+    <div className='section-card flex1' style={{width: "-webkit-fill-available !important", borderRadius:"1rem"}} dir='rtl'>
       <div dir='rtl' className='df-c'>
-            <div className="title">transactions</div>
-            <div className="df jc-sb">
+            <div className="title">المعاملات</div>
+            <div className="df-c">
 
             <div className="df !gap-2">
-                <div className="rounded-icon !w-7 !h-7 !rounded-md">
+                <div className="rounded-icon !w-10 !h-10 !rounded-md">
                     <FaWeight />
                 </div>
-                <div className="df-c g0 text-xs">
-                <div className='text-black font-bold'>180kg</div>
-                <div className='text'>total weights</div>
+                <div className="df-c g0 ">
+                <div className='text-black font-bold'>180 كجم</div>
+                <div className='text'>إجمالي الوزن</div>
                 </div>
                 <div className="graphup df !gap-1">10% <BsGraphUpArrow /></div>
 
             </div>
             <div className="df">
-            <div className="rounded-icon pinked !w-7 !h-7 !rounded-md">
+            <div className="rounded-icon pinked !w-10 !h-10 !rounded-md">
                     <BiDollar />
                 </div>
-                <div className="df-c g0 text-xs">
-                <div className='text-black font-bold'>250$</div>
-                <div className='text'>total income</div>
+                <div className="df-c g0 ">
+                <div className='text-black font-bold'>250 ﷼</div>
+                <div className='text'>إجمالي الدخل</div>
                 </div>
                 <div className="graphup df !gap-1">10% <BsGraphUpArrow /></div> 
 
             </div>
             </div>
         </div>
-      <div id='chart' className='w-full df-c'>
+      <div id='chart' className='w-full df-c ai-center'>
 
-        <ReactApexChart type='line' height={200} style={{width: "50vh"}} series={series} options={options} />     
+        <ReactApexChart type='line' height={200} style={{width: "-webkit-fill-available !important"}} series={series} options={options} />     
       </div>
     </div>
   );

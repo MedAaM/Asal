@@ -110,13 +110,14 @@
 }
 
 input[type = text],
-input[type = password] {
+input[type = password], input[type = date] {
   border: 1px solid gray;
   border: 1px solid #d2d2d2;
   height: 3rem;
   border-radius: 5px;
   outline: none;
   padding-right: 1rem;
+  padding-left: 1rem;
   font-size: 14px;
   font-family: inherit;
 }
@@ -188,7 +189,7 @@ body {
 .label-trans {
   background-color: var(--light-bg);
   padding: 0 5px;
-  font-size: 10px;
+  font-size: 14px;
   position: absolute;
   color: var(--cyan);
   right: 1rem;
@@ -295,6 +296,10 @@ body {
   align-items: center;
 }
 
+.MuiDataGrid-columnHeaderTitleContainer {
+  flex-direction: row !important;
+}
+
 .jc-sb {
   justify-content: space-between !important;
   gap: 0 !important;
@@ -343,8 +348,8 @@ body {
 
 
 ::selection {
-  background-color: var(--primary);
-  color: white;
+  background-color: var(--purple-light);
+  color: var(--purple);
 }
 .btn {
   

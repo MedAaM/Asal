@@ -176,7 +176,7 @@ function OrderListTable() {
   }, []);
 
   return (
-    <div className="section-card df-c" style={{ height: "70vh", width: "100%" }}>
+    <div className="section-card df-c" style={{ height: "100vh", width: "100%" }}>
       <div className="title">قائمة طلباتك</div>
       <DataGrid
         rows={rows}

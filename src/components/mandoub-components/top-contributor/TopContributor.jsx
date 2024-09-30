@@ -9,10 +9,12 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Pagination, Navigation } from 'swiper/modules';
 
-function TopContributor() {
+function TopContributor({title}) {
   return (
     <div className='top--weekly'>
-        <h1>أكثر الموظفين إسهامًا هذا الأسبوع</h1>
+        <h1>
+        {title}
+          </h1>
         <div className={`carousel-container`}>
         <Swiper
         spaceBetween={30}

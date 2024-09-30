@@ -14,7 +14,7 @@ function Home() {
 
       <ProfileHeader />
       <News />
-      <div className="df jc-sb ai-stretch">
+      <div className="df !gap-8 ai-stretch">
       <TransactionContributions />
       <SalaryChart />
       <OrdersChart />
@@ -23,7 +23,8 @@ function Home() {
       <GiftTarget isHidden={true}/>
       <GiftTarget />
       <Target />
-      <TopContributor />
+      <TopContributor title={"أكثر الموظفين إسهامًا هذا الأسبوع"}/>
+      <TopContributor title={"أكثر الموظفين إسهامًا من مجموعتك"} />
 
     </div>
   )

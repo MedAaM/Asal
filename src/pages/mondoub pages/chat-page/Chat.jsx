@@ -1,124 +1,126 @@
-import React from 'react'
-import "./styles.css"
-import { ImLoop2 } from 'react-icons/im'
-import { CiSearch } from 'react-icons/ci'
+import React from 'react';
+import "./styles.css";
+import { ImLoop2 } from 'react-icons/im';
+import { CiSearch } from 'react-icons/ci';
 
 function Chat() {
   return (
     <div className='chat-page'>
-        <div class="df ">
-  <div class="contacts">
-    <div className="df w-full my-4 ai-stretch">
-    <div className="w-12 df ai-c justify-center">
-            <CiSearch className='text-3xl' />
+        <div className="df ">
+          <div className="contacts">
+            <div className="df w-full my-4 ai-stretch">
+              <div className="w-12 df ai-c justify-center">
+                <CiSearch className='text-3xl' />
+              </div>
+              <div className="df-c flex1 pr">
+                <label htmlFor="" className="label-trans">بحث</label>
+                <input type="text" name="" id="" />
+              </div>
+            </div>
+            <hr className='mb-7' />
+            <div className="contact">
+              <div className="pic rogers"></div>
+              <div className="badge">
+                14
+              </div>
+              <div className="name">
+                ستيف روجرز
+              </div>
+              <div className="message">
+              هل لديك شيء لي
+              </div>
+            </div>
+            <div className="contact">
+              <div className="pic stark"></div>
+              <div className="name">
+                توني ستارك
+              </div>
+              <div className="message">
+                آه، هو من الفضاء، جاء إلى هنا لسرقة قلادة من ساحر.
+              </div>
+            </div>
+            <div className="contact">
+              <div className="pic banner"></div>
+              <div className="badge">
+                1
+              </div>
+              <div className="name">
+                بروس بانر
+              </div>
+              <div className="message">
+                هل هناك رجل نملة *ورجل عنكبوت*؟
+              </div>
+            </div>
+            <div className="contact">
+              <div className="pic thor"></div>
+              <div className="name">
+                ثور أودينسون
+              </div>
+              <div className="badge">
+                3
+              </div>
+              <div className="message">
+                أحب هذا
+              </div>
+            </div>
+            <div className="contact">
+              <div className="pic danvers"></div>
+              <div className="badge">
+                2
+              </div>
+              <div className="name">
+                كارول دانفرز
+              </div>
+              <div className="message">
+                مرحبًا بيتر باركر، هل لديك شيء لي؟
+              </div>
+            </div>
+          </div>
+          <div className="chat">
+            <div className="contact bar">
+              <div className="pic stark"></div>
+              <div className="name">
+                توني ستارك
+              </div>
+              <div className="seen">
+                اليوم الساعة 12:56
+              </div>
+            </div>
+            <div className="messages" id="chat">
+              <div className="time">
+                اليوم الساعة 11:41
+              </div>
+              <div className="message parker">
+                مرحبًا، يا رجل! كيف حالك، مستر ستارك؟ 👋
+              </div>
+              <div className="message stark">
+                يا فتى، من أين جئت؟
+              </div>
+              <div className="message parker">
+                رحلة ميدانية! 🤣
+              </div>
+              <div className="message parker">
+                آه، ما هي مشكلة هذا الرجل، مستر ستارك؟ 🤔
+              </div>
+              <div className="message stark">
+                آه، هو من الفضاء، جاء هنا لسرقة قلادة من ساحر.
+              </div>
+              <div className="message stark">
+                <div className="typing typing-1"></div>
+                <div className="typing typing-2"></div>
+                <div className="typing typing-3"></div>
+              </div>
+            </div>
+            <div className="input">
+              <i className="fas fa-camera"></i>
+              <i className="far fa-laugh-beam"></i>
+              <input placeholder="اكتب رسالتك هنا!" type="text" />
+              <i className="fas fa-microphone"></i>
+            </div>
+          </div>
         </div>
-        <div className="df-c flex1 pr">
-            <label htmlFor="" className="label-trans">search</label>
-            <input type="text" name="" id="" />
-        </div>
-        
     </div>
-    <hr className='mb-7'/>
-    <div class="contact">
-      <div class="pic rogers"></div>
-      <div class="badge">
-        14
-      </div>
-      <div class="name">
-        Steve Rogers
-      </div>
-      <div class="message">
-        That is America's ass 🇺🇸🍑
-      </div>
-    </div>
-    <div class="contact">
-      <div class="pic stark"></div>
-      <div class="name">
-        Tony Stark
-      </div>
-      <div class="message">
-        Uh, he's from space, he came here to steal a necklace from a wizard.
-      </div>
-    </div>
-    <div class="contact">
-      <div class="pic banner"></div>
-      <div class="badge">
-        1
-      </div>
-      <div class="name">
-        Bruce Banner
-      </div>
-      <div class="message">
-        There's an Ant-Man *and* a Spider-Man?
-      </div>
-    </div>
-    <div class="contact">
-      <div class="pic thor"></div>
-      <div class="name">
-        Thor Odinson
-      </div>
-      <div class="badge">
-        3
-      </div>
-      <div class="message">
-        I like this one
-      </div>
-    </div>
-    <div class="contact">
-      <div class="pic danvers"></div>
-      <div class="badge">
-        2
-      </div>
-      <div class="name">
-        Carol Danvers
-      </div>
-      <div class="message">
-        Hey Peter Parker, you got something for me?
-      </div>
-    </div>
-  </div>
-  <div class="chat">
-    <div class="contact bar">
-      <div class="pic stark"></div>
-      <div class="name">
-        Tony Stark
-      </div>
-      <div class="seen">
-        Today at 12:56
-      </div>
-    </div>
-    <div class="messages" id="chat">
-      <div class="time">
-        Today at 11:41
-      </div>
-      <div class="message parker">
-        Hey, man! What's up, Mr Stark? 👋
-      </div>
-      <div class="message stark">
-        Kid, where'd you come from? 
-      </div>
-      <div class="message parker">
-        Field trip! 🤣
-      </div>
-      <div class="message parker">
-        Uh, what is this guy's problem, Mr. Stark? 🤔
-      </div>
-      <div class="message stark">
-        Uh, he's from space, he came here to steal a necklace from a wizard.
-      </div>
-      <div class="message stark">
-        <div class="typing typing-1"></div>
-        <div class="typing typing-2"></div>
-        <div class="typing typing-3"></div>
-      </div>
-    </div>
-    <div class="input">
-      <i class="fas fa-camera"></i><i class="far fa-laugh-beam"></i><input placeholder="Type your message here!" type="text" /><i class="fas fa-microphone"></i>
-    </div>
-  </div>
-</div>
-    </div>
-  )
+  );
 }
 
-export default Chat
+export default Chat;

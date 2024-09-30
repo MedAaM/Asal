@@ -7,6 +7,7 @@ import ChangePassword from "../../../components/mandoub-components/mandoub-setti
 import { motion } from "framer-motion";
 import { fadeIn, footerVariants, staggerChildren } from "../../../utils/motion";
 import PaymentMethods from "../../../components/mandoub-components/mandoub-settings/PaymentMethods";
+import DangerZone from "../../../components/mandoub-components/mandoub-settings/DangerZone";
 
 function EditProfilePage() {
   return (
@@ -64,37 +65,7 @@ function EditProfilePage() {
           <div className="text-2xl font-bold !text-red-600">المنطقة الخطرة</div>
           <span className="text-xs !text-red-400">تجنب هذه المنطقة</span>
         </div>
-        <motion.div variants={fadeIn("right", "tween", 1 * 0.2, 1)} initial="hidden" whileInView="show" className="section-card edit-section">
-          <div className="df-c danger">
-            <div className="df justify-center text-center header-btns w-full">
-              <motion.div
-                className="details-btn justify-center w-1/2 df"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                حذف الحساب
-              </motion.div>
-            </div>
-            <div className="df header-btns justify-center w-full">
-              <motion.div
-                className="details-btn justify-center w-1/2"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                طلب التقاعد
-              </motion.div>
-            </div>
-            <div className="df header-btns justify-center w-full">
-              <motion.div
-                className="details-btn justify-center w-1/2"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                طلب تغيير المدينة
-              </motion.div>
-            </div>
-          </div>
-        </motion.div>
+        <DangerZone />
       </div>
     </motion.div>
   );

@@ -9,7 +9,7 @@ import useModal from "../../../hooks/useModal";
 import { MdCardGiftcard, MdEdit, MdHistoryEdu, MdNewspaper, MdNotificationAdd, MdOutlineCardMembership, MdPendingActions, MdWorkOutline } from "react-icons/md";
 import { useAuthContext } from '../../../hooks/useAuthContext';
 import NotificationsModal from '../../Modal/NotificationsModal';
-import { BiChat, BiDollar, BiLogOut } from 'react-icons/bi';
+import { BiChat, BiDollar, BiLock, BiLogOut } from 'react-icons/bi';
 
 function SideBar({ setExpended, expended }) {
     const handleToggle = () => {
@@ -65,6 +65,7 @@ function SideBar({ setExpended, expended }) {
                 <Link className="nav-button" to="chat">
                     <BiChat className="fas" />
                     <span>الدردشات</span>
+                    <BiLock />
                 </Link>
                 <Link className="nav-button" onClick={handleLogout}>
                     <BiLogOut className="fas" />
