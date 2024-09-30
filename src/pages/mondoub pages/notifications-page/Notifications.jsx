@@ -10,14 +10,15 @@ import { ImCancelCircle } from "react-icons/im";
 
 function Notifications() {
     const notifications = [
-        { id: 1, name: "أزلوك أحمد", message: "لقد تلقيت طلبًا جديدًا من أحمد أزلوك", icon: BiCartAdd, time: "منذ 6 ساعات", isSeen: false },
-        { id: 2, name: "المدراء", message: "تم استلام راتبك بنجاح", icon: BiDollar, time: "منذ 6 ساعات", isSeen: true },
-        { id: 3, name: "المدراء", message: "لقد حصلت على المرتبة الأولى في المسابقة، يمكنك الحصول على جائزتك في أي وقت", icon: GiPresent, time: "منذ 6 ساعات", isSeen: true },
-        { id: 4, name: "إيمان الشريف", message: "تلقيت مراجعة جديدة من إيمان الشريف", icon: MdReviews, time: "منذ 6 ساعات", isSeen: false },
-        { id: 5, name: "منظم الفعاليات", message: "هناك مسابقة جديدة قادمة قريبًا بين مجموعتك والمجموعة الخاصة", icon: GrGroup, time: "منذ 6 ساعات", isSeen: false },
-        { id: 6, name: "أزلوك أحمد", message: "تم إلغاء الطلب", icon: ImCancelCircle, time: "منذ 6 ساعات", isSeen: true },
-        { id: 7, name: "أزلوك أحمد", message: "لقد تلقيت طلبًا جديدًا من أحمد أزلوك", icon: BiCartAdd, time: "منذ 6 ساعات", isSeen: false },
-    ];
+    { id: 1, name: "أزلوك أحمد", message: "لقد تلقيت طلبًا جديدًا من أحمد أزلوك", icon: BiCartAdd, iconKey: "BiCartAdd", time: "منذ 6 ساعات", isSeen: false },
+    { id: 2, name: "المدراء", message: "تم استلام راتبك بنجاح", icon: BiDollar, iconKey: "BiDollar", time: "منذ 6 ساعات", isSeen: true },
+    { id: 3, name: "المدراء", message: "لقد حصلت على المرتبة الأولى في المسابقة، يمكنك الحصول على جائزتك في أي وقت", icon: GiPresent, iconKey: "GiPresent", time: "منذ 6 ساعات", isSeen: true },
+    { id: 4, name: "إيمان الشريف", message: "تلقيت مراجعة جديدة من إيمان الشريف", icon: MdReviews, iconKey: "MdReviews", time: "منذ 6 ساعات", isSeen: false },
+    { id: 5, name: "منظم الفعاليات", message: "هناك مسابقة جديدة قادمة قريبًا بين مجموعتك والمجموعة الخاصة", icon: GrGroup, iconKey: "GrGroup", time: "منذ 6 ساعات", isSeen: false },
+    { id: 6, name: "أزلوك أحمد", message: "تم إلغاء الطلب", icon: ImCancelCircle, iconKey: "ImCancelCircle", time: "منذ 6 ساعات", isSeen: true },
+    { id: 7, name: "أزلوك أحمد", message: "لقد تلقيت طلبًا جديدًا من أحمد أزلوك", icon: BiCartAdd, iconKey: "BiCartAdd", time: "منذ 6 ساعات", isSeen: false },
+];
+
 
     const iconStyles = {
         BiCartAdd: { bg: "--light-primary", color: "--primary" },
@@ -53,10 +54,11 @@ function Notifications() {
                     <div key={notif.id} className={`notification w-full df ai-fs ${notif.isSeen ? "" : "unseen"}`}>
                         <div
                             className="rounded-icon"
-                            style={{
-                                backgroundColor: `var(${iconStyles[notif.icon.name].bg})`,
-                                color: `var(${iconStyles[notif.icon.name].color})`
-                            }}
+                               style={{
+                    backgroundColor: `var(${iconStyles[notif.iconKey].bg})`,
+                     color: `var(${iconStyles[notif.iconKey].color})`
+                          }}
+
                         >
                             {React.createElement(notif.icon)}
                         </div>
