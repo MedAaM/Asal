@@ -45,9 +45,19 @@
     border: 6px solid var(--light-bg);
     overflow: hidden;
 }
+.cus-info .order-cus-img {
+    
+    border-radius: 50%;
+    background-color: var(--light-bg);
+    width: 4rem;
+    height: 4rem;
+    border: 6px solid var(--light-bg);
+    overflow: hidden;
+}
 
 .order-id {
     font-weight: bold;
+    color: #285AEB;
 }
 
 .order-id span {
@@ -79,12 +89,14 @@
 .card-stock-details {
     padding: 2rem;
     border-radius: 1rem;
-    background-color: #f2f7fe;
+    background-color: var(--purple-light);
+    width: 30%;
 }
 
 .total-deliv {
     font-size: 14px;
     color: var(--text);
+    
 }
 
 .profile-stats {
@@ -99,6 +111,7 @@
 
 .total {
     font-size: 2rem;
+    color: black;
 }
 
 .whatsapp {

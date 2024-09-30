@@ -84,6 +84,23 @@
   color: var(--text) !important;
 }
 
+.card-stock-details .text {
+  font-size: 10px;
+  margin-top: 10px;
+}
+
+.text h3 {
+  color: black !important;
+}
+
+.highlight {
+  background-color: var(--purple);
+  padding: 4px 7px;
+  border-radius: 7px;
+  color: white;
+  font-weight: bold;
+}
+
 .bold-1 {
   font-weight: bold;
 }
@@ -177,9 +194,33 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--shipped-light);
-  color: var(--success);
+  background-color: var(--cyan-light);
+  color: var(--cyan);
   font-size: 1rem;
+}
+
+.pinked {
+  background-color: var(--pink-light) !important;
+  color: var(--pink) !important;
+}
+.purpled {
+  background-color: var(--purple-light) !important;
+  color: var(--purple) !important;
+}
+
+.yellowed {
+  background-color: var(--pending-light) !important;
+  color: var(--pending) !important;
+}
+
+.errored {
+  background-color: var(--error-light) !important;
+  color: var(--error) !important;
+
+}
+
+.bluried {
+  filter: blur(1rem);
 }
 
 .wish {
@@ -379,18 +420,50 @@
   padding: 0;
 }
 
+.periods span {
+  padding: 8px 1rem;
+  background-color: var(--purple-light);
+  color: var(--purple);
+  cursor: pointer;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.periods > .active {
+  color: white;
+  background-color: var(--purple);
+}
+
 .css-60ds9y-MuiDataGrid-root .MuiDataGrid-cell--textLeft {
   justify-content: center !important;
 }
 
 .box-info li {
   background: var(--light-bg);
-  border-radius: 20px;
+  border-radius: 7px;
   display: flex;
   align-items: center;
   grid-gap: 24px;
-  padding: 2rem 1rem;
-  width: 30%;
+  padding: 1rem;
+  width: 25%;
+  border-bottom: 4px solid var(--purple);
+  border-top: 1px solid rgb(218, 218, 218);
+  border-left: 1px solid rgb(218, 218, 218);
+  border-right: 1px solid rgb(218, 218, 218);
+}
+
+.box-info li:nth-child(2) {
+  border-bottom: 4px solid var(--error);
+  
+}
+.box-info li:nth-child(4) {
+  border-bottom: 4px solid var(--cyan);
+  
+}
+.box-info li:nth-child(3) {
+  border-bottom: 4px solid var(--primary);
+  
 }
 
 .box-info li .bx {
@@ -448,9 +521,6 @@
 
 .media-link {
   color: var(--cyan);
-  text-decoration: underline;
-  font-weight: bold;
-  font-style: italic;
 }
 
 /* orders.css */
@@ -513,7 +583,7 @@
   white-space: nowrap;
   font-weight: var(--unstable_DataGrid-headWeight);
   line-height: normal;
-  color: #5b5f71 !important;
+  color: var(--purple) !important
 }
 
 .ord--actions svg {

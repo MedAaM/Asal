@@ -1,41 +1,51 @@
 import React from 'react'
-import { arabicLocaleText } from '../../../utils/arabic-settings';
-import { TbClock12, TbEyeDollar, TbLayoutAlignCenter } from 'react-icons/tb';
-import { MdKeyboardArrowDown } from "react-icons/md";
-import { MdKeyboardArrowUp } from "react-icons/md";
+import { FcCancel, FcImport, FcInspection, FcPositiveDynamic } from "react-icons/fc";
+
 
 function OrderCard() {
   return (
-    <ul className="df box-info">
-        <li>
-          <TbLayoutAlignCenter className="bx bxs-calendar-check" />
-          <span className="text">
-            <h3>35</h3>
-            <p>الطلبات المعلقة</p>
-          </span>
-        </li>
-        <li>
-          <TbLayoutAlignCenter className="bx bxs-calendar-check" />
-          <span className="text">
-            <h3>1020</h3>
-            <p>إجمالي الطلبات</p>
-          </span>
-        </li>
-        <li>
-          <TbClock12 className="bx bxs-group" />
-          <span className="text">
-            <h3>140</h3>
-            <p>المعاملات</p>
-          </span>
-        </li>
-        <li>
-          <TbEyeDollar className="bx bxs-dollar-circle" />
-          <span className="text">
-            <h3>$2543</h3>
-            <p>إجمالي المبيعات</p>
-          </span>
-        </li>
-      </ul>
+    <div className="section-card">
+  <div className="df jc-sb">
+    <span className='title'>حالة الطلب</span>
+    <div className="df periods">
+      <span className='active'>يومي</span>
+      <span>شهري</span>
+      <span>سنوي</span>
+    </div>
+  </div>
+  <ul className="df gap-8 box-info">
+    <li className='jc-sb'>
+      <span className="text">
+        <p>الطلبات المعلقة</p>
+        <h3 className='!font-bold'>35</h3>
+      </span>
+      <FcImport className='text-4xl' />
+    </li>
+    <li className='jc-sb'>
+      <span className="text">
+        <p>الطلبات الملغاة</p>
+        <h3 className='!font-bold'>35</h3>
+      </span>
+      <FcCancel className='text-4xl' />
+    </li>
+    <li className='jc-sb'>
+      <span className="text">
+        <p>الطلبات المكتملة</p>
+        <h3 className='!font-bold'>35</h3>
+      </span>
+      <FcInspection className='text-4xl' />
+    </li>
+    <li className='jc-sb'>
+      <span className="text">
+        <p>المعاملات المكتملة</p>
+        <h3 className='!font-bold'>35</h3>
+      </span>
+      <FcPositiveDynamic className='text-4xl' />
+    </li>
+  </ul>
+</div>
+
+   
   )
 }
 

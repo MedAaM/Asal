@@ -14,3 +14,18 @@
 .slick-slider {
     direction: rtl;
 }
+
+.graphup {
+    background-color: var(--shipped-light);
+    color: var(--shipped);
+    font-size: 12px;
+    padding: 2px 7px;
+    border-radius: 5px;
+}
+.graphdown {
+    background-color: var(--error-light);
+    color: var(--error);
+    font-size: 12px;
+    padding: 2px 7px;
+    border-radius: 5px;
+}

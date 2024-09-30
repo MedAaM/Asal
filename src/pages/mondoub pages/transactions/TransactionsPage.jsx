@@ -6,6 +6,7 @@ import { arabicLocaleText } from '../../../utils/arabic-settings';
 import ModalContainer from '../../../components/Modal/ModalContainer';
 import WithDrawModal from '../../../components/Modal/WithDrawModal';
 import useModal from '../../../hooks/useModal';
+import AddPayment from './AddPayment';
 
 function TransactionsPage() {
   const [chartOptions] = useState({
@@ -141,27 +142,7 @@ function TransactionsPage() {
         )}
       </ModalContainer>
       <div className="df ai-stretch">
-        <div className="section-card w-fit !p-6">
-          <div className="df ai-stretch !gap-8">
-            <div className="df-c">
-              <h1>بطاقاتك</h1>
-              <div className="payment-card">
-                <img src="/img/mastercard.png" alt="ماستركارد" />
-              </div>
-            </div>
-            <div className="df-c jc-sb">
-              <div className="btn">إضافة بطاقة</div>
-              <div>
-                <div className="text">إجمالي الدخل</div>
-                <div className="bold-1 text-4xl">$15470.64</div>
-              </div>
-              <div>
-                <div className="df jc-sb text"><span>$1200</span><span>إجمالي المكافآت</span></div>
-                <div className="df jc-sb text"><span>$14270.64</span><span>إجمالي الرواتب</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <AddPayment />
         <div className='section-card flex1'>
           <ReactApexChart
             options={chartOptions}

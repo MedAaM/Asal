@@ -10,10 +10,16 @@ import InputLabel from "@mui/material/InputLabel";
 import InputAdornment from "@mui/material/InputAdornment";
 import { BiDollar, BiMailSend, BiPhone, BiUser } from "react-icons/bi";
 import { GiHoneyJar, GiWeight } from "react-icons/gi";
+import { motion } from "framer-motion";
+import { CircularProgressbar } from "react-circular-progressbar";
 
 const PRICE_PER_KG = 15; // سعر الكيلو
-
 function Transaction() {
+  const targets = [
+    { name: "سمر", total: 120, delivered: 85 },
+    { name: "طلح", total: 100, delivered: 65 },
+    { name: "عسل أبيض", total: 120, delivered: 100 },
+  ];
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -44,66 +50,23 @@ function Transaction() {
     });
     setTotalToPay(0);
   };
-
   return (
     <div className="df ai-stretch">
       <div className="section-card w-50">
-        <CardHeader title="إجراء معاملة خارجية" />
-        <Grid container spacing={5}>
-          <div className="bold-1">تفاصيل العميل</div>
-          <Grid item xs={12}>
-            <TextField
-              fullWidth
-              label="الاسم"
-              placeholder="جون دو"
-              name="username"
-              value={formData.username}
-              onChange={handleChange}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <BiUser className="text-xl" />
-                  </InputAdornment>
-                ),
-              }}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              fullWidth
-              type="email"
-              label="البريد الإلكتروني"
-              placeholder="johndoe@gmail.com"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <BiMailSend className="text-xl" />
-                  </InputAdornment>
-                ),
-              }}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              fullWidth
-              label="رقم الهاتف"
-              placeholder="123-456-7890"
-              name="phoneNumber"
-              value={formData.phoneNumber}
-              onChange={handleChange}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <BiPhone className="text-xl" />
-                  </InputAdornment>
-                ),
-              }}
-            />
-          </Grid>
-          <div className="df w-100 pt-10 pl-10">
+      <div className="title">قم بعملية مباشرة</div>
+        <div className="df-c w-full pr">
+          <label htmlFor="" className="label-trans">اسم العميل</label>
+          <input type="text" name="" className="w-full" id="" />
+        </div>
+        <div className="df-c w-full pr">
+          <label htmlFor="" className="label-trans">بريد العميل الإلكتروني</label>
+          <input type="text" name="" className="w-full" id="" />
+        </div>
+        <div className="df-c w-full pr">
+          <label htmlFor="" className="label-trans">رقم هاتف العميل</label>
+          <input type="text" name="" className="w-full" id="" />
+        </div>
+        <div className="df w-100">
             <Grid item xs={6} className="w-50">
               <FormControl fullWidth>
                 <InputLabel className="labeled">العسل</InputLabel>
@@ -118,102 +81,62 @@ function Transaction() {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item xs={6}>
-              <TextField
-                fullWidth
-                label="الوزن بالكيلو"
-                placeholder="123kg"
-                type="number"
-                name="quantity"
-                className="total-to-pay-input"
-                value={formData.quantity}
-                onChange={handleChange}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <GiWeight className="text-xl" />
-                    </InputAdornment>
-                  ),
-                }}
-              />
-            </Grid>
+            <div className="df-c pr flex1">
+          <label htmlFor="" className="label-trans">الكمية للبيع</label>
+          <input type="text" name="" className="w-full" id="" />
+        </div>
+            <div className="df-c pr flex1">
+          <label htmlFor="" className="label-trans">المجموع للدفع</label>
+          <input type="text" name="" className="w-full" id="" />
+        </div>
+        
           </div>
-          <Grid item xs={12}>
-            <TextField
-              fullWidth
-              label="المبلغ الإجمالي للدفع"
-              value={`$${totalToPay}`}
-              disabled
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <BiDollar className="text-xl" />
-                  </InputAdornment>
-                ),
-              }}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <Button variant="contained" type="submit" style={{ marginLeft: '10px' }}>
-              تقديم
-            </Button>
-          </Grid>
-        </Grid>
+          <div className="df header-btns mr-auto mt-auto">
+                <motion.div
+                    className="details-btn df"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                >
+                    إعادة تعيين
+                </motion.div>
+                <motion.div
+                    className="details-btn df"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                >
+                    تأكيد
+                </motion.div>
+            </div> 
+        
+        
       </div>
-      <div className="section-card !px-12 jc-sb current-stock w-50">
+      <div className="section-card qte-left !px-12 jc-sb w-50">
         <div className="df-c">
           <div className="bold-1 text-indigo-700">مخزونك الحالي</div>
           <div className="df-c">
-            <div className="actions !w-full pt-10 df-c">
-              {/* مثال على عناصر المخزون; استبدل بالبيانات الديناميكية إذا لزم الأمر */}
-              <div className="df">
-                <div className="df text-xs w-2/6">
-                  <GiHoneyJar />
-                  <span>صمرة (54kg متبقية من 100 kg)</span>
-                </div>
-                <div className="progress-container">
-                  <div className="progress-bar" style={{ width: `${30.23}%` }}>
-                    <div className="progress-label">30.23%</div>
-                  </div>
-                </div>
+          <div className="df-c jc-sa pr">
+        {targets.map((target, index) => {
+          const percentage = (target.delivered / target.total) * 100;
+          const remaining = target.total - target.delivered;
+          return (
+            <div key={index} className="CompactCard !text-xs">
+              <div className={`radialBar ${(percentage === 100) ? "reached" : ""}`}>
+                <CircularProgressbar value={percentage} text={`${Math.round(percentage)}%`} />
+                <span>{remaining} كغ متبقية</span>
               </div>
-              <div className="df">
-                <div className="df text-xs w-2/6">
+              <div className="detail">
+                <div className="df">
                   <GiHoneyJar />
-                  <span>صمرة (54kg متبقية من 100 kg)</span>
+                  {target.name}
                 </div>
-                <div className="progress-container cyan">
-                  <div
-                    className="progress-bar cyan"
-                    style={{ width: `${58.23}%` }}
-                  >
-                    <div className="progress-label">58.23%</div>
-                  </div>
-                </div>
-              </div>
-              <div className="df">
-                <div className="df text-xs w-2/6">
-                  <GiHoneyJar />
-                  <span>صمرة (54kg متبقية من 100 kg)</span>
-                </div>
-                <div className="progress-container pink">
-                  <div
-                    className="progress-bar pink"
-                    style={{ width: `${60.73}%` }}
-                  >
-                    <div className="progress-label">60.73%</div>
-                  </div>
-                </div>
+                <span>{target.total} كغ</span>
+                <span>{target.delivered}/{target.total} تم التوصيل</span>
               </div>
             </div>
+          );
+        })}
+      </div>
           </div>
-        </div>
-        <div className="avatar">
-          <img
-            className="w-2/5 mr-auto"
-            src="https://cdn3d.iconscout.com/3d/premium/thumb/purple-shirt-woman-3d-icon-download-in-png-blend-fbx-gltf-file-formats--wanita-rambut-urai-avatar-person-people-happiness-pack-icons-4935222.png?f=webp"
-            alt="Avatar"
-          />
         </div>
       </div>
     </div>

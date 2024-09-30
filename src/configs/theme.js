@@ -23,15 +23,14 @@ export const theme = createTheme({
           '& .MuiOutlinedInput-root': {
             '& fieldset': {
               borderColor: '#c4c4c4', 
-              borderRadius: '8px', // Set the border radius here
+              // Set the border radius here
             },
             '&:hover fieldset': {
               borderColor: theme.palette.primary.main, 
             },
             '&.Mui-focused fieldset': {
               borderColor: theme.palette.primary.main, 
-            },
-            borderRadius: '50px', 
+            }
           },
         }),
       },

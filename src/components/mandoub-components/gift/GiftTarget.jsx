@@ -2,13 +2,19 @@ import React from "react";
 import "./GiftTarget.css";
 import ImgShapeContainer from "../../img shape/ImgShapeContainer";
 import { TbCrown } from "react-icons/tb";
-function GiftTarget() {
+import { BsClock, BsTruck } from "react-icons/bs";
+import { GiRank1 } from "react-icons/gi";
+import { GoGoal } from "react-icons/go";
+function GiftTarget({isHidden}) {
   return (
-    <div className="df-c main--container section-card">
+    <div className={`df-c main--container section-card ${isHidden ? "bluried" : ""}`}>
       <div className="df">
-        <div className="df-c gift--container">
+      <div className="df-c gift--container">
           <div className="gift--target df">
-            <ImgShapeContainer path={"/img/about.png"} width={5} height={5} />
+            <div className="uss w-20 h-20">
+              <div className="magicpattern"></div>
+              <img src="/img/about.png" className="object-cover" alt="" srcSet="" />
+            </div>
             <div className="target">
               <div className="top">
                 <img
@@ -26,26 +32,66 @@ function GiftTarget() {
               </div>
               <div className="line"></div>
             </div>
-            <div className="gift">
-              <img src={"/img/iphone.png"} />
+            <div className="uss w-20 h-20">
+              <div className="magicpattern"></div>
+              <img src="/img/iphone.png" className="object-cover" alt="" srcSet="" />
             </div>
           </div>
           <div className="df">
-            <ImgShapeContainer path={"/img/iphone.png"} />
+            <div className="uss gift-img-img ">
+              <div className="magicpattern"></div>
+              <img src="/img/iphone.png" className="object-cover" alt="" srcSet="" />
+            </div>
             <ul>
-              <li>آيفون 12</li>
+              <li className="title">آيفون 12</li>
               <li>
-                أحدث موديل بميزات متقدمة، شاشة Super Retina XDR، كاميرا مزدوجة
-                عالية الجودة، ومعالج A14 Bionic
+                أحدث موديل بميزات متقدمة، <span className="pink-font">شاشة Super Retina XDR، كاميرا مزدوجة
+                عالية الجودة</span>، ومعالج A14 Bionic
               </li>
             </ul>
           </div>
-          <ul>
-            <li>تاريخ الاستحقاق: 2025/01/01</li>
-            <li>إجمالي الكمية للتسليم: 1500</li>
-            <li>تم التسليم: 600</li>
-            <li>تصنيفك: 27</li>
-          </ul>
+          <div className="df-c !g2">
+            <div className="df w-full">
+              <div className="df !gap-2 w-1/2">
+                <div className="rounded-icon  !rounded-md">
+                  <BsTruck />
+                </div>
+                <div className="df-c g0">
+                  <div className='text-black font-bold'>1250</div>
+                  <div className='text'>الكمية المباعة</div>
+                </div>
+              </div>
+              <div className="df">
+                <div className="rounded-icon yellowed  !rounded-md">
+                  <GoGoal />
+                </div>
+                <div className="df-c g0">
+                  <div className='text-black font-bold'>2500</div>
+                  <div className='text'>الكمية المطلوبة</div>
+                </div>
+              </div>
+            </div>
+            <div className="df w-full">
+              <div className="df !gap-2 w-1/2">
+                <div className="rounded-icon pinked  !rounded-md">
+                  <BsClock />
+                </div>
+                <div className="df-c g0">
+                  <div className='text-black font-bold'>12, يناير 2025</div>
+                  <div className='text'>الموعد النهائي</div>
+                </div>
+              </div>
+              <div className="df">
+                <div className="rounded-icon errored !rounded-md">
+                  <GiRank1 />
+                </div>
+                <div className="df-c g0">
+                  <div className='text-black font-bold'>50</div>
+                  <div className='text'>ترتيبك</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div className="df-c leaderboard">
   <div className="df jc-sb">

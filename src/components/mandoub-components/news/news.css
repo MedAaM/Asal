@@ -1,5 +1,5 @@
 .news {
-    padding: 1rem 1rem 4rem;
+    padding: 1rem 1rem 4rem !important;
     background-color: var(--light-bg);
     color: var(--text);
     border-radius: 1rem;

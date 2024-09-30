@@ -1,8 +1,9 @@
 .reviews {
-    padding: 3rem 10rem;
+    padding: 3rem 0;
     display: flex;
     flex-direction: column;
     gap: 4rem;
+    align-items: center;
 }
 
 .reviews .review-line-container {
@@ -55,7 +56,7 @@
     width: 4rem;
     aspect-ratio: 1;
     object-fit: cover;
-    border-radius: 7px;
+    border-radius: 50%;
 }
 
 .comment-user-img {
@@ -66,4 +67,13 @@
 .comment {
     border-bottom: 1px solid #c6c6c6b3;
     padding: 3rem 0;
+}
+
+.comments {
+    width: 70%;
+}
+
+.comments-upper {
+    
+    width: 70%;
 }

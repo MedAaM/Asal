@@ -111,21 +111,6 @@ function WithDrawModal({ handleClose }) {
                 />
               </label>
             </div>
-            <div>
-              <h1 className="title">معلومات بطاقة الائتمان</h1>
-              <Grid container spacing={5}>
-                <Grid item xs={12}>
-                  <TextField
-                    fullWidth
-                    id="card-number-input"
-                    placeholder="8763 2345 3478"
-                    label="card id"
-                    type="number"
-                  />
-                </Grid>
-                
-              </Grid>
-            </div>
           </div>
           <div className="df-c">
             <h1 className="title">سحب الراتب</h1>

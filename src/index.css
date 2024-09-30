@@ -12,12 +12,13 @@
   --cyan-light: #d5edff;
   --pink: #fa6ba7;
   --pink-light: #fee1ed;
-  --bg: #f7f7f9;
+  --bg: #f5f7f9;
   --light-bg: #ffffff;
   --honey-shape: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
   --shadow : rgba(149, 157, 165, 0.2) 0px 8px 15px;
-  --success : #00ff90;
+  --success : #00dd57;
   --error : #ff0055;
+  --error-light : #fbaac5;
   --text : #262b43b3;
   --shipped: #72cd87;
   --shipped-light: #cdf5d3;
@@ -27,7 +28,123 @@
   --pending-light: #fff3dc;
 }
 .MuiOutlinedInput-root fieldset {
-  border-radius: 18px !important;
+  border-radius: 7px !important;
+}
+
+.magicpattern { 
+  width: 100%;
+  height: 100%;
+  transform: scale(1.5);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: repeat;
+  background-image: url("data:image/svg+xml;utf8,%3Csvg viewBox=%220 0 1000 1000%22 xmlns=%22http:%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cdefs%3E%3CclipPath id=%22a%22%3E%3Cpath fill=%22currentColor%22 d=%22M855 687.5Q717 875 506 865T191 677.5Q87 500 210 355.5T533 154q200-57 330 144.5t-8 389Z%22%2F%3E%3C%2FclipPath%3E%3C%2Fdefs%3E%3Cg clip-path=%22url(%23a)%22%3E%3Cpath fill=%22%23ffb500%22 d=%22M855 687.5Q717 875 506 865T191 677.5Q87 500 210 355.5T533 154q200-57 330 144.5t-8 389Z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+}
+
+.gift-img-img .magicpattern {
+  transform: scale(1) !important;
+}
+.gift-img-img  {
+  width: 15rem;
+  height: 15rem;
+}
+
+.pink-font {
+  color: var(--cyan);
+  font-weight: bold;
+}
+
+.gift-img-img  img{
+  width: 80% !important;
+  height: 80% !important;
+  transform: scale(-50%);
+}
+.gift-img-img .magicpattern {
+  transform: scale(1) !important;
+}
+
+.qte-left .CompactCard {
+  flex-direction: row-reverse;
+}
+
+.qte-left .radialBar{
+  flex: 1 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: end;
+}
+
+.qte-left .detail {
+  align-items: flex-start;
+
+} 
+
+
+
+.uss {
+  position: relative;
+}
+
+.uss img {
+  width: 4rem;
+    height: 5rem;
+    object-fit: cover;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(76%, -50%);
+}
+
+
+.small-text {
+  font-size: 12px;
+}
+
+.icon-trans {
+  color: var(--purple);
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-59%);
+}
+
+input[type = text],
+input[type = password] {
+  border: 1px solid gray;
+  border: 1px solid #d2d2d2;
+  height: 3rem;
+  border-radius: 5px;
+  outline: none;
+  padding-right: 1rem;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.success-icon {
+  color: var(--success);
+  font-size: 26px;
+}
+
+.success-pw {
+  color: var(--purple);
+  font-weight: bold;
+
+}
+
+.edit .w-1\/3 {
+   width: 31% !important;
+}
+
+.pw-prog {
+  width: 80%;
+  font-size: 12px;
+}
+
+input[type = text]:focus,
+input[type = password]:focus {
+  border: 1px solid var(--purple);
+
 }
 
 
@@ -66,6 +183,17 @@ body {
 
 .pr {
   position: relative;
+}
+
+.label-trans {
+  background-color: var(--light-bg);
+  padding: 0 5px;
+  font-size: 10px;
+  position: absolute;
+  color: var(--cyan);
+  right: 1rem;
+  top: 0;
+  transform: translateY(-50%);
 }
 
 .jc-sa {
@@ -157,6 +285,10 @@ body {
   color: var(--success);
 }
 
+.w-45 {
+  width: 45%;
+}
+
 .center-content {
   display: flex !important;
   justify-content: center;
@@ -175,6 +307,20 @@ body {
 .title {
   font-size: 25px;
   font-weight: bold;
+}
+
+.css-20o4f4-MuiDataGrid-root {
+  text-align: right !important;
+  border: none !important;
+}
+
+.MuiDataGrid-cell--textLeft {
+  -webkit-box-pack: start;
+    display: flex;
+    -ms-flex-pack: start;
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .title-1 {
@@ -214,7 +360,7 @@ body {
     font-size: 14px;
     /* height: 25px; */
     word-spacing: 0px;
-    letter-spacing: .0892857143em;
+    
     text-decoration: none;
     text-transform: uppercase;
     min-width: 64px;
@@ -238,7 +384,7 @@ body {
     font-size: 14px;
     /* height: 25px; */
     word-spacing: 0px;
-    letter-spacing: .0892857143em;
+    
     text-decoration: none;
     text-transform: uppercase;
     min-width: 64px;
@@ -267,7 +413,7 @@ body {
     font-size: 14px;
     /* height: 25px; */
     word-spacing: 0px;
-    letter-spacing: .0892857143em;
+    
     text-decoration: none;
     text-transform: uppercase;
     min-width: 64px;
@@ -287,7 +433,29 @@ body {
 }
 
 .css-yrdy0g-MuiDataGrid-columnHeaderRow{
-  background: #f3f3f3 !important;
+  background: var(--purple-light) !important;
+  color: var(--purple) !important;
+}
+
+.MuiTablePagination-selectLabel {
+  display: none !important;
+}
+
+.css-78c6dr-MuiToolbar-root-MuiTablePagination-toolbar {
+  direction: ltr;
+}
+
+.css-128fb87-MuiDataGrid-toolbarContainer {
+  align-items: flex-start !important;
+}
+
+.css-et1aok-MuiButtonBase-root-MuiButton-root {
+  color: var(--purple )!important;
+  gap: 1rem !important;
+  padding: 5px 1rem !important;
+  border: 1px solid var(--purple) !important;
+  border-radius: 1rem !important;
+  margin: 0 0 1rem 0 !important;
 }
 
 

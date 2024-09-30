@@ -28,9 +28,7 @@ kbd {
 }
 
 .modal {
-    max-height: calc(100% - 64px);
-    max-width: 444px;
-    width: calc(100% - 64px);
+    width: fit-content;
     margin: 32px;
     overflow-y: auto;
 
@@ -42,6 +40,22 @@ kbd {
     align-items: center;
     padding: 3rem;
     box-shadow: var(--shadow);
+}
+
+.modal::-webkit-scrollbar {
+    display: none;
+}
+
+.payment-label {
+    border: 2px solid #e4e4e4;
+    border-radius: 1rem;
+    padding: 1rem;
+    width: 12rem;
+    align-items: center;
+}
+
+.payment-label img {
+    border-radius: 7px;
 }
 
 
@@ -90,7 +104,27 @@ kbd {
 }
 
 .notif-backdrop {
-    background-color: #f0f8ff00;
+    background: #7c7b7b00;
+}
+
+.notif-height {
+    height: 67vh !important;
+}
+
+.unseen {
+    background: var(--cyan-light);
+    position: relative;
+    border-radius: 1rem; 
+}
+.unseen::after {
+    position: absolute;
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: var(--cyan);
+    left: 1rem;
+    top: 1rem;
 }
 
 .add-button {
@@ -171,14 +205,15 @@ kbd {
 }
 
 .notifications-modal {
-        color: var(--text) !important;
-        padding: 0rem !important;
-        width: 55vh !important;
-        margin: 0 !important;
-        position: absolute;
-        top: right;
-        right: 10%;
-        top: 15%;
+    color: var(--text) !important;
+    padding: 0rem !important;
+    width: 55vh !important;
+    margin: 0 !important;
+    position: absolute;
+    top: right;
+    right: 16%;
+    top: 11%;
+    border: 1px solid #d3d3d3;
     }
 
 .withdraw-modal {
@@ -235,6 +270,7 @@ kbd {
     width: 95%;
     overflow-y: scroll;
     border-bottom: 1px solid #e5e5e8;
+    padding-left: 1rem;
 }
 
 .notif-panel {
@@ -246,8 +282,10 @@ kbd {
     padding: 1rem 1rem;
     border-bottom: 1px solid #e5e5e8;
     transition: 0.5s;
+    margin-bottom: 7px;
+    cursor: pointer;
 }
-.notification:hover {
+.notification:hover:not(.unseen) {
     background-color: #f2f3f4;
 }
 
@@ -257,6 +295,8 @@ kbd {
 .notification .text {
     font-size: 12px;
 }
+
+
 
 .total-salary {
     padding: 2rem 1rem;

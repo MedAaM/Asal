@@ -142,6 +142,9 @@
 .leader.trans{
     transform: translateY(30%);
 }
+.trans{
+    transform: translateY(100%);
+}
 
 .medal {
     margin: auto;

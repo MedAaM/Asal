@@ -12,9 +12,10 @@
 }
 
 .file-uploader {
-    border: 1px solid var(--text);
     padding: 5px 1rem;
     border-radius: 1rem;
+    color: var(--cyan);
+    font-weight: bold;
 
 }
 
@@ -51,10 +52,10 @@
     height: 200px;
     padding: 20px;
     border-radius: 10px;
-    border: 2px dashed #555;
     color: #444;
     cursor: pointer;
     transition: background .2s ease-in-out, border .2s ease-in-out;
+    background-color: #e4f0fc;
   }
   
   .drop-container:hover {
@@ -96,16 +97,52 @@
 
 .edit .media label {
     background-color: var(--cyan-light);
-    border-radius: 7px;
-    font-weight: bold;
+    border-radius: 20px;
+    font-size: 15px;
     color: var(--cyan) ;
     padding: 7px 1rem;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .social-link {
+    background-color: var(--cyan-light);
+    border-radius: 20px;
+    font-size: 15px;
+    color: var(--cyan) ;
+    padding: 7px 1rem;
+    width: 60%;
+}
+
+.danger .details-btn {
+  background-color: var(--error-light);
+  color: var(--error);
+  font-weight: bold;
+  
+}
+.danger .details-btn:hover {
+  background-color: var(--error) !important;
+  color: white;
+}
+
+.tick {
+  width: 2rem;
+  border-radius: 7px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  background-color: var(--cyan);
+
 }
 
 .edit .media label.selected {
     background-color: var(--cyan);
     color: white;
+    border: none !important;
 }
 
 .edit .media input[type=radio] {
@@ -114,4 +151,32 @@
 
 .password {
     width: 30%;
+}
+
+.edit-section {
+  width: 50%;
+}
+
+.payment-m {
+  border: 1px solid #d4d4d4;
+  padding: 5px 1rem;
+  border-radius: 5px;
+}
+
+.payment-status {
+  width: 20%;
+  cursor: pointer;
+  color: #546bc3;
+  font-weight: bold;
+  border-radius: 1rem;
+}
+
+.b-default {
+  border: 1px solid #546bc3;
+}
+
+.payment-status.default {
+  cursor: text;
+  padding: 5px 1rem;
+  background-color: #eaedfc;
 }

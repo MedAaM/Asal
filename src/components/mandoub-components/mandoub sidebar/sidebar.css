@@ -29,6 +29,12 @@
     border-top: solid 1px var(--navbar-dark-secondary);
   }
 
+  hr {
+    margin: 0;
+    border: none;
+    border-top: solid 1px var(--navbar-dark-secondary);
+  }
+
   #nav-bar a {
     color: #555;
     text-decoration: inherit;
@@ -166,11 +172,12 @@
 
   .indicator {
     position: absolute;
-    top: 0;
-    left: 50%;
+    top: 8px;
+    left: 32%;
     transform: translateX(-100%);
-    width: 1.2rem;
-    height: 1.2rem;
+    width: 15px;
+    aspect-ratio: 1;
+    /* height: 1.2rem; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -181,8 +188,8 @@
     opacity: 1 !important;
 }
 .indicator span{
-      opacity: 1 !important;
-    font-size: 12px;
+    opacity: 1 !important;
+    font-size: 8px;
   }
   
   .nav-button span {

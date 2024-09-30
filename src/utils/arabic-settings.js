@@ -65,3 +65,34 @@ export const arabicLocaleText = {
   footerPaginationLabelDisplayedRows: ({ from, to, count }) =>
     `من ${from} إلى ${to} من ${count !== -1 ? count : `أكثر من ${to}`}`,
 };
+
+export function translatePath(segment) {
+  switch (segment.toLowerCase()) {
+    case "home":
+      return "الرئيسية";
+    case "staff":
+      return "الموظف";
+    case "details":
+      return "التفاصيل";
+    case "profile":
+      return "الملف الشخصي";
+    case "settings":
+      return "الإعدادات";
+    case "orders":
+      return "الطلبات";
+    case "order":
+      return "طلب";
+    case "edit":
+      return "تعديل";
+    case "transaction":
+      return "المعاملة";
+    case "notifications":
+      return "إشعارات";
+    case "chat":
+      return "الدردشات";
+    case "reviews":
+      return "المراجعات";
+    default:
+      return segment;
+  }
+}

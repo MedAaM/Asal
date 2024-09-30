@@ -16,7 +16,7 @@
     border-radius: 50%;
     overflow: hidden;
     padding: 3px;
-    border: 3px solid var(--primary);
+    border: 3px solid var(--purple);
     background-color: var(--light-bg);
 }
 .card-img {
@@ -29,10 +29,11 @@
 
 .carousel-container {
     padding: 2rem;
-    background: rgb(148,174,175);
-    background: linear-gradient(16deg, rgba(148,174,175,1) 15%, rgba(118,127,218,1) 100%);
+    /* background: rgb(148, 174, 175); */
+    /* background: linear-gradient(16deg, rgba(148, 174, 175, 1) 15%, rgba(118, 127, 218, 1) 100%); */
     margin-top: 3rem;
     border-radius: 2rem;
+    background: var(--purple-light);
 }
 
 .card .banner svg {
@@ -56,6 +57,10 @@
     font-size: 0.85rem;
     text-align: center;
     padding: 0 2rem 1.2rem;
+}
+
+.title {
+    color: black !important;
 }
 .card .actions {
     display: flex;
@@ -159,7 +164,7 @@
     background-color: var(--light-bg);
     flex-direction: column;
     gap: 33px;
-    border-radius: 1rem;
+    border-radius: 10pxrem;
 
 }
 
@@ -261,7 +266,7 @@
 .swiper-button-prev, .swiper-button-next {
     color: white !important;
     font-size: 16px !important;
-    background-color: var(--primary);
+    background-color: var(--purple);
     border-radius: 50%;
     width: 3rem !important;
     height: 3rem !important;

@@ -44,18 +44,24 @@ function OrderListTable() {
       {
         field: 'order',
         headerName: 'الطلب',
-        width: 100,
+        minWidth: 150,
         renderCell: (params) => (
-          <div className="x-center order-id">
+          <div className="order-id">
             <span>{params.value}</span>
           </div>
         ),
       },
-      { field: 'date', headerName: 'التاريخ', width: 200 },
+      {
+        field: 'date',
+        headerName: 'التاريخ',
+        minWidth: 150, // minimum width for date
+        flex: 1,       // takes up remaining space
+      },
       {
         field: 'customer',
         headerName: 'العميل',
-        width: 250,
+        minWidth: 150, // minimum width for customer
+        flex: 1,       // takes up remaining space
         renderCell: (params) => (
           <div className="df">
             <div className="order-cus-img">
@@ -71,7 +77,7 @@ function OrderListTable() {
       {
         field: 'payment',
         headerName: 'الدفع',
-        width: 150,
+        minWidth: 150, // adjusted width based on content
         renderCell: (params) => (
           <div className={`mr-4 g0 payment df ${getPaymentStatusClass(params.value)}`}>
             <div className={`status-dot ord-${params.value}`}>
@@ -83,7 +89,7 @@ function OrderListTable() {
       {
         field: 'status',
         headerName: 'الحالة',
-        width: 150,
+        minWidth: 150, // adjusted width based on content
         renderCell: (params) => (
           <div className={`status df ${getStatusClass(params.value)}`}>
             <div className="status-label">
@@ -95,7 +101,7 @@ function OrderListTable() {
       {
         field: 'method',
         headerName: 'طريقة الدفع',
-        width: 150,
+        minWidth: 150, // adjusted width based on content
         renderCell: (params) => {
           let imgSrc = '';
           switch (params.value) {
@@ -112,7 +118,7 @@ function OrderListTable() {
               imgSrc = '/img/default.png';
               break;
           }
-
+    
           return (
             <div className="df method-cell">
               <img src={imgSrc} alt={params.value} className="w-8 h-8 object-contain" />
@@ -124,15 +130,16 @@ function OrderListTable() {
       {
         field: 'actions',
         headerName: 'الإجراء',
-        width: 150,
+        minWidth: 150, // adjusted width based on content
         renderCell: (params) => (
           <div className="x-center df ord--actions">
-            <Link to={`details/order/${params.value}`}><FaRegEye /></Link>
+            <Link to={`details/${params.value}`}><FaRegEye /></Link>
             <MdDeleteOutline />
           </div>
         ),
       },
     ];
+    
 
     setColumns(selectedColumns);
 
@@ -147,19 +154,40 @@ function OrderListTable() {
       { id: 8, order: '#7003', date: 'الجمعة 10 يونيو 2022, 12:59 م', customer: { name: 'تاني بيجيتي', email: 'tbiaggetti7@eepurl.com' }, payment: 'فشل', status: 'تم التسليم', method: 'ماستر كارد', actions: '7003' },
       { id: 9, order: '#8632', date: 'الثلاثاء 25 أكتوبر 2022, 10:48 ص', customer: { name: 'اباجايل دروجان', email: 'adrogan8@storify.com' }, payment: 'فشل', status: 'تم الإرسال', method: 'فيزا', actions: '8632' },
       { id: 10, order: '#8501', date: 'الأربعاء 2 نوفمبر 2022, 2:19 م', customer: { name: 'إسمي سانجوين', email: 'esangwin9@taobao.com' }, payment: 'ملغى', status: 'جاهز للاستلام', method: 'باي بال', actions: '8501' },
+      { id: 11, order: '#8502', date: 'الأربعاء 2 نوفمبر 2022, 2:19 م', customer: { name: 'إسمي سانجوين', email: 'esangwin9@taobao.com' }, payment: 'ملغى', status: 'جاهز للاستلام', method: 'باي بال', actions: '8501' },
+      { id: 12, order: '#8503', date: 'الأربعاء 2 نوفمبر 2022, 2:19 م', customer: { name: 'إسمي سانجوين', email: 'esangwin9@taobao.com' }, payment: 'ملغى', status: 'جاهز للاستلام', method: 'باي بال', actions: '8501' },
+      { id: 13, order: '#8504', date: 'الأربعاء 2 نوفمبر 2022, 2:19 م', customer: { name: 'إسمي سانجوين', email: 'esangwin9@taobao.com' }, payment: 'ملغى', status: 'جاهز للاستلام', method: 'باي بال', actions: '8501' },
+      { id: 14, order: '#85s05', date: 'الأربعاء 2 نوفمبر 2022, 2:19 م', customer: { name: 'إسمي سانجوين', email: 'esangwin9@taobao.com' }, payment: 'ملغى', status: 'جاهز للاستلام', method: 'باي بال', actions: '8501' },
+      { id: 15, order: '#850re6', date: 'الأربعاء 2 نوفمبر 2022, 2:19 م', customer: { name: 'إسمي سانجوين', email: 'esangwin9@taobao.com' }, payment: 'ملغى', status: 'جاهز للاستلام', method: 'باي بال', actions: '8501' },
+      { id: 16, order: '#8501r7', date: 'الأربعاء 2 نوفمبر 2022, 2:19 م', customer: { name: 'إسمي سانجوين', email: 'esangwin9@taobao.com' }, payment: 'ملغى', status: 'جاهز للاستلام', method: 'باي بال', actions: '8501' },
+      { id: 17, order: '#8501r8', date: 'الأربعاء 2 نوفمبر 2022, 2:19 م', customer: { name: 'إسمي سانجوين', email: 'esangwin9@taobao.com' }, payment: 'ملغى', status: 'جاهز للاستلام', method: 'باي بال', actions: '8501' },
+      { id: 18, order: '#8501r5', date: 'الأربعاء 2 نوفمبر 2022, 2:19 م', customer: { name: 'إسمي سانجوين', email: 'esangwin9@taobao.com' }, payment: 'ملغى', status: 'جاهز للاستلام', method: 'باي بال', actions: '8501' },
+      { id: 19, order: '#850r1', date: 'الأربعاء 2 نوفمبر 2022, 2:19 م', customer: { name: 'إسمي سانجوين', email: 'esangwin9@taobao.com' }, payment: 'ملغى', status: 'جاهز للاستلام', method: 'باي بال', actions: '8501' },
+      { id: 20, order: '#8505r51', date: 'الأربعاء 2 نوفمبر 2022, 2:19 م', customer: { name: 'إسمي سانجوين', email: 'esangwin9@taobao.com' }, payment: 'ملغى', status: 'جاهز للاستلام', method: 'باي بال', actions: '8501' },
+      { id: 21, order: '#850er1', date: 'الأربعاء 2 نوفمبر 2022, 2:19 م', customer: { name: 'إسمي سانجوين', email: 'esangwin9@taobao.com' }, payment: 'ملغى', status: 'جاهز للاستلام', method: 'باي بال', actions: '8501' },
+      { id: 22, order: '#850f1', date: 'الأربعاء 2 نوفمبر 2022, 2:19 م', customer: { name: 'إسمي سانجوين', email: 'esangwin9@taobao.com' }, payment: 'ملغى', status: 'جاهز للاستلام', method: 'باي بال', actions: '8501' },
+      { id: 23, order: '#855er01', date: 'الأربعاء 2 نوفمبر 2022, 2:19 م', customer: { name: 'إسمي سانجوين', email: 'esangwin9@taobao.com' }, payment: 'ملغى', status: 'جاهز للاستلام', method: 'باي بال', actions: '8501' },
+      { id: 24, order: '#850d1', date: 'الأربعاء 2 نوفمبر 2022, 2:19 م', customer: { name: 'إسمي سانجوين', email: 'esangwin9@taobao.com' }, payment: 'ملغى', status: 'جاهز للاستلام', method: 'باي بال', actions: '8501' },
+      { id: 25, order: '#85d01', date: 'الأربعاء 2 نوفمبر 2022, 2:19 م', customer: { name: 'إسمي سانجوين', email: 'esangwin9@taobao.com' }, payment: 'ملغى', status: 'جاهز للاستلام', method: 'باي بال', actions: '8501' },
+      { id: 26, order: '#85de01', date: 'الأربعاء 2 نوفمبر 2022, 2:19 م', customer: { name: 'إسمي سانجوين', email: 'esangwin9@taobao.com' }, payment: 'ملغى', status: 'جاهز للاستلام', method: 'باي بال', actions: '8501' },
     ];
 
     setRows(orders);
   }, []);
 
   return (
-    <div className="section-card" style={{ height: "100vh", width: "100%" }}>
+    <div className="section-card df-c" style={{ height: "70vh", width: "100%" }}>
+      <div className="title">قائمة طلباتك</div>
       <DataGrid
         rows={rows}
         columns={columns}
-        pageSize={5}
-        components={{ Toolbar: GridToolbar }}
+        
+        slots={{ toolbar: GridToolbar }}
+        disableColumnResize= {true}
         localeText={arabicLocaleText} 
+        pageSize={7} 
+        rowsPerPageOptions={[7, 10, 20]} 
+        pagination= {true}
       />
     </div>
   );

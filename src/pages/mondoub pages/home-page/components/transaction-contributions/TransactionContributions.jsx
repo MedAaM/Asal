@@ -1,75 +1,136 @@
 import React, { useState } from 'react'; 
 import ReactApexChart from 'react-apexcharts';
-import "./contribution.css";
+import "../../../../mondoub pages/home-page/components/transaction-contributions/contribution.css";
+import { BsGraphDownArrow, BsGraphUpArrow } from 'react-icons/bs';
+import { GoGift } from 'react-icons/go';
+import { BiDollar } from 'react-icons/bi';
+import { FaWeight } from 'react-icons/fa';
 
-function generateData(count, range) {
-  let data = [];
-  for (let i = 0; i < count; i++) {
-    const value = Math.floor(Math.random() * (range.max - range.min + 1)) + range.min;
-    data.push(value);
+const series = [
+  {
+    name: 'العسل المباع (كجم)',  // Column chart for honey sold
+    type: 'column',
+    data: [25, 42, 31, 50, 28, 35, 40]  // Honey sold in kg
+  },
+  {
+    type: 'line',
+    name: 'الدخل ($)',  // Line chart for income
+    data: [25 * 2, 42 * 2, 31 * 2, 50 * 2, 28 * 2, 35 * 2, 40 * 2]  // Income calculated as kg_sold * 5
   }
-  return data;
-}
+];
 
 function TransactionContributions() {
-  const [series, setSeries] = useState([
-    { name: 'يناير', data: generateData(30, { min: 0, max: 100 }) },
-    { name: 'فبراير', data: generateData(30, { min: 0, max: 100 }) },
-    { name: 'مارس', data: generateData(30, { min: 0, max: 100 }) },
-    { name: 'أبريل', data: generateData(30, { min: 0, max: 100 }) },
-    { name: 'مايو', data: generateData(30, { min: 0, max: 100 }) },
-    { name: 'يونيو', data: generateData(30, { min: 0, max: 100 }) },
-    { name: 'يوليو', data: generateData(30, { min: 0, max: 100 }) },
-    { name: 'أغسطس', data: generateData(30, { min: 0, max: 100 }) },
-    { name: 'سبتمبر', data: generateData(30, { min: 0, max: 100 }) },
-    { name: 'أكتوبر', data: generateData(30, { min: 0, max: 100 }) },
-    { name: 'نوفمبر', data: generateData(30, { min: 0, max: 100 }) },
-    { name: 'ديسمبر', data: generateData(30, { min: 0, max: 100 }) }
-  ]);
 
   const options = {
     chart: {
-      height: 350,
-      type: 'heatmap',
+      parentHeightOffset: 0,
+      toolbar: { show: false }
     },
     plotOptions: {
-      heatmap: {
-        shadeIntensity: 0.5,
-        radius: 10,
-        useFillColorAsStroke: true,
-        colorScale: {
+      bar: {
+        borderRadius: 7,
+        columnWidth: '35%',
+        colors: {
           ranges: [
-            { from: 0, to: 25, name: 'منخفض', color: '#fbe9e2' },
-            { from: 26, to: 50, name: 'متوسط', color: '#f3b493' },
-            { from: 51, to: 75, name: 'مرتفع', color: '#f29e78' },
-            { from: 76, to: 100, name: 'شديد', color: '#e95c13' },
-          ],
-        },
+            {
+              to: 50,
+              from: 40,
+              color: 'var(--purple)'
+            }
+          ]
+        }
+      }
+    },
+    tools: {
+      download: true  // Disabling export/download option
+    },
+    markers: {
+      size: 3.5,
+      strokeWidth: 2,
+      fillOpacity: 1,
+      strokeOpacity: 1,
+      colors: 'white',
+      strokeColors: 'var(--purple)'
+    },
+    stroke: {
+      width: [0, 2],
+      colors: ['var(--purple-light)', 'var(--purple)']
+    },
+    legend: { show: false },
+    dataLabels: { enabled: false },
+    colors: ['var(--purple-light)'],
+    grid: {
+      strokeDashArray: 7,
+      borderColor: '#a8aab4',
+      padding: {
+        left: -2,
+        right: 8
+      }
+    },
+    states: {
+      hover: {
+        filter: { type: 'none' }
       },
-    },
-    dataLabels: {
-      enabled: false,
-    },
-    title: {
-      text: 'المساهمات في المعاملات خلال 30 يومًا',
+      active: {
+        filter: { type: 'none' }
+      }
     },
     xaxis: {
-      categories: Array.from({ length: 30 }, (_, i) => i + 1),
+      categories: ['الأحد', 'الإثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'],  // Days in Arabic
+      tickPlacement: 'on',
+      labels: { show: false },
+      axisTicks: { show: false },
+      axisBorder: { show: false }
     },
-    tooltip: {
-      y: {
-        formatter: function (value, { seriesIndex, dataPointIndex, w }) {
-          const month = w.globals.seriesNames[seriesIndex];  // Get the month name
-          const day = w.globals.labels[dataPointIndex];  // Get the day (from 1 to 30)
-          return `لقد بعت ${value} كجم في يوم ${day} ${month}`;  // Custom tooltip text
+    yaxis: {
+      min: 0,
+      max: 200,
+      show: true,
+      tickAmount: 3,
+      labels: {
+        formatter: value => `${value.toFixed(1)} كجم`,
+        offsetX: -10,
+        style: {
+          fontSize: '0.8125rem',
+          colors: 'var(--text)'
         }
-      },}
-  };
+      }
+    }
+  }
 
   return (
-    <div className='section-card' dir='rtl'>
-      <div id='chart' className='w-full'>
-        <ReactApexChart options={options} series={series} className="w-full" type='heatmap' height={400} />
+    <div className='section-card' style={{width: "55vh", borderRadius:"1rem", boxShadow: "none"}} dir='rtl'>
+      <div dir='rtl' className='df-c'>
+            <div className="title">transactions</div>
+            <div className="df jc-sb">
+
+            <div className="df !gap-2">
+                <div className="rounded-icon !w-7 !h-7 !rounded-md">
+                    <FaWeight />
+                </div>
+                <div className="df-c g0 text-xs">
+                <div className='text-black font-bold'>180kg</div>
+                <div className='text'>total weights</div>
+                </div>
+                <div className="graphup df !gap-1">10% <BsGraphUpArrow /></div>
+
+            </div>
+            <div className="df">
+            <div className="rounded-icon pinked !w-7 !h-7 !rounded-md">
+                    <BiDollar />
+                </div>
+                <div className="df-c g0 text-xs">
+                <div className='text-black font-bold'>250$</div>
+                <div className='text'>total income</div>
+                </div>
+                <div className="graphup df !gap-1">10% <BsGraphUpArrow /></div> 
+
+            </div>
+            </div>
+        </div>
+      <div id='chart' className='w-full df-c'>
+
+        <ReactApexChart type='line' height={200} style={{width: "50vh"}} series={series} options={options} />     
       </div>
     </div>
   );

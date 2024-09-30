@@ -1,0 +1,55 @@
+.paid-status {
+    background-color: #0fb76a;
+    color: white;
+    padding: 3px 10px ;
+    border-radius: 10px;
+    font-size: 10px;
+}
+
+.header-details {
+    background-color: var(--light-bg);
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+    padding: 1rem;
+}
+
+.maplink {
+    color: #546bc3;
+    font-weight: bold;
+}
+
+svg {
+    cursor: pointer;
+}
+
+.details-btn {
+    border-radius: 7px;
+    padding: 7px 1rem;
+    background-color: #f1ebff;
+    color: #8f70c6;
+    font-size: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    
+}
+
+.header-btns .details-btn:nth-child(2) {
+    background-color: #eaedfc;
+    color: #546bc3;
+}
+
+.sku-color {
+    color: #546bc3;
+
+}
+
+.item .name {
+    color: black !important;
+    font-weight: 500;
+}
+
+.item .sku, .item .price {
+    font-size: 14px;
+} 

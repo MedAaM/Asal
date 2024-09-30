@@ -9,7 +9,7 @@ import useModal from "../../../hooks/useModal";
 import { MdCardGiftcard, MdEdit, MdHistoryEdu, MdNewspaper, MdNotificationAdd, MdOutlineCardMembership, MdPendingActions, MdWorkOutline } from "react-icons/md";
 import { useAuthContext } from '../../../hooks/useAuthContext';
 import NotificationsModal from '../../Modal/NotificationsModal';
-import { BiDollar, BiLogOut } from 'react-icons/bi';
+import { BiChat, BiDollar, BiLogOut } from 'react-icons/bi';
 
 function SideBar({ setExpended, expended }) {
     const handleToggle = () => {
@@ -22,18 +22,8 @@ function SideBar({ setExpended, expended }) {
         localStorage.removeItem('auth');
         dispatch({ type: 'LOGOUT' });
     };
-    
-    const { modalOpen, close, open } = useModal();
     return (
         <div id="nav-bar">
-            <ModalContainer>
-                {modalOpen && (
-                    <NotificationsModal
-                        modalOpen={modalOpen}
-                        handleClose={close}
-                    />
-                )}
-            </ModalContainer>
             <input id="nav-toggle" onClick={handleToggle} type="checkbox" />
             <div id="nav-header">
                 <a id="nav-title" href="#" target="_blank">
@@ -45,16 +35,14 @@ function SideBar({ setExpended, expended }) {
                 <hr />
             </div>
             <div id="nav-content">
-                <Link to="home" className="nav-button">
+                <Link to="/staff" className="nav-button">
                     <CiUser className='fas' />
                     <span>الملف الشخصي</span>
                 </Link>
-                <Link className="nav-button notif-btn" onClick={open}>
+                <Link to="notifications" className="nav-button notif-btn">
                     <MdOutlineCircleNotifications className="fas" />
                     <span>الإشعارات</span>
-                    <div className="indicator">
-                        <span>3</span>
-                    </div>
+
                 </Link>
                 <Link to="orders" className="nav-button">
                     <CiDeliveryTruck className="fas" />
@@ -74,9 +62,13 @@ function SideBar({ setExpended, expended }) {
                     <span>تعديل الملف الشخصي</span>
                 </Link>
                 <hr />
+                <Link className="nav-button" to="chat">
+                    <BiChat className="fas" />
+                    <span>الدردشات</span>
+                </Link>
                 <Link className="nav-button" onClick={handleLogout}>
                     <BiLogOut className="fas" />
-                    <span>تسجيل الخروج</span>
+                    <span>الخروج</span>
                 </Link>
                 <div id="nav-content-highlight"></div>
             </div>

@@ -52,9 +52,12 @@ function ReviewsPage() {
   ];
   
   return (
-    <div className="section-card reviews">
+    <div className=" reviews">
+      <div className="df-c ai-c ">
+
+      <div className="df-c w-full section-card comments-upper !gap-6">
       <div className="bold-1">التقييمات</div>
-      <div className="df jc-sb ai-stretch">
+      <div className="df w-full !gap-28 jc-c ai-stretch">
         <div className="df-c">
           <div className="bold-1">إجمالي التقييمات</div>
           <div>
@@ -116,7 +119,10 @@ function ReviewsPage() {
           </div>
         </div>
       </div>
-      <div className="comments">
+      </div>
+      
+      
+      <div className="comments section-card">
         {comments.map((review, index) => (
           <div key={index} className="df comment ai-fs gap-8">
             <div className="df comment-user-img ai-stretch">
@@ -137,13 +143,14 @@ function ReviewsPage() {
                 <Stars number={review.rating} /> {review.date}
               </div>
               <div className="text">{review.comment}</div>
-              <div className="df">
-                <div className="btn w-fit text-xs">عرض العميل</div>
-                <div className="outline-btn w-fit text-xs">الإبلاغ</div>
+              <div className="df header-btns">
+                <div className="details-btn">عرض العميل</div>
+                <div className="details-btn">الإبلاغ</div>
               </div>
             </div>
           </div>
         ))}
+      </div>
       </div>
     </div>
   );
