@@ -1,8 +1,4 @@
-import React from 'react'
 import "./news.css"
-import { RiAdminFill } from 'react-icons/ri'
-import { BsEyeSlash } from 'react-icons/bs'
-import { CgAttachment } from 'react-icons/cg'
 
 function News() {
   return (

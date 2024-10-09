@@ -38,11 +38,12 @@ function Orders() {
       <OrderCard />
       <OrderListTable />
       <Transaction />
-      <div className='section-card' style={{ height: 460, width: '60%', marginTop:"1rem" }}>
+      <div className='section-card rt' style={{ height: 460, width: '60%', marginTop:"1rem" }}>
         معاملاتك الأخيرة
         <DataGrid
           rows={rows}   
           columns={columns}
+          disableColumnResize={false}
           pageSize={5}
           rowsPerPageOptions={[5]}
           components={{

@@ -495,3 +495,48 @@ body {
   padding: 0 !important;
 }
 
+@media print {
+  #nav-bar {
+    display: none !important;
+  }
+
+  .text {
+    font-size: 10px !important;
+  }
+  .header-details {
+    display: none !important;
+  }
+  .det .costumer{
+    width: 100% !important;
+   
+}
+
+.det .header-btns.df.mx-auto {
+    flex-direction: column;
+    width: 100%;
+}
+.det .header-btns.df.mx-auto .details-btn{
+    justify-content: center;
+    width: 100%;
+}
+.profile--content {
+  height: unset !important;
+}
+.mandoub-nav {
+  display: none !important;
+}
+
+.ord-timeline {
+  display: none !important;
+}
+.res hr {
+  display: none !important;
+}
+.profile--page {
+  height: unset !important;
+  padding: 0 !important;
+}
+.section-card.cus-info .df-c.text-xs > .df{
+  justify-content: space-between !important;
+}
+}

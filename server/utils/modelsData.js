@@ -1,4 +1,3 @@
-const { type } = require("@testing-library/user-event/dist/type");
 const mongoose = require("mongoose");
 
 const user = {
@@ -64,23 +63,22 @@ const order = {
   },
   shippingAddress: Object,
   paymentMethod: { type: String, required: true }, 
-  paymentStatus: { type: String, required: true, default: "pending" },
+  paymentStatus: { type: String, required: true, default: "pending",enum: [
+    'مدفوع',
+    'ملغى',
+    'فشل',
+    'معلق',
+  ] },
   orderStatus: {
     type: String,
     required: true,
     enum: [
-      'placed',
-      'processing',
-      'shipped',
-      'delivered',
-      'cancelled',
-      'returned',
-      'refunded',
-      'pending',
-      'failed',
-      'completed'
+      'تم التسليم',
+      'جاهز للاستلام',
+      'خرج للتوصيل',
+      'تم الإرسال',
     ],
-    default: 'placed'
+    default: 'خرج للتوصيل'
   },
   shippedDate: { type: Date }, 
   trackingNumber: { type: String },
@@ -214,7 +212,7 @@ const product = {
   name: { type: String, required: true, index: true },
   slug: { type: String, required: true, unique: true },
   productId: { type: String, required: true, unique: true },
-  unit: { type: String, enum: ['pcs', 'kg', 'g', 'oz','ltr'], default: 'pcs' },
+  unit: { type: String, enum: ['قطعة', 'كغ', 'غ', 'أوقية', 'لتر'], default: 'لتر' },
   unitValue: { type: String, default: '1' },
   price: { type: Number, required: true },
   discount: { type: Number, default: 0 },
@@ -223,19 +221,20 @@ const product = {
   type: { type: String },
   image: { type: [String] },
   gallery: { type: [String] },
+  qty:Number,
   categories: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Category' }],
   subcategories: { type: [String] },
   childCategories: { type: [String] },
   brand: { type: mongoose.Schema.Types.ObjectId, ref: 'Brand' },
-  currency: { type: String, default: 'USD' },
+  currency: { type: String, default: 'ريال' },
   trending: { type: Boolean, default: false },
   new: { type: Boolean, default: false },
   bestSelling: { type: Boolean, default: false },
   quantity: { type: Number, default: 0 },
   sku: { type: String },
   colors: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Color' }],
-  attributes: { type: mongoose.Schema.Types.ObjectId, ref: 'Attribute' },
-  variants: { type: [{ name: String, price: Number }] },
+  attributes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Attribute' }],
+  variants: Array,
   attributeIndex: { type: String },
   seo: {
     title: { type: String },

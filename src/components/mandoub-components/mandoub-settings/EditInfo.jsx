@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { CgAttachment } from "react-icons/cg";
-import { footerVariants } from '../../../utils/motion';
 
 function EditInfo() {
     const [droppedFiles, setDroppedFiles] = useState(null);

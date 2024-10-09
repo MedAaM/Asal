@@ -1,6 +1,7 @@
 const { default: mongoose } = require('mongoose');
 const Category = require('../models/CategoryModel');
-// Get all categories
+const { convertToSlug } = require('../utils/functions');
+
 const getCategories = async (req, res) => {
     try {
         const categories = await Category.find();
@@ -10,7 +11,7 @@ const getCategories = async (req, res) => {
     }
 };
 
-// Get category by ID
+
 const getCategoryById = async (req, res) => {
     try {
         const category = await Category.findById(req.params.id);
@@ -21,9 +22,28 @@ const getCategoryById = async (req, res) => {
     }
 };
 
-// Create a new category
 const addCategory = async (req, res) => {
-    const category = new Category(req.body);
+    const { name, icon, subCategories, topCategory } = req.body;
+
+    const preparedSubCategories = (subCategories || []).map(subCat => ({
+        id: subCat.id || '', 
+        name: subCat.name.trim(),
+        slug: convertToSlug(subCat.name, false), 
+        child: subCat.child ? subCat.child.map(child => ({
+            name: child.name.trim(),
+            slug: convertToSlug(child.name, false), 
+        })) : [],
+    }));
+
+    
+    const category = new Category({
+        name: name.trim(),
+        icon: icon || [], 
+        slug: convertToSlug(name, false), 
+        subCategories: preparedSubCategories,
+        topCategory: topCategory || false, 
+    });
+
     try {
         const savedCategory = await category.save();
         res.status(201).json(savedCategory);
@@ -32,7 +52,8 @@ const addCategory = async (req, res) => {
     }
 };
 
-// Update a category
+
+
 const updateCategory = async (req, res) => {
     try {
         const updatedCategory = await Category.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -43,7 +64,7 @@ const updateCategory = async (req, res) => {
     }
 };
 
-// Delete a category
+
 const deleteCategory = async (req, res) => {
     try {
         const deletedCategory = await Category.findByIdAndDelete(req.params.id);

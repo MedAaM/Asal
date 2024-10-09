@@ -11,17 +11,17 @@ function SalaryChart() {
       {
         type: 'column',
         name: 'المكافأة', // "Bonus" in Arabic
-        data: [20, 30, 25, 10, 0, 30, 12]
+        data: [20, 30, 25, 10, 0]
       },
       {
         type: 'column',
         name: 'الراتب', // "Salary" in Arabic
-        data: [-53, -29, -67, -84, -60, -40, -77]
+        data: [-53, -29, -67, -84, -60]
       },
       {
         type: 'line',
         name: 'الدخل', // "Income" in Arabic
-        data: [10, 0, 10, -20, 0, -15, 10]
+        data: [10, 0, 10, -20, 0]
       }
     ],
     options: {
@@ -76,7 +76,7 @@ function SalaryChart() {
       xaxis: {
         axisTicks: { show: false },
         axisBorder: { show: false },
-        categories: ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو'], // Months in Arabic
+        categories: ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو'], // Months in Arabic
         labels: {
           style: { colors: 'var(--text)', fontSize: '13px' }
         }
@@ -120,7 +120,7 @@ function SalaryChart() {
             </div>
             </div>
         </div>
-        <ReactApexChart className="m-auto" type='bar' height={200} style={{ width: "50vh" }} series={state.series} options={state.options} />
+        <ReactApexChart className="m-auto" type='bar' height={200} style={{ width: "100%" }} series={state.series} options={state.options} />
       </div>
     </div>
   );

@@ -1,6 +1,4 @@
-import React from 'react';
 import './profileHeader.css';
-import { RiTeamLine } from 'react-icons/ri';
 import { CiLocationOn } from 'react-icons/ci';
 import { TfiEmail } from 'react-icons/tfi';
 import { FaFacebook } from "react-icons/fa6";

@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { remove } from "../../utils/arr-utils";
-import { BiBorderRadius } from "react-icons/bi";
 
 const notificationVariants = {
   initial: {

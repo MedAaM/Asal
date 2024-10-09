@@ -40,7 +40,7 @@ function OrderItems() {
             {items.map((item, index) => (
                     <motion.div 
                     variants = {fadeIn("right", "tween", (index+1)*0.2, 1)}
-                    className='df item ai-stretch' key={index}>
+                    className='df item ai-stretch itd' key={index}>
                         <img className="w-20 aspect-square rounded-xl" src={item.imagePath} alt={item.name} />
                         <div className="df-c jc-sb text flex1">
                             <div className="name">{item.name}</div>

@@ -1,10 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Backdrop from "../Backdrop/index";
-import { BiCartAdd } from "react-icons/bi";
-import { GiLoveLetter } from "react-icons/gi";
-import Grid from "@mui/material/Grid";
-import { TextField, Typography } from "@mui/material";
 
 const dropIn = {
   hidden: {

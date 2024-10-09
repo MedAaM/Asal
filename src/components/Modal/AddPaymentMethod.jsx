@@ -74,7 +74,7 @@ function AddPaymentMethod({ handleClose }) {
             <div className="df w-full">
               <div className="df-c pr w-full">
                 <label htmlFor="" className="label-trans">
-                  
+                البريد الإلكتروني أو رقم الهاتف للحساب
                 </label>
                 <input
                   type="text"
@@ -82,7 +82,7 @@ function AddPaymentMethod({ handleClose }) {
                 />
               </div>
             </div>
-            <div className="details-btn mr-auto">إرسال</div>
+            
           </div>
                 )
             }
@@ -148,10 +148,22 @@ function AddPaymentMethod({ handleClose }) {
           />
         </div>
       </div>
-      <div className="details-btn mr-auto">إرسال</div>
+      
     </div>
   )
 }
+<div className="df header-btns mr-auto">
+                <div
+                    className="details-btn df"
+                    onClick={handleClose}
+                >
+إلغاء                </div>
+                <div
+                    className="details-btn df"
+                >
+                    تأكيد
+                </div>
+            </div>
 
             </div>
       </motion.div>

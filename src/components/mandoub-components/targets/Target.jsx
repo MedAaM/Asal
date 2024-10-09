@@ -1,8 +1,4 @@
-import React from "react";
 import "./target.css";
-import { MdStarRate } from "react-icons/md";
-import { BsTruck } from "react-icons/bs";
-import { BsCartPlus } from "react-icons/bs";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { GiHoneyJar } from "react-icons/gi";

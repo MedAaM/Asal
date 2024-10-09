@@ -1,9 +1,6 @@
-import React from "react";
 import { BiEdit, BiTrash } from "react-icons/bi";
 import ModalContainer from "../../Modal/ModalContainer";
-import NotificationsModal from "../../Modal/NotificationsModal";
 import useModal from "../../../hooks/useModal";
-import AddPaymentMethod from "../../Modal/AddPaymentMethod";
 import EditBankInfo from "../../Modal/EditBankInfo";
 
 function PaymentMethod({ method }) {
@@ -35,10 +32,10 @@ function PaymentMethod({ method }) {
           method.default ? "default" : ""
         }`}
       >
-        {method.default && "default"}
-        {!method.default && "set as default"}
+        {method.default && "خيار افتراضي"}
+        {!method.default && "تعيين كخيار افتراضي"}
       </div>
-      {method.id != 1 && <div className="df-c">
+      {method.id != 1 && <div className="df-c operations-df-x">
         <BiEdit onClick={open} />
         <BiTrash />
       </div>}

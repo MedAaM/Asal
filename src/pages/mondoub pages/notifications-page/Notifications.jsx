@@ -30,7 +30,7 @@ function Notifications() {
     };
 
     return (
-        <div className="df-c section-card !gap-8 w-3/5 mx-auto">
+        <div className="df-c section-card !gap-8 w-3/5 mx-auto no">
             <div className="df notif-nav">
                 <div className="df flex1 bordered !px-3 !py-2 jc-c active-nav">
                     الكل <span className='count'>24</span>

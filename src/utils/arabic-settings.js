@@ -84,7 +84,7 @@ export function translatePath(segment) {
       return "طلب";
     case "edit":
       return "تعديل";
-    case "transaction":
+    case "transactions":
       return "المعاملة";
     case "notifications":
       return "إشعارات";

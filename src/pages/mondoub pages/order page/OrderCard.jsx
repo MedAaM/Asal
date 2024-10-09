@@ -5,8 +5,8 @@ import { FcCancel, FcImport, FcInspection, FcPositiveDynamic } from "react-icons
 function OrderCard() {
   return (
     <div className="section-card">
-  <div className="df jc-sb">
-    <span className='title'>حالة الطلب</span>
+  <div className="df jc-sb orderdet">
+    <span className='title'> طلباتك </span>
     <div className="df periods">
       <span className='active'>يومي</span>
       <span>شهري</span>

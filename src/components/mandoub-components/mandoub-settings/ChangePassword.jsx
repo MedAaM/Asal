@@ -1,8 +1,7 @@
 import { motion } from 'framer-motion';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { BiCheck } from 'react-icons/bi';
 import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa6';
-import { GiMuscleUp } from 'react-icons/gi';
 import { GoVerified } from 'react-icons/go';
 
 const ChangePassword = () => {

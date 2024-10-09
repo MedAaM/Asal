@@ -6,7 +6,7 @@ import useModal from '../../../hooks/useModal';
 function AddPayment() {
     const { modalOpen, close, open } = useModal();
   return (
-    <div className="section-card w-fit !p-6">
+    <div className="section-card w-fit !p-6 cards">
         <ModalContainer>
         {modalOpen && (
           <AddPaymentMethod 
@@ -15,7 +15,7 @@ function AddPayment() {
           />
         )}
       </ModalContainer>
-          <div className="df ai-stretch !gap-8">
+          <div className="df ai-stretch payments-methods-res !gap-8">
             <div className="df-c">
               <h1>بطاقاتك</h1>
               <div className="payment-card">

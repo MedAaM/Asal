@@ -101,14 +101,12 @@ function TransactionsPage() {
       total: 3650, 
     }
   ];
-
-  // Define columns with method column (image + text)
   const columns = [
-    { field: 'id', headerName: 'المعرف', width: 70, resizable: false },
-    { field: 'salary', headerName: 'الراتب', width: 70, type: 'number', resizable: false },
-    { field: 'bonus', headerName: 'المكافأة', width: 70, type: 'number', resizable: false },
-    { field: 'total', headerName: 'الإجمالي', width: 70, resizable: false },
-    { field: 'transactiondate', headerName: 'تاريخ المعاملة', Width: 200, resizable: false },
+    { field: 'id', headerName: 'المعرف', width: 200 },
+    { field: 'salary', headerName: 'الراتب', width: 200, type: 'number' },
+    { field: 'bonus', headerName: 'المكافأة', width: 200, type: 'number' },
+    { field: 'total', headerName: 'الإجمالي', width: 200 },
+    { field: 'transactiondate', headerName: 'تاريخ المعاملة', Width: 200 },
     {
       field: 'method',
       headerName: 'طريقة الدفع',
@@ -132,7 +130,7 @@ function TransactionsPage() {
   const { modalOpen, close, open } = useModal();
 
   return (
-    <div className='df-c'>
+    <div className='df-c transactionpage'>
       <ModalContainer>
         {modalOpen && (
           <WithDrawModal
@@ -141,7 +139,7 @@ function TransactionsPage() {
           />
         )}
       </ModalContainer>
-      <div className="df ai-stretch">
+      <div className="df ai-stretch sm-fd-col">
         <AddPayment />
         <div className='section-card flex1'>
           <ReactApexChart
@@ -153,11 +151,12 @@ function TransactionsPage() {
         </div>
       </div>
       <div className="df ai-stretch">
-        <div className='section-card ' style={{ height: 460, width:"90vh" }}>
+        <div className='section-card wsm' style={{ height: 460, width:"90vh" }}>
           معاملاتك الأخيرة
           <DataGrid
             rows={rows}
             columns={columns}
+            
             pageSize={5}
             rowsPerPageOptions={[5]}
             components={{

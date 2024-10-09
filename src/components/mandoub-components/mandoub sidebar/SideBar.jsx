@@ -1,14 +1,10 @@
-import React from 'react'
-import "./sidebar.css"
+import "./sidebar.css";
 import { Link } from 'react-router-dom';
 import { CiUser, CiDeliveryTruck } from "react-icons/ci";
 import { MdOutlineCircleNotifications } from "react-icons/md";
-import ModalContainer from "../../Modal/ModalContainer";
-import useModal from "../../../hooks/useModal";
 
-import { MdCardGiftcard, MdEdit, MdHistoryEdu, MdNewspaper, MdNotificationAdd, MdOutlineCardMembership, MdPendingActions, MdWorkOutline } from "react-icons/md";
+import { MdEdit, MdPendingActions } from "react-icons/md";
 import { useAuthContext } from '../../../hooks/useAuthContext';
-import NotificationsModal from '../../Modal/NotificationsModal';
 import { BiChat, BiDollar, BiLock, BiLogOut } from 'react-icons/bi';
 
 function SideBar({ setExpended, expended }) {

@@ -51,8 +51,8 @@ function Transaction() {
     setTotalToPay(0);
   };
   return (
-    <div className="df ai-stretch">
-      <div className="section-card w-50">
+    <div className="df ai-stretch trans-form">
+      <div className="section-card w-50 tf">
       <div className="title">قم بعملية مباشرة</div>
         <div className="df-c w-full pr">
           <label htmlFor="" className="label-trans">اسم العميل</label>

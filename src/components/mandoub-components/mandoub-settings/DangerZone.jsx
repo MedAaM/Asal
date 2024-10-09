@@ -10,7 +10,7 @@ function DangerZone() {
     const { modalOpen, close, open } = useModal();
     const [modal,setModal] = useState("holiday");
   return (
-    <motion.div variants={fadeIn("right", "tween", 1 * 0.2, 1)} initial="hidden" whileInView="show" className="section-card edit-section">
+    <motion.div variants={fadeIn("right", "tween", 1 * 0.2, 1)} className="section-card edit-section">
         <ModalContainer>
         {modalOpen && (
           <Modal

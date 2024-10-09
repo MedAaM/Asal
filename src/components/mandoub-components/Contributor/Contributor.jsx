@@ -1,8 +1,5 @@
-import React from "react";
 import "./Contributor.css";
-import ImgShapeContainer from "../../img shape/ImgShapeContainer";
 import Stars from "../../stars rate/Stars";
-import { MdReport } from "react-icons/md";
 import { FcVip } from "react-icons/fc";
 import { GoReport } from "react-icons/go";
 import { FaFacebook } from "react-icons/fa6";

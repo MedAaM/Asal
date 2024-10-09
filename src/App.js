@@ -7,6 +7,10 @@ import SignUp from './pages/sign up page/SignUp';
 import { useAuthContext } from './hooks/useAuthContext';
 import { ThemeProvider } from '@mui/material/styles';
 import { theme } from './configs/theme';
+import "./responsive1200.css"
+import "./responsive990.css"
+import "./responsive600.css"
+import "./responsive300.css"
 
 function App() {
   const { auth, dispatch } = useAuthContext();
@@ -25,7 +29,6 @@ function App() {
           <Routes>
             <Route path="/signup" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
-            {/* Redirect to /staff by default */}
             <Route path="/" element={<Navigate to="/staff" />} />
             <Route path="/staff/*" element={<ProfilePage />} />
           </Routes>

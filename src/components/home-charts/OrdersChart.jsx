@@ -7,17 +7,17 @@ import { BiError } from 'react-icons/bi';
 
 const state = {
     series: [{
-      name: 'تم التوصيل',  // Delivered in Arabic
+      name: 'تم التوصيل',  
       data: [34, 55, 41, 50, 22]
     }, {
-      name: 'تم الشحن',  // Shipped in Arabic
+      name: 'تم الشحن',  
       data: [10, 23, 20, 20, 13]
     },{
-        name: 'معلق',  // Pending in Arabic
+        name: 'معلق',  
         data: [40, 23, 20, 20, 13]
       },
       {
-        name: 'فشل',  // Failed in Arabic
+        name: 'فشل',  
         data: [50, 23, 20, 20, 13]
       },
     ],
@@ -28,11 +28,11 @@ const state = {
         stacked: true,
         toolbar: {
           tools: {
-            download: false  // Disabling export/download option
+            download: false  
           }
         },
         zoom: {
-          enabled: false  // Zoom disabled
+          enabled: false  
         }
       },
       plotOptions: {
@@ -48,7 +48,7 @@ const state = {
         labels: {
           style: {
             fontSize: '12px',
-            colors: ['#000'],  // Arabic font color
+            colors: ['#000'],  
           }
         }
       },
@@ -58,16 +58,16 @@ const state = {
       stroke: {
         show: true,
         width: 2,
-        colors: ['#ffffff']  // Gap between the stacks
+        colors: ['#ffffff']  
       },
       dataLabels: {
-        enabled: false,  // Disable labels on the bars
+        enabled: false,  
         total: {
-          enabled: false  // Disable the total value on top
+          enabled: false  
         }
       },
       legend: {
-        show: false  // Hiding the legend at the bottom
+        show: false  
       },
       colors: ['var(--shipped-light)', 'var(--pink-light)', 'var(--pending-light)', 'var(--error-light)']
     },
@@ -122,7 +122,7 @@ function OrdersChart() {
         </div>
       </div>
       <div id='chart2' className='w-full df-c ai-center'>
-        <ReactApexChart type='bar' height={200} style={{ width: "50vh" }} series={state.series} options={state.options} />
+        <ReactApexChart type='bar' height={200} style={{ width: "100%" }} series={state.series} options={state.options} />
       </div>
     </div>
   );

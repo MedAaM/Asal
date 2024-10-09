@@ -14,7 +14,7 @@ function Home() {
 
       <ProfileHeader />
       <News />
-      <div className="df !gap-8 ai-stretch">
+      <div className="df !gap-8 ai-stretch g-stats">
       <TransactionContributions />
       <SalaryChart />
       <OrdersChart />

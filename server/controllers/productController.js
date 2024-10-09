@@ -1,88 +1,89 @@
 const upload = require("../config/multerConfig");
 const Product = require("../models/productModel");
 const Attribute = require("../models/attributeModel");
+const customId = require("custom-id-new");
+const { convertToSlug } = require("../utils/functions");
 
 const createProduct = async (req, res) => {
   try {
     const {
       name,
-      slug,
-      productId,
       unit,
-      unitValue,
-      price,
-      discount,
+      unit_val,
+      main_price,
+      sale_price,
       description,
-      shortDescription,
+      short_description,
+      type,
+      category,
+      subcategory,
+      brand,
+      qty,
+      trending,
+      new_product,
+      best_selling,
+      sku,
+      color,
+      attribute,
+      selectedAttribute,
+      variant,
+      displayImage,
+      galleryImages,
+      seo,
+      childCategory,
+      vat,
+      tax,
+    } = req.body; 
+    
+    const random = "P" + customId({ randomLength: 4, upperCase: true });
+    const categories = JSON.parse(category);
+    const subcategories = JSON.parse(subcategory);
+    const childCategories = JSON.parse(childCategory);
+    const image = JSON.parse(displayImage);
+    const gallery = JSON.parse(galleryImages);
+    const colors = JSON.parse(color);
+    const attributes = JSON.parse(attribute);
+    const variants = JSON.parse(variant);
+    const seoData = JSON.parse(seo);
+    
+    const discount = ((main_price - sale_price) / main_price * 100).toFixed(1);
+
+    let productData = {
+      name: name.trim(),
+      slug: convertToSlug(name, true),
+      productId: random,
+      unit: unit.trim(),
+      unitValue: unit_val.trim(),
+      price: main_price,
+      discount,
+      shortDescription: short_description.trim(),
+      description,
       type,
       image,
       gallery,
       categories,
       subcategories,
       childCategories,
-      brand,
-      currency,
-      trending,
-      new: isNew,
-      bestSelling,
-      quantity,
-      sku,
-      colors,
-      attributes,
-      variants,
-      attributeIndex,
-      seo,
-      review,
-      question,
-      vat,
+      brand: brand.trim(),
+      trending: trending ? true : false,
+      new: new_product ? true : false,
+      bestSelling: best_selling ? true : false,
+      seo: seoData,
       tax,
-    } = req.body;
-
-    // Validate attribute references
-    if (attributes && attributes.length > 0) {
-      for (const attributeId of attributes) {
-        const attributeExists = await Attribute.findById(attributeId);
-        if (!attributeExists) {
-          return res.status(400).json({ error: `Attribute with ID ${attributeId} does not exist` });
-        }
-      }
+      vat,
+    };
+    
+    if (type === "simple") {
+      productData.quantity = qty;
+      productData.sku = sku;
+    } else {
+      productData.colors = colors;
+      productData.attributes = attributes;
+      productData.variants = variants;
+      productData.attributeIndex = selectedAttribute;
     }
 
-    const newProduct = new Product({
-      name,
-      slug,
-      productId,
-      unit,
-      unitValue,
-      price,
-      discount,
-      description,
-      shortDescription,
-      type,
-      image,
-      gallery,
-      categories,
-      subcategories,
-      childCategories,
-      brand,
-      currency,
-      trending,
-      new: isNew,
-      bestSelling,
-      quantity,
-      sku,
-      colors,
-      attributes,
-      variants,
-      attributeIndex,
-      seo,
-      review,
-      question,
-      vat,
-      tax,
-    });
-
-    const savedProduct = await newProduct.save();
+    const savedProduct = await new Product(productData).save();
 
     res.status(201).json(savedProduct);
   } catch (error) {

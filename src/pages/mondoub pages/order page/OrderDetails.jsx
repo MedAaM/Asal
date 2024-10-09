@@ -1,35 +1,28 @@
-import React from "react";
 import OrderHeader from "../../../components/mandoub-components/order-header/OrderHeader";
-import OrderDetailsTable from "./OrderDetailsTable";
 import OrderTimeLine from "./OrderTimeLine";
-import { BiCartAdd, BiHeartCircle } from "react-icons/bi";
 import OrderItems from "../../../components/mandoub-components/order-header/OrderItems";
 import { LuBox } from "react-icons/lu";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { motion } from "framer-motion";
 import { staggerChildren, textVariant2 } from "../../../utils/motion";
-import { FaLocationArrow } from "react-icons/fa6";
 import { GoLocation } from "react-icons/go";
 
 function OrderDetails() {
   return (
-    <div className="df-c">
+    <div className="df-c det">
       <OrderHeader />
-      <div className="df wrap ai-fs">
+      <div className="df wrap res ai-fs">
         <div className="df-c flex1">
         <OrderItems />
-        <div className="section-card ">
+        <div className="section-card ord-timeline">
             <OrderTimeLine />
           </div>
         </div>
-        <motion.div 
+        <div 
          variants={staggerChildren}
-         initial="hidden"
-         whileInView="show"
-         viewport={{ once: false, amount: 0.25 }}
-        className="df-c w-1/3">
+        className="df-c w-1/3 costumer">
           <div className="section-card cus-info !gap-6 w-100">
-            <motion.div variants={textVariant2} className="df-c">
+            <div variants={textVariant2} className="df-c">
             <div className="title">معلومات العميل</div>
             <div className="df">
               <div className="order-cus-img">
@@ -54,7 +47,7 @@ function OrderDetails() {
               </div>
             </div>
             <hr />
-            </motion.div>
+            </div>
             
             <div className="title">تفاصيل التوصيل</div>
 
@@ -100,7 +93,7 @@ function OrderDetails() {
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

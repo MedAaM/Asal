@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Backdrop from "../Backdrop";
 import { motion } from "framer-motion";
 import { dropIn } from "../../utils/modals";
 
 function EditBankInfo({ handleClose, method }) {
-  console.log("=========", method);
   const [selectedPayment, setSelectedPayment] = useState("payment3");
 
   const handleSelect = (value) => {
@@ -21,7 +20,7 @@ function EditBankInfo({ handleClose, method }) {
         animate="visible"
         exit="exit"
       >
-        {method.name === "Bank Transfer" && (
+        {method.name === "تحويل بنكي" && (
           <div className="df-c">
             <div className="df w-full">
               <div className="df-c pr">
@@ -70,10 +69,21 @@ function EditBankInfo({ handleClose, method }) {
                 />
               </div>
             </div>
-            <div className="details-btn mr-auto">submit</div>
+            <div className="df header-btns mr-auto">
+                <div
+                    className="details-btn df"
+                    onClick={handleClose}
+                >
+إلغاء                </div>
+                <div
+                    className="details-btn df"
+                >
+                    تأكيد
+                </div>
+            </div>
           </div>
         )}
-        {method.name === "Mobile Payment" && (
+        {method.name === "دفع عبر الهاتف المحمول" && (
           <div className="df-c w-full">
             <div className="">{method.requirements[0].field}</div>
             <div className="df w-full">
@@ -151,7 +161,18 @@ function EditBankInfo({ handleClose, method }) {
                 />
               </div>
             </div>
-            <div className="details-btn mr-auto">submit</div>
+            <div className="df header-btns mr-auto">
+                <div
+                    className="details-btn df"
+                    onClick={handleClose}
+                >
+إلغاء                </div>
+                <div
+                    className="details-btn df"
+                >
+                    تأكيد
+                </div>
+            </div>
           </div>
         )}
       </motion.div>

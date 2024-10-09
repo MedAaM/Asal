@@ -1,6 +1,4 @@
-import React from "react";
 import "./GiftTarget.css";
-import ImgShapeContainer from "../../img shape/ImgShapeContainer";
 import { TbCrown } from "react-icons/tb";
 import { BsClock, BsTruck } from "react-icons/bs";
 import { GiRank1 } from "react-icons/gi";
@@ -28,6 +26,7 @@ function GiftTarget({isHidden}) {
       }
       <div className={`df ${isHidden ? "blur" : ""}`}>
       <div className="df-c gift--container">
+        <div className="title">معلومات عن الهدية</div>
           <div className="gift--target df">
             <div className="uss w-20 h-20">
               <div className="magicpattern"></div>
@@ -55,7 +54,7 @@ function GiftTarget({isHidden}) {
               <img src="/img/iphone.png" className="object-cover" alt="" srcSet="" />
             </div>
           </div>
-          <div className="df">
+          <div className="df gif-info">
             <div className="uss gift-img-img ">
               <div className="magicpattern"></div>
               <img src="/img/iphone.png" className="object-cover" alt="" srcSet="" />
@@ -68,7 +67,7 @@ function GiftTarget({isHidden}) {
               </li>
             </ul>
           </div>
-          <div className="df-c !g2">
+          <div className="df-c !g2 stt">
             <div className="df w-full">
               <div className="df !gap-2 w-1/2">
                 <div className="rounded-icon  !rounded-md">
@@ -112,8 +111,9 @@ function GiftTarget({isHidden}) {
           </div>
         </div>
         <div className="df-c leaderboard">
+        <div className="title">لوحة صدارة المسابقة</div>
   <div className="df jc-sb">
-    <div className="leader-box leader trans">
+    <div className="leader-box leader2 leader trans">
       <div className="img">
         <img
           src="https://www.indiafilings.com/learn/wp-content/uploads/2023/03/Can-a-single-person-own-a-firm-in-India.jpg"
@@ -139,7 +139,7 @@ function GiftTarget({isHidden}) {
       </div>
     </div>
     
-    <div className="leader-box top1 leader">
+    <div className="leader-box leader1 top1 leader">
       <div className="img">
         <img
           src="https://t4.ftcdn.net/jpg/03/64/21/11/360_F_364211147_1qgLVxv1Tcq0Ohz3FawUfrtONzz8nq3e.jpg"
@@ -166,7 +166,7 @@ function GiftTarget({isHidden}) {
       </div>
     </div>
     
-    <div className="leader-box leader trans">
+    <div className="leader-box leader3 leader trans">
       <div className="img">
         <img
           src="https://t4.ftcdn.net/jpg/03/64/21/11/360_F_364211147_1qgLVxv1Tcq0Ohz3FawUfrtONzz8nq3e.jpg"

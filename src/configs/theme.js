@@ -23,7 +23,6 @@ export const theme = createTheme({
           '& .MuiOutlinedInput-root': {
             '& fieldset': {
               borderColor: '#c4c4c4', 
-              // Set the border radius here
             },
             '&:hover fieldset': {
               borderColor: theme.palette.primary.main, 

@@ -3,7 +3,7 @@ import "./topcontributor.css"
 import Contributor from '../Contributor/Contributor'
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-// Import Swiper styles
+
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
@@ -25,6 +25,16 @@ function TopContributor({title}) {
         navigation={true}
         slidesPerView={3}
         centeredSlides={true}
+        breakpoints={{
+          
+          200: {
+            slidesPerView: 1, 
+          },
+          
+          601: {
+            slidesPerView: 3, 
+          },
+        }}
         modules={[Pagination, Navigation]}
         className="mySwiper"
       >
