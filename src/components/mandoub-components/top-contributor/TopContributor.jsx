@@ -1,6 +1,5 @@
-import React from 'react'
-import "./topcontributor.css"
-import Contributor from '../Contributor/Contributor'
+import "./topcontributor.css";
+import Contributor from '../Contributor/Contributor';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 
@@ -31,7 +30,7 @@ function TopContributor({title}) {
             slidesPerView: 1, 
           },
           
-          601: {
+          791: {
             slidesPerView: 3, 
           },
         }}

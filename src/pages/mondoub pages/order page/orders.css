@@ -156,7 +156,7 @@
   background-color: var(--pending);
   border-radius: 50%;
   top: 50%;
-  transform: translateY(-25%);
+  transform: translateY(-50%);
   right: -1rem;
 }
 
@@ -599,7 +599,68 @@
   color: var(--purple) !important
 }
 
+.ord--actions {
+  height: 100%;
+  width: fit-content;
+}
+
 .ord--actions svg {
   font-size: 20px;
   cursor: pointer;
+}
+
+
+/* ================================= */
+.ag-header {
+  background-color: var(--purple-light) !important;
+}
+
+.ag-header-cell-label {
+  color: var(--purple) !important;
+  font-family: inherit;
+
+}
+
+.ag-icon {
+  color: var(--purple) !important;
+}
+
+.ag-root-wrapper {
+  border: none !important;
+}
+
+.ag-row, .ag-root-wrapper-body.ag-layout-normal {
+  background-color: var(--light-bg) !important;
+  color: var(--text) !important;
+}
+
+
+
+.ag-root ::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+.ag-root ::-webkit-scrollbar-button {
+  display: none;
+}
+.ag-root ::-webkit-scrollbar-track-piece {
+  background: var(--purple-light)
+}
+.ag-root ::-webkit-scrollbar-thumb {
+  background: var(--purple);
+  border-radius: 7px;
+}
+
+.ag-paging-panel, .ag-picker-field-wrapper {
+  background-color: var(--purple-light) !important;
+  color: var(--purple) !important;
+}
+
+.ag-cell-label-container {
+  flex-direction: row !important;
+  gap: 1rem !important;
+}
+
+.ag-row {
+  border-bottom: #bababa 1px solid !important;
 }

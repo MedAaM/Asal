@@ -16,7 +16,7 @@ function PaymentMethod({ method }) {
                     />
                 )}
         </ModalContainer>
-      <div className="df w-4/6">
+      <div className="df w-4/6 sm-fd-col">
         <img
           src={method.image}
           alt={method.name}

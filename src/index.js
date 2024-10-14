@@ -4,13 +4,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { AuthContextProvider } from './context/AuthContext';
+import { StyledEngineProvider } from '@mui/material/styles';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <AuthContextProvider>
-      <App />
-    </AuthContextProvider>
+    <StyledEngineProvider>
+      <AuthContextProvider>
+        <App />
+      </AuthContextProvider>
+    </StyledEngineProvider>
   </React.StrictMode>
 );
 

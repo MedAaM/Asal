@@ -1,4 +1,3 @@
-import React from 'react';
 import './orders.css';
 import OrderCard from './OrderCard';
 import OrderListTable from './OrderListTable';
@@ -38,7 +37,7 @@ function Orders() {
       <OrderCard />
       <OrderListTable />
       <Transaction />
-      <div className='section-card rt' style={{ height: 460, width: '60%', marginTop:"1rem" }}>
+      <div className='section-card rt' style={{ height: 460, width: "70%", marginTop:"1rem" }}>
         معاملاتك الأخيرة
         <DataGrid
           rows={rows}   

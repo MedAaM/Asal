@@ -51,9 +51,9 @@ function EditInfo() {
                         </div>
                     </div>
                 </div>
-                <div className="df comment-user-img ai-stretch">
+                <div className="df sm-fd-col comment-user-img ai-stretch">
                     <img
-                        className="!w-40"
+                        className="!w-40 sm-m-auto  "
                         src="https://t3.ftcdn.net/jpg/02/43/12/34/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg"
                         alt="user"
                     />
@@ -87,9 +87,9 @@ function EditInfo() {
                         </label>
                     </div>
                 </div>
-                <div className="df comment-user-img ai-stretch">
+                <div className="df comment-user-img sm-fd-col ai-stretch">
                     <img
-                        className="!w-40 cover-edit"
+                        className="!w-40 cover-edit sm-m-auto"
                         src="/img/banner.avif"
                         alt="user"
                     />

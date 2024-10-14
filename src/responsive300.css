@@ -1,11 +1,15 @@
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 790px) {
+    .sm-fd-col {
+        flex-direction: column !important;
+    }
     #nav-footer {
         height: 30%;
         max-height: 54px;
     }
 
     #nav-bar {
-        width: 3rem;
+        width: 0rem;
+        
     }
     .nav-button {
         width: 3rem;
@@ -13,7 +17,10 @@
     }
 
     #nav-header {
-        width: 3rem;
+                width: 5rem;
+        right: 0;
+        align-items: center;
+        justify-content: center;
     }
 
     #nav-bar hr {
@@ -28,11 +35,11 @@
         transition: opacity 0.1s;
     }
     #nav-header label[for=nav-toggle] {
-        left: calc(98% - 8px);
+        left: calc(58% - 8px);
         transform: translate(-50%);
     }
     #nav-toggle:checked ~ #nav-header label[for=nav-toggle] {
-        left: calc(98% - 8px);
+        left: calc(33% - 9px);
         transform: translate(-50%);
     }
 
@@ -57,8 +64,11 @@
         transition: opacity 0.1s;
       }
       #nav-content {
-        width: 3rem;
-      }
+        width: 5rem;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
 
       #nav-content .nav-button .fas {
         min-width: calc(100% - 16px);
@@ -231,9 +241,6 @@
         padding: 0;
     }
 
-    .media-list {
-        display: none;
-    }
 
     .swiper-wrapper {
         padding-bottom: 1rem;
@@ -557,6 +564,20 @@
     .section-card.cus-info .df-c.text-xs > .df{
         justify-content: space-between !important;
     }
+    .menu-toggle {
+        display: flex !important;
+        height: 4rem;
+        width: 2rem;
+        border: 1px solid black;
+    }
+    .ag-paging-description {
+        font-size: 8px;
+        margin: 0 var(--ag-grid-size);
+    }
+    .ag-paging-row-summary-panel {
+        display: flex;
+        font-size: 12px;
+    }
 }
     
     
@@ -621,8 +642,9 @@
         flex-direction: column;
     }
 
-    .sm-fd-col {
-        flex-direction: column !important;
+    
+    .sm-m-auto {
+        margin: 0 auto !important;
     }
 
     .payments-methods-res .payment-card {
@@ -650,3 +672,32 @@
     .wsm {
         width: 100% !important;
     }
+
+.menu-toggle {
+    display: none;
+    height: 2rem;
+    width: 2rem;
+    border: 1px solid black;
+    position: fixed;
+    z-index: 100;
+    top: 50%;
+    right: 2rem;
+    color: var(--text);
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: 0.2s;
+}
+.w-5rem {
+    width: 5rem !important;
+}
+
+.toggle {
+    width: 5rem !important;
+    z-index: 100;
+}
+
+.toggled {
+    right: 5.2rem !important;
+    transform: rotate(180deg);
+}

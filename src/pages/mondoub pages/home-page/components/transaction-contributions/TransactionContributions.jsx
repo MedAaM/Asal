@@ -1,8 +1,6 @@
-import React from 'react'; 
 import ReactApexChart from 'react-apexcharts';
 import "../../../../mondoub pages/home-page/components/transaction-contributions/contribution.css";
-import { BsGraphDownArrow, BsGraphUpArrow } from 'react-icons/bs';
-import { GoGift } from 'react-icons/go';
+import { BsGraphUpArrow } from 'react-icons/bs';
 import { BiDollar } from 'react-icons/bi';
 import { FaWeight } from 'react-icons/fa';
 
@@ -130,7 +128,7 @@ function TransactionContributions() {
         </div>
       <div id='chart' className='w-full df-c ai-center'>
 
-        <ReactApexChart type='line' height={200} style={{width: "-webkit-fill-available !important"}} series={series} options={options} />     
+        <ReactApexChart type='line' height={200} style={{ width: "100%" }} series={series} options={options} />     
       </div>
     </div>
   );

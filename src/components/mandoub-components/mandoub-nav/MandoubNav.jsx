@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation, useNavigate } from "react-router-dom"; 
+import { useLocation, useNavigate } from "react-router-dom";
 import "./style.css";
 import { IoIosArrowBack, IoIosNotificationsOutline } from "react-icons/io";
 import { RiFullscreenExitLine, RiFullscreenLine } from "react-icons/ri";
@@ -60,6 +60,7 @@ function MandoubNav() {
 
   return (
     <div className="mandoub-nav df jc-sb">
+      
         <ModalContainer>
                 {modalOpen && (
                     <NotificationsModal

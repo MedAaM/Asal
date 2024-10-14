@@ -6,8 +6,11 @@ import { MdOutlineCircleNotifications } from "react-icons/md";
 import { MdEdit, MdPendingActions } from "react-icons/md";
 import { useAuthContext } from '../../../hooks/useAuthContext';
 import { BiChat, BiDollar, BiLock, BiLogOut } from 'react-icons/bi';
+import { IoIosArrowBack } from "react-icons/io";
+import { useState } from "react";
 
 function SideBar({ setExpended, expended }) {
+    const [toggle , setToggle] = useState(false); 
     const handleToggle = () => {
         setExpended(!expended);
     };
@@ -19,7 +22,10 @@ function SideBar({ setExpended, expended }) {
         dispatch({ type: 'LOGOUT' });
     };
     return (
-        <div id="nav-bar">
+        <div id="nav-bar" className={`${toggle ? "toggle" : "" } `}>
+            <div className={`menu-toggle ${toggle ? "toggled" : "" } `} onClick={()=>{setToggle(!toggle)}}>
+        <IoIosArrowBack />
+      </div>
             <input id="nav-toggle" onClick={handleToggle} type="checkbox" />
             <div id="nav-header">
                 <a id="nav-title" href="#" target="_blank">
